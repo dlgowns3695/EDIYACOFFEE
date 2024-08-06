@@ -3,22 +3,31 @@ import './App.css';
 // 이디야 작업 시작
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* 100% */}
+      <div className="bg-red-500">
+        {/* 80% */}
+        <div className="p-4">
+          {/* logo */}
+          <div className="flex justify-center">
+            <img src={logo} alt="Logo" className="w-16 h-16" />
+          </div>
+          {/* 서브메뉴 */}
+          <div className="mt-4">
+            <ul className="list-disc pl-5">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li>Item 4</li>
+            </ul>
+          </div>
+          {/* 가맹문의 */}
+          <div className="mt-4">
+            {/* Content here */}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
