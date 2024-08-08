@@ -18,8 +18,8 @@ function App() {
       <PromotionSection02 />
       <MenuSection03/>
       <MdItem/>
-     
-      
+      <StoreEDway/>     
+      <Footer />
       
       
     </>
@@ -275,17 +275,43 @@ function MdItem(){
     {/* 100% */}
       <div className='w-screen h-[1284px] bg-red-400'>
         {/* 인도네시아 나무 배경 */}
-        <div className='w-full h-[auto]'>
-          <img className='object-cover' src={`${process.env.PUBLIC_URL}/indonesia.png`} />
+        <div className='w-full h-[300px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}>
         </div>
+
         {/* 갈색배경 */}
-        <div className='w-full h-[auto]'>
-          <img className='object-cover' src={`${process.env.PUBLIC_URL}/indonesiaBG.png`} />
+        <div className='w-full h-[950px] bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
+          
           <div>
             {/* 타이틀 */}
-            <div className='flex justify-center items-center'>
-              <h1>MD's Item</h1>
+            <div className='flex flex-col items-center mb-16'>
+              <h1 className='text-[64px] font-bold mt-16 '>MD's Item</h1>
               <p>MD 추천 상품을 만나보세요.</p>
+            </div>
+
+            {/* MD상품 */}
+            <div className='flex items-center justify-center gap-36'>
+              {/* 텀블러 */}
+              <div className='flex flex-col items-center'>
+                {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
+                <div className='relative'>
+                  <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
+                  <img className='absolute top-[-10%] left-[-15%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
+                </div>
+                <h4 className='font-semibold'>SUBSUB</h4>
+                <p className='text-black'>스마일 텀블러</p>
+              </div>
+              {/* 파우치 */}
+              <div className='flex flex-col items-center'>
+                {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
+                <div className='relative'>
+                  <img src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
+                  <img className='absolute top-[15%] left-[0%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                </div>
+                
+                <h4 className='font-semibold'>SUBSUB</h4>
+                <p className='text-black'>스마일 텀블러</p>
+              </div>
+
             </div>
 
           </div>
@@ -295,6 +321,49 @@ function MdItem(){
   )
 }
 
+
+function StoreEDway(){
+  return(
+    <>
+    {/* 100% */}
+      <div className='w-screen h-[500px] bg-white bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
+
+      </div>  
+    </>
+  )
+}
+
+
+function Footer(){
+  return (
+    <>
+    {/* 100% */}
+      <div className='w-screen bg-[#182855] h-[400px] flex  justify-center text-white text-xs'>
+        {/* 1200px bg-red-200 */}
+        <div className='w-[1200px] h-full '>
+          <div className='flex justify-between mt-12'>
+            <h4 className='font-semibold text-2xl 	'>EDIYA COFFEE</h4>
+
+            <div>
+              <ul className='flex justify-center items-center gap-4'>
+                <li><img src={`${process.env.PUBLIC_URL}/instar.png`} /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/facebook.png`} /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/youtube.png`} /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/wifi.png`} /></li>
+              </ul>
+            </div>
+          </div>
+          <div className='mt-16'>
+            <p className='mb-6'>개인정보처리 방침 | 이메일 무단 수집 거부</p>
+            <p>이디야커피(주) | 대표이사 강태성 | 서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17) | TEL:02-543-6467</p>
+            <p className='mb-6'>FAX:02-543-7191 | 사업자등록번호:107-86-16302 | 통신판매업 신고:강남 제 002519호</p>
+            <p>Copyright 이디야커피(주) All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
 
 
 
