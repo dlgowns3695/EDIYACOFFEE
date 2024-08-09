@@ -8,20 +8,48 @@ import 'swiper/css/navigation';
 
 import { Navigation } from 'swiper/modules';
 
+import { Routes, Route, Link } from 'react-router-dom'
+import About from './about/About';
+import Menus from './menus/Menus';
+import Story from './story/Story';
+import Store from './store/Store';
+// import Home from './pages/Home';
+
+
 // App 컴포넌트
+
+// Routes와 Route 컴포넌트는 Navbar, SwiperSection01, PromotionSection02, MenuSection03, MdItem, StoreEDway, Footer 
+// 컴포넌트와 같은 레벨에 있지 않으면 제대로 작동하지 않을 수 있습니다.
+
 function App() {
   return (
     <>
       <header><Navbar /></header>
-  
+      
+      <main>
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/menus" element={<Menus />} />
+          <Route path="/story" element={<Story />} />
+          <Route path="/store" element={<Store />} />
+          {/* 추가적인 Route는 필요에 따라 추가 */}
+        </Routes>
+      </main>
+    </>
+  );
+}
+
+// MainContent 컴포넌트 (기본 페이지 내용)
+function MainContent() {
+  return (
+    <>
       <SwiperSection01 />
       <PromotionSection02 />
-      <MenuSection03/>
-      <MdItem/>
-      <StoreEDway/>     
+      <MenuSection03 />
+      <MdItem />
+      <StoreEDway />     
       <Footer />
-      
-      
     </>
   );
 }
@@ -67,10 +95,10 @@ function Menu() {
     <>
       <div>
         <ul className="flex space-x-8 font-bold text-lg">
-          <li className="text-[#243c84]">ABOUT</li>
-          <li className="text-[#243c84]">MENU</li>
-          <li className="text-[#243c84]">STORY</li>
-          <li className="text-[#243c84]">STORE</li>
+          <li className="text-[#243c84]"><Link to="/"> ABOUT </Link></li>
+          <li className="text-[#243c84]"><Link to="/menus"> MENU </Link></li>
+          <li className="text-[#243c84]"><Link to="/story"> STORY </Link></li>
+          <li className="text-[#243c84]"><Link to="/store"> STORE </Link></li>
         </ul>
       </div>
     </>
