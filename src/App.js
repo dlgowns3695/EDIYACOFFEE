@@ -15,8 +15,8 @@ import Story from './story/Story';
 import Store from './store/Store';
 // import Home from './pages/Home';
 
-// navbar 컴포넌트 다 합치기
-// 첫번째 스와이퍼 div여러개 가운데정렬해서 사이즈별로 다르게해서 그라에디션 주기
+
+
 // 스와이퍼들 버튼 수정하기
 // Promotion섹션 작은 이미지 누를때 왼쪽 큰 사이즈로 넘어가기
 // Menu섹션 스와이퍼시 메뉴 하나씩 넘어가기로, 무한대로
@@ -99,45 +99,50 @@ function SwiperSection01() {
   return (
     <>
       {/* 가운데 로고 부분 */}
-      <div className='w-[277px] h-[105px] absolute z-10 top-[13.7%] left-[50%] translate-x-[-50%]'>
+      <div className='w-[277px] h-[105px] absolute z-10 top-[8.5%] left-[50%] translate-x-[-50%]'>
         <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
       </div>
 
       {/* 스와이퍼 섹션(뒷배경) 100vw, h-800px */}
       <div className='w-full'>
         <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/section01BG.png`} alt="Background" />
-        
-        
 
-        <div className='relative left-0 top-[-380px] z-1 flex items-center justify-center'>
-            {/* 맨 위가 바깥 */}
-            <div className='absolute  w-[1236px] h-[656px]  border-4 border-[#172650] rounded-[150px] '></div>
-            <div className='absolute  w-[1234px] h-[652px]  border-4 border-[#243c84] rounded-[150px] '></div>
-            <div className='absolute  w-[1230px] h-[648px]  border-8 border-[#203573] rounded-[150px] '></div>
-            <div className='absolute  w-[1224px] h-[640px]  border-8 border-[#233b81] rounded-[150px] '></div>
-            <div className='absolute  w-[1216px] h-[632px]  border-4 border-[#1f326c] rounded-[150px] '></div>
-            <div className='absolute  w-[1212px] h-[628px]  border-4 border-[#182855] rounded-[150px] '></div>
-            <div className='absolute  w-[1210px] h-[625px]  border-8 border-[#21387b] rounded-[150px] '></div>
-        
-            <div className='absolute  left-[50%] translate-x-[-50%] w-[1210px] h-[625px]  border-4 border-[#2d3c72] rounded-[150px] overflow-hidden'>
-          
-          <div className='w-full h-full object-cover '>
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full h-full">
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" /></SwiperSlide>
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></SwiperSlide>
-            </Swiper>
+        <div className='relative left-0 top-[-440px] z-1 flex items-center justify-center'>
+          {/* 맨 위가 바깥 */}
+          <div className='absolute w-[1200px] h-[620px] border-4 border-[#172650] rounded-[150px]'></div>
+          <div className='absolute w-[1198px] h-[616px] border-4 border-[#243c84] rounded-[150px]'></div>
+          <div className='absolute w-[1194px] h-[612px] border-8 border-[#203573] rounded-[150px]'></div>
+          <div className='absolute w-[1188px] h-[604px] border-8 border-[#233b81] rounded-[150px]'></div>
+          <div className='absolute w-[1180px] h-[596px] border-4 border-[#1f326c] rounded-[150px]'></div>
+          <div className='absolute w-[1176px] h-[592px] border-4 border-[#182855] rounded-[150px]'></div>
+          <div className='absolute w-[1174px] h-[589px] border-8 border-[#21387b] rounded-[150px]'></div>
+
+          <div className='absolute left-[50%] translate-x-[-50%] w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] overflow-hidden'>
+            <div className='w-full h-full object-cover'>
+              <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full h-full">
+                <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
+                <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" /></SwiperSlide>
+                <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></SwiperSlide>
+              </Swiper>
+            </div>
           </div>
-        </div>
-        
-        
-        </div>
-        {/* 실제 스와이퍼 들어갈 공간 */}
 
+          <div className='absolute top-[165px] left-[110px] w-[auto] h-[auto]'>
+            <img src={`${process.env.PUBLIC_URL}/human01.png`} alt="human" />
+          </div>
+          <div className='absolute top-[215px] left-[345px] w-[auto] h-[auto]'>
+            <img src={`${process.env.PUBLIC_URL}/middleHuman.png`} alt="middle human" />
+          </div>
+          <div className='absolute top-[260px] left-[1500px] w-[auto] h-[auto]'>
+            <img src={`${process.env.PUBLIC_URL}/car.png`} alt="car" />
+          </div>
+
+        </div>
       </div>
     </>
   );
 }
+
 
 
 

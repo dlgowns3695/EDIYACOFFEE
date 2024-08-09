@@ -34,13 +34,33 @@ body{
     font-family: 'Pretendard-Regular', sans-serif;
 }
 
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+/* .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
 .swiper-button-next, .swiper-rtl .swiper-button-prev {
     width:71px !important;height:71px !important;
     color: #243c84 !important;
+    background-color: aliceblue;
+    border-radius: 50%;
     
 }
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
 .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-    font-size: 5rem!important; /* 아이콘 크기 조절 */
+    font-size: 3rem!important; 
+} */
+
+/* 기존 화살표 숨기기 */
+.swiper-button-prev, .swiper-button-next {
+    display: none !important; /* 기본 화살표를 제거 */
+}
+
+/* 커스텀 SVG 화살표 적용 */
+.swiper-button-prev:after, 
+.swiper-rtl .swiper-button-next:after, 
+.swiper-button-next:after, 
+.swiper-rtl .swiper-button-prev:after {
+    color: #243c84;
+    content: '';
+    display: block;
+    width: 24px; /* 원하는 크기로 설정 */
+    height: 24px;
+
 }

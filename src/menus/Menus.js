@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Menu = () => {
+const Menus = () => {
   return (
     <div>메뉴페이지</div>
   )
 }
 
-export default Menu
+export default Menus
