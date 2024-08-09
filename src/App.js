@@ -56,10 +56,12 @@ function MainContent() {
 
 // Navbar 컴포넌트
 function Navbar() {
+  
+
   return (
     <>
       {/* 100% 부모 */}
-      <div className="fixed z-10 w-screen h-[130px] flex items-center justify-center">
+      <div className="fixed z-10 w-full h-[130px] flex items-center justify-center">
         {/* 1200px 내용물공간 */}
         <div className="w-[1200px] h-full flex justify-between items-center">
           {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
@@ -130,11 +132,18 @@ function SwiperSection01() {
       </div>
 
       {/* 스와이퍼 섹션(뒷배경) 100vw, h-800px */}
-      <div className='w-screen'>
+      <div className='w-full'>
         <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/section01BG.png`} alt="Background" />
         
+        
+
+        {/* <div className='relative left-0 top-0 z-40'>
+            <div className='absolute left-0 top-0 w-[1200px] h-[615px]  border-8 border-[#182855] rounded-[150px] '></div>
+            <div className='absolute left-0 top-0 w-[1210px] h-[625px]  border-8 border-[#ff0000] rounded-[150px] '></div>
+        </div> */}
         {/* 실제 스와이퍼 들어갈 공간 */}
-        <div className='absolute top-[16%] left-[50%] translate-x-[-50%] w-[1200px] h-[615px] border-8 border-[#182855] rounded-[150px] overflow-hidden'>
+        <div className='absolute top-[16%] left-[50%] translate-x-[-50%] w-[1210px] h-[625px]  border-8 border-[#182855] rounded-[150px] overflow-hidden'>
+          
           <div className='w-full h-full object-cover '>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full h-full">
               <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
@@ -155,7 +164,7 @@ function PromotionSection02() {
   return (
     <>
       {/* 100% 섹션 bg-red-600 */}
-      <div className="w-screen flex items-center justify-center">
+      <div className="w-full flex items-center justify-center">
         {/* 80% */}
         <div className="w-[1200px]">
           <div className="text-center">
@@ -193,7 +202,7 @@ function MenuSection03() {
   return (
     <>
       {/* 100% 섹션 */}
-      <div className='w-screen h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
+      <div className='w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
         {/* 실제 컨탠츠 들어갈 공간 1200  bg-gray-400  */}
         <div className='w-[1200px] flex justify-center items-center flex-col'>
 
@@ -301,7 +310,7 @@ function MdItem(){
   return(
     <>
     {/* 100% */}
-      <div className='w-screen h-[1283px] bg-red-400'>
+      <div className='w-full h-[1283px] bg-red-400'>
         {/* 인도네시아 나무 배경 */}
         <div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}>
         </div>
@@ -354,7 +363,7 @@ function StoreEDway(){
   return(
     <>
     {/* 100% */}
-      <div className='w-screen h-[594px] bg-white bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
+      <div className='w-full h-[594px] bg-white bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
 
       </div>  
     </>
@@ -366,7 +375,7 @@ function Footer(){
   return (
     <>
     {/* 100% */}
-      <div className='w-screen bg-[#182855] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
+      <div className='w-full bg-[#182855] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
         {/* 1200px bg-red-200 */}
         <div className='w-[1200px] h-full '>
           <div className='flex justify-between mt-[110px]'>

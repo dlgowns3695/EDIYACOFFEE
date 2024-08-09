@@ -19,3 +19,5 @@ body{
 .preten-font {
     font-family: 'Pretendard-Regular', sans-serif;
 }
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {width:80px !important;height:80px !important;background-color: red;}
