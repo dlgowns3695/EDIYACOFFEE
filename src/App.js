@@ -15,6 +15,11 @@ import Story from './story/Story';
 import Store from './store/Store';
 // import Home from './pages/Home';
 
+// navbar 컴포넌트 다 합치기
+// 첫번째 스와이퍼 div여러개 가운데정렬해서 사이즈별로 다르게해서 그라에디션 주기
+// 스와이퍼들 버튼 수정하기
+// Promotion섹션 작은 이미지 누를때 왼쪽 큰 사이즈로 넘어가기
+// Menu섹션 스와이퍼시 메뉴 하나씩 넘어가기로, 무한대로
 
 // App 컴포넌트
 
@@ -54,72 +59,39 @@ function MainContent() {
   );
 }
 
-// Navbar 컴포넌트
 function Navbar() {
-  
-
   return (
-    <>
-      {/* 100% 부모 */}
-      <div className="fixed z-10 w-full h-[130px] flex items-center justify-center">
-        {/* 1200px 내용물공간 */}
-        <div className="w-[1200px] h-full flex justify-between items-center">
-          {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
-          <div className="flex items-center">
-            <Logo />
-            <Menu />
-          </div>
-          {/* 오른쪽: 콘택트 */}
+    <div className="fixed z-10 w-full h-[130px] flex items-center justify-center">
+      {/* 1200px 내용물공간 */}
+      <div className="w-[1200px] h-full flex justify-between items-center">
+        {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
+        <div className="flex items-center">
+          {/* 로고 */}
           <div>
-          <Contact />
+            <img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo" />
           </div>
-          
-          
+          {/* 메뉴 */}
+          <div>
+            <ul className="flex space-x-8 font-bold text-lg">
+              <li className="text-[#243c84]"><Link to="/">ABOUT</Link></li>
+              <li className="text-[#243c84]"><Link to="/menus">MENU</Link></li>
+              <li className="text-[#243c84]"><Link to="/story">STORY</Link></li>
+              <li className="text-[#243c84]"><Link to="/store">STORE</Link></li>
+            </ul>
+          </div>
+        </div>
+        {/* 오른쪽: 콘택트 */}
+        <div className="text-white">
+          <div className="flex items-center gap-6">
+            <ul className="flex space-x-4 font-bold">
+              <li className="text-[#243c84]">KR</li>
+              <li className="text-[#d2d6e5]">EN</li>
+            </ul>
+            <div className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]">가맹문의</div>
+          </div>
         </div>
       </div>
-    </>
-  );
-}
-// Logo 컴포넌트
-function Logo() {
-  return (
-    <>
-      <div>
-        <img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo" />
-        {/* <img src={logo} alt="Logo" className="w-16 h-16" /> */}
-      </div>
-    </>
-  );
-}
-// Menu 컴포넌트
-function Menu() {
-  return (
-    <>
-      <div>
-        <ul className="flex space-x-8 font-bold text-lg">
-          <li className="text-[#243c84]"><Link to="/"> ABOUT </Link></li>
-          <li className="text-[#243c84]"><Link to="/menus"> MENU </Link></li>
-          <li className="text-[#243c84]"><Link to="/story"> STORY </Link></li>
-          <li className="text-[#243c84]"><Link to="/store"> STORE </Link></li>
-        </ul>
-      </div>
-    </>
-  );
-}
-// Contact 컴포넌트
-function Contact() {
-  return (
-    <>
-      <div className="text-white ">
-        <div className='flex items-center gap-6'>
-          <ul className="flex space-x-4 font-bold">
-            <li className='text-[#243c84]'>KR</li>
-            <li className='text-[#d2d6e5]'>EN</li>
-          </ul>
-          <div className='flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]'>가맹문의</div>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -127,7 +99,7 @@ function SwiperSection01() {
   return (
     <>
       {/* 가운데 로고 부분 */}
-      <div className='w-[277px] h-[105px] absolute z-10 top-[10.6%] left-[50%] translate-x-[-50%]'>
+      <div className='w-[277px] h-[105px] absolute z-10 top-[13.7%] left-[50%] translate-x-[-50%]'>
         <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
       </div>
 
@@ -137,12 +109,17 @@ function SwiperSection01() {
         
         
 
-        {/* <div className='relative left-0 top-0 z-40'>
-            <div className='absolute left-0 top-0 w-[1200px] h-[615px]  border-8 border-[#182855] rounded-[150px] '></div>
-            <div className='absolute left-0 top-0 w-[1210px] h-[625px]  border-8 border-[#ff0000] rounded-[150px] '></div>
-        </div> */}
-        {/* 실제 스와이퍼 들어갈 공간 */}
-        <div className='absolute top-[16%] left-[50%] translate-x-[-50%] w-[1210px] h-[625px]  border-8 border-[#182855] rounded-[150px] overflow-hidden'>
+        <div className='relative left-0 top-[-380px] z-1 flex items-center justify-center'>
+            {/* 맨 위가 바깥 */}
+            <div className='absolute  w-[1236px] h-[656px]  border-4 border-[#172650] rounded-[150px] '></div>
+            <div className='absolute  w-[1234px] h-[652px]  border-4 border-[#243c84] rounded-[150px] '></div>
+            <div className='absolute  w-[1230px] h-[648px]  border-8 border-[#203573] rounded-[150px] '></div>
+            <div className='absolute  w-[1224px] h-[640px]  border-8 border-[#233b81] rounded-[150px] '></div>
+            <div className='absolute  w-[1216px] h-[632px]  border-4 border-[#1f326c] rounded-[150px] '></div>
+            <div className='absolute  w-[1212px] h-[628px]  border-4 border-[#182855] rounded-[150px] '></div>
+            <div className='absolute  w-[1210px] h-[625px]  border-8 border-[#21387b] rounded-[150px] '></div>
+        
+            <div className='absolute  left-[50%] translate-x-[-50%] w-[1210px] h-[625px]  border-4 border-[#2d3c72] rounded-[150px] overflow-hidden'>
           
           <div className='w-full h-full object-cover '>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper w-full h-full">
@@ -152,6 +129,11 @@ function SwiperSection01() {
             </Swiper>
           </div>
         </div>
+        
+        
+        </div>
+        {/* 실제 스와이퍼 들어갈 공간 */}
+
       </div>
     </>
   );
@@ -168,7 +150,7 @@ function PromotionSection02() {
         {/* 80% */}
         <div className="w-[1200px]">
           <div className="text-center">
-            <h1 className="text-[64px]">Promotion</h1>
+            <h1 className="text-[64px] scoop-font">Promotion</h1>
             <p className="text-2xl mt-2">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
 
             {/* bg-red-200  */}
@@ -208,7 +190,7 @@ function MenuSection03() {
 
           {/* 타이틀 부분 */}
           <div className='flex flex-col justify-center items-center'>
-            <h1 className='text-[64px] font-bold'>Menu</h1>
+            <h1 className='text-[64px] scoop-font'>Menu</h1>
             <p className='text-2xl mt-2 mb-12'>이디야의 신제품을 만나보세요.</p>
           </div>
 
@@ -321,8 +303,8 @@ function MdItem(){
           <div>
             {/* 타이틀 */}
             <div className='flex flex-col items-center mb-16'>
-              <h1 className='text-[64px] font-bold mt-16 '>MD's Item</h1>
-              <p>MD 추천 상품을 만나보세요.</p>
+              <h1 className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
+              <p className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
             </div>
 
             {/* MD상품 */}
@@ -332,21 +314,21 @@ function MdItem(){
                 {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
-                  <img className='absolute top-[-10%] left-[-15%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
+                  <img className='absolute top-[-10%] left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
                 </div>
-                <h4 className='font-semibold'>SUBSUB</h4>
-                <p className='text-black'>스마일 텀블러</p>
+                <h4 className='font-semibold text-[36px] mt-[-68px]'>SUBSUB</h4>
+                <p className='text-black text-[36px] mt-[-20px]'>스마일 텀블러</p>
               </div>
               {/* 파우치 */}
               <div className='flex flex-col items-center'>
                 {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
-                  <img className='absolute top-[15%] left-[0%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                  <img className='absolute top-[15%] left-[8%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
                 </div>
                 
-                <h4 className='font-semibold'>SUBSUB</h4>
-                <p className='text-black'>스마일 텀블러</p>
+                <h4 className='font-semibold text-[36px] mt-[-74px]'>SUBSUB</h4>
+                <p className='text-black text-[36px] mt-[-20px]'>몽글파우치세트</p>
               </div>
 
             </div>
@@ -379,7 +361,8 @@ function Footer(){
         {/* 1200px bg-red-200 */}
         <div className='w-[1200px] h-full '>
           <div className='flex justify-between mt-[110px]'>
-            <h4 className='font-semibold text-2xl 	'>EDIYA COFFEE</h4>
+            {/* 폰트 종류? */}
+            <h4 className='font-semibold text-2xl'>EDIYA COFFEE</h4>
 
             <div>
               <ul className='flex justify-center items-center gap-4'>
