@@ -303,7 +303,7 @@ function MdItem(){
     {/* 100% */}
       <div className='w-screen h-[1284px] bg-red-400'>
         {/* 인도네시아 나무 배경 */}
-        <div className='w-full h-[300px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}>
+        <div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}>
         </div>
 
         {/* 갈색배경 */}
