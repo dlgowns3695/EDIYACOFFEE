@@ -211,17 +211,17 @@ function SwiperSection01() {
 
           {/* 왼쪽방향버튼 */}
           <div
-            className='absolute left-[310px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[320px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slidePrev}
           >
-            <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
-            <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
+            {/* <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div> */}
+            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
+            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
             <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
             <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#233b81" className="size-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </div>
@@ -234,17 +234,17 @@ function SwiperSection01() {
 
           {/* 오른쪽방향버튼 */}
           <div
-            className='absolute left-[1500px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[1510px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slideNext}
           >
-            <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
-            <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
+            {/* <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div> */}
+            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
+            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
             <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
             <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#233b81" className="size-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
             </div>
