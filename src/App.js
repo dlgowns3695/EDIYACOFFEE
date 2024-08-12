@@ -563,7 +563,7 @@ function Footer(){
   return (
     <>
     {/* 100% */}
-      <div className='w-full bg-[#182855] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
+      <div className='w-full bg-[#212530] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
         {/* 1200px bg-red-200 */}
         <div className='w-[1200px] h-full '>
           <div className='flex justify-between mt-[110px]'>
