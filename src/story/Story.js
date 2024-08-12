@@ -30,7 +30,7 @@ function Ambition(){
     <>
     {/* bg-white */}
       <div className='w-full h-dvh bg-white flex  justify-center'>
-        <div className='absolute left-[950px] scoop-font text-gray-100 text-[148px] whitespace-nowrap '>
+        <div className='ca absolute left-[950px] scoop-font text-gray-100 text-[212px] whitespace-nowrap '>
           Ediya Coffee
         </div>
         {/* bg-gray-400  */}
@@ -202,7 +202,7 @@ function Management() {
 
               </div>
               <div className='w-[591px] h-[210px] border-2 p-4 flex gap-4 items-center'>
-                <div className='w-[150px] h-[150px] bg-[#243c84]'></div>
+                <div className='w-[150px] h-[150px] bg-gray-400'></div>
                 <div>
                   <h4 className='text-black text-[24px] font-semibold'>Ediya Coffee Gray</h4>
                   <p className='text-black mb-4'>고객과의 소통</p>

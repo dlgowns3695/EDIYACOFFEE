@@ -29,9 +29,14 @@ body{
     margin: 0; padding: 0;
     font-family: 'Pretendard-Regular', sans-serif;
     color: #243c84;
+    overflow-x: hidden;
 }
 .preten-font {
     font-family: 'Pretendard-Regular', sans-serif;
+}
+
+.background{
+  background-color: #243c84;
 }
 
 

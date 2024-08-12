@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef , useEffect,} from 'react';
 import './App.css'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -61,23 +61,80 @@ function MainContent() {
 }
 
 function Navbar() {
+  const headerRef = useRef(null);
+  const linkRefs = useRef([]); // Link 태그를 참조하는 배열
+  const contact01Refs = useRef(null); // li 태그를 참조하는 배열
+  const contact02Refs = useRef(null); // li 태그를 참조하는 배열
+  const contactBtnRef = useRef(null); // 가맹문의 버튼을 위한 ref
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 1;
+
+      if (headerRef.current) {
+        headerRef.current.style.backgroundColor = isScrolled ? '#243c84' : 'transparent';
+      }
+
+      linkRefs.current.forEach(link => {
+        if (link) {
+          link.style.color = isScrolled ? '#ffffff' : '#243c84';
+        }
+      });
+
+      if (contact01Refs.current) {
+        contact01Refs.current.style.color = isScrolled ? '#ffffff' : '#243c84';
+      }
+      if (contact02Refs.current) {
+        contact02Refs.current.style.color = isScrolled ? '#d2d6e5' : '#d2d6e5';
+      }
+
+      if (contactBtnRef.current) {
+        contactBtnRef.current.style.backgroundColor = isScrolled ? '#ffffff' : '#243c84';
+        contactBtnRef.current.style.color = isScrolled ? '#243c84' : '#ffffff';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="fixed z-10 w-full h-[130px] flex items-center justify-center">
+    <div
+      ref={headerRef}
+      style={{
+        transition: 'background-color 0.3s ease-in-out',
+      }}
+      className="fixed z-[999] w-full h-[130px] flex items-center justify-center"
+    >
       {/* 1200px 내용물공간 */}
       <div className="w-[1200px] h-full flex justify-between items-center">
         {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
         <div className="flex items-center">
           {/* 로고 */}
           <div>
-            <img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo" />
+            <img
+              src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
+              alt="ediyalogo"
+            />
           </div>
           {/* 메뉴 */}
           <div>
             <ul className="flex space-x-8 font-bold text-lg">
-              <li className="text-[#243c84]"><Link to="/">ABOUT</Link></li>
-              <li className="text-[#243c84]"><Link to="/menus">MENU</Link></li>
-              <li className="text-[#243c84]"><Link to="/story">STORY</Link></li>
-              <li className="text-[#243c84]"><Link to="/store">STORE</Link></li>
+              <li ref={(el) => (linkRefs.current[0] = el)}>
+                <Link to="/">ABOUT</Link>
+              </li>
+              <li ref={(el) => (linkRefs.current[1] = el)}>
+                <Link to="/menus">MENU</Link>
+              </li>
+              <li ref={(el) => (linkRefs.current[2] = el)}>
+                <Link to="/story">STORY</Link>
+              </li>
+              <li ref={(el) => (linkRefs.current[3] = el)}>
+                <Link to="/store">STORE</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -85,10 +142,15 @@ function Navbar() {
         <div className="text-white">
           <div className="flex items-center gap-6">
             <ul className="flex space-x-4 font-bold">
-              <li className="text-[#243c84]">KR</li>
-              <li className="text-[#d2d6e5]">EN</li>
+              <li ref={contact01Refs} className="text-[#243c84]">KR</li>
+              <li ref={contact02Refs} className="text-[#d2d6e5]">EN</li>
             </ul>
-            <div className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]">가맹문의</div>
+            <div
+              ref={contactBtnRef}
+              className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]"
+            >
+              가맹문의
+            </div>
           </div>
         </div>
       </div>
@@ -149,7 +211,7 @@ function SwiperSection01() {
 
           {/* 왼쪽방향버튼 */}
           <div
-            className='absolute left-[160px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[310px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slidePrev}
           >
             <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
@@ -172,7 +234,7 @@ function SwiperSection01() {
 
           {/* 오른쪽방향버튼 */}
           <div
-            className='absolute left-[1350px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[1500px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slideNext}
           >
             <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
@@ -328,7 +390,7 @@ function MenuSection03() {
           {/* 100% 섹션 */}
           <div className='w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
               {/* 실제 컨탠츠 들어갈 공간 */}
-              <div className='w-[1200px] flex justify-center items-center flex-col'>
+              <div className='relative w-[1200px] flex justify-center items-center flex-col'>
 
                   {/* 타이틀 부분 */}
                   <div className='flex flex-col justify-center items-center'>
@@ -364,45 +426,25 @@ function MenuSection03() {
 
                   {/* 왼쪽방향버튼 */}
                   <div
-                      className='absolute left-[160px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+                      className='absolute z-10 top-[290px] left-[-30px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
                       onClick={slidePrev2}
                   >
-                      <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
-                      <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
-                      <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
-                      <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
-                      <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
-                      <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
+                      <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                          </svg>
-                      </div>
-                      <div className='absolute inset-0 flex items-center justify-center z-[99]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#1f326c" className="size-14">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                           </svg>
                       </div>
                   </div>
 
                   {/* 오른쪽방향버튼 */}
                   <div
-                      className='absolute left-[1350px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+                      className='absolute z-10 top-[290px] left-[1200px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
                       onClick={slideNext2}
                   >
-                      <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
-                      <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
-                      <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
-                      <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
-                      <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
-                      <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
+                      <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                          </svg>
-                      </div>
-                      <div className='absolute inset-0 flex items-center justify-center z-[99]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#1f326c" className="size-14">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
                               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                           </svg>
                       </div>
