@@ -1,5 +1,6 @@
 import React, { useState, useRef , useEffect,} from 'react';
 import './App.css'; 
+import Footer from './footer/Footer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -211,17 +212,17 @@ function SwiperSection01() {
 
           {/* 왼쪽방향버튼 */}
           <div
-            className='absolute left-[320px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[310px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slidePrev}
           >
-            {/* <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div> */}
-            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+            <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
+            <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
+            <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
+            <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
+            <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
             <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
             <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#233b81" className="size-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </div>
@@ -234,17 +235,17 @@ function SwiperSection01() {
 
           {/* 오른쪽방향버튼 */}
           <div
-            className='absolute left-[1510px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
+            className='absolute left-[1500px] w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer'
             onClick={slideNext}
           >
-            {/* <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div> */}
-            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+            <div className='absolute w-[103px] h-[103px] border-2 border-blue-500 rounded-full'></div>
+            <div className='absolute w-[99px] h-[99px] border-4 border-blue-100 rounded-full'></div>
+            <div className='absolute w-[91px] h-[91px] border-4 border-blue-500 rounded-full'></div>
+            <div className='absolute w-[83px] h-[83px] border-2 border-yellow-500 rounded-full'></div>
+            <div className='absolute w-[79px] h-[79px] border-8 border-green-500 rounded-full'></div>
             <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
             <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#233b81" className="size-14">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="#21387b" className="size-14">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
             </div>
@@ -368,132 +369,111 @@ function PromotionSection02() {
 }
 
 function MenuSection03() {
-  // 스와이퍼 인스턴스를 참조할 ref
-  const swiperRef2 = useRef(null);
+  // 초기 인덱스를 0, 1, 2, 3으로 설정
+  const [indices, setIndices] = useState([0, 1, 2, 3]);
 
   // 슬라이드를 왼쪽으로 이동하는 함수
   const slidePrev2 = () => {
-      if (swiperRef2.current && swiperRef2.current.swiper) {
-          swiperRef2.current.swiper.slidePrev();
-      }
+    setIndices((prevIndices) => {
+      return prevIndices.map((index) => (index - 1 + 4) % 4);
+    });
   };
 
   // 슬라이드를 오른쪽으로 이동하는 함수
   const slideNext2 = () => {
-      if (swiperRef2.current && swiperRef2.current.swiper) {
-          swiperRef2.current.swiper.slideNext();
-      }
+    setIndices((prevIndices) => {
+      return prevIndices.map((index) => (index + 1) % 4);
+    });
   };
 
   return (
-      <>
-          {/* 100% 섹션 */}
-          <div className='w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
-              {/* 실제 컨탠츠 들어갈 공간 */}
-              <div className='relative w-[1200px] flex justify-center items-center flex-col'>
-
-                  {/* 타이틀 부분 */}
-                  <div className='flex flex-col justify-center items-center'>
-                      <h1 className='text-[64px] scoop-font'>Menu</h1>
-                      <p className='text-2xl mt-2 mb-12'>이디야의 신제품을 만나보세요.</p>
-                  </div>
-
-                  {/* 실제 스와이퍼 들어갈 공간 */}
-                  <div className='relative w-[1200px]'>
-                      <Swiper
-                          ref={swiperRef2}
-                          modules={[Navigation]}
-                          className="mySwiper w-full h-full"
-                          loop={true}  // 무한 반복
-                          slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
-                          spaceBetween={30}  // 슬라이드 사이의 간격
-                          centeredSlides={false}  // 슬라이드가 화면 가운데 정렬되지 않도록 설정
-                          // 슬라이드 동작에 필요한 추가적인 설정
-                          onInit={(swiper) => {
-                              swiper.params.slidesPerView = 4;
-                              swiper.update();
-                          }}
-                      >
-                          <SwiperSlide><Section03MenuUl index={0} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={1} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={2} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={3} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={0} /></SwiperSlide>
-
-                          
-                      </Swiper>
-                  </div>
-
-                  {/* 왼쪽방향버튼 */}
-                  <div
-                      className='absolute z-10 top-[290px] left-[-30px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slidePrev2}
-                  >
-                      <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
-                      <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                          </svg>
-                      </div>
-                  </div>
-
-                  {/* 오른쪽방향버튼 */}
-                  <div
-                      className='absolute z-10 top-[290px] left-[1200px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slideNext2}
-                  >
-                      <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
-                      <div className='absolute inset-0 flex items-center justify-center z-[100]'>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                          </svg>
-                      </div>
-                  </div>
-
-              </div>
-
+    <>
+      {/* 100% 섹션 */}
+      <div className="w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]">
+        {/* 실제 컨탠츠 들어갈 공간 */}
+        <div className="relative w-[1200px] flex justify-center items-center flex-col">
+          {/* 타이틀 부분 */}
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-[64px] scoop-font">Menu</h1>
+            <p className="text-2xl mt-2 mb-12">이디야의 신제품을 만나보세요.</p>
           </div>
-      </>
+
+          {/* 실제 슬라이드 들어갈 공간 */}
+          <div className="relative w-[1200px] flex justify-between">
+            {indices.map((index) => (
+              <Section03MenuUl key={index} index={index} />
+            ))}
+          </div>
+
+          {/* 왼쪽방향버튼 */}
+          <div
+            className="absolute z-10 top-[290px] left-[-30px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer"
+            onClick={slidePrev2}
+          >
+            <div className="absolute w-[30px] h-[30px] bg-gray-400 rounded-full"></div>
+            <div className="absolute inset-0 flex items-center justify-center z-[100]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+              </svg>
+            </div>
+          </div>
+
+          {/* 오른쪽방향버튼 */}
+          <div
+            className="absolute z-10 top-[290px] left-[1200px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer"
+            onClick={slideNext2}
+          >
+            <div className="absolute w-[30px] h-[30px] bg-gray-400 rounded-full"></div>
+            <div className="absolute inset-0 flex items-center justify-center z-[100]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 function Section03MenuUl({ index }) {
   const menuItems = [
-      {
-          name: '허쉬 크리미 초콜릿',
-          image: 'menu01.png'
-      },
-      {
-          name: '바닐라 라떼',
-          image: 'menu02.png'
-      },
-      {
-          name: '카라멜 마끼아또',
-          image: 'menu03.png'
-      },
-      {
-          name: '초코 바나나 스무디',
-          image: 'menu04.png'
-      }
+    {
+      name: '허쉬 크리미 초콜릿',
+      image: 'menu01.png',
+    },
+    {
+      name: '바닐라 라떼',
+      image: 'menu02.png',
+    },
+    {
+      name: '카라멜 마끼아또',
+      image: 'menu03.png',
+    },
+    {
+      name: '초코 바나나 스무디',
+      image: 'menu04.png',
+    },
   ];
 
   return (
-      <ul className='flex justify-center items-center gap-4'>
-          <li className='flex flex-col items-center'>
-              <div className='w-[230px] h-[230px] flex justify-center items-center'>
-                  <img className='object-cover' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
-              </div>
-              <div className='text-center mt-2'>
-                  <p className='text-black font-semibold text-2xl'>{menuItems[index].name}</p>
-                  <div className='flex justify-center mt-1 space-x-1'>
-                      <div className='w-[40px] bg-[#243c84] rounded-2xl text-center text-xs text-white'>ICED</div>
-                      <div className='w-[40px] bg-[#9c1515] rounded-2xl text-center text-xs text-white'>HOT</div>
-                  </div>
-              </div>
-          </li>
-      </ul>
+    <ul className="flex justify-center items-center gap-4">
+      <li className="flex flex-col items-center">
+        <div className="w-[230px] h-[230px] flex justify-center items-center">
+          <img className="object-cover" src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
+        </div>
+        <div className="text-center mt-2">
+          <p className="text-black font-semibold text-2xl">{menuItems[index].name}</p>
+          <div className="flex justify-center mt-1 space-x-1">
+            <div className="w-[40px] bg-[#243c84] rounded-2xl text-center text-xs text-white">ICED</div>
+            <div className="w-[40px] bg-[#9c1515] rounded-2xl text-center text-xs text-white">HOT</div>
+          </div>
+        </div>
+      </li>
+    </ul>
   );
 }
+
 
 function MdItem(){
   return(
@@ -557,44 +537,6 @@ function StoreEDway(){
     </>
   )
 }
-
-
-function Footer(){
-  return (
-    <>
-    {/* 100% */}
-      <div className='w-full bg-[#212530] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
-        {/* 1200px bg-red-200 */}
-        <div className='w-[1200px] h-full '>
-          <div className='flex justify-between mt-[110px]'>
-            {/* 폰트 종류? */}
-            <h4 className='font-semibold text-2xl'>EDIYA COFFEE</h4>
-
-            <div>
-              <ul className='flex justify-center items-center gap-4'>
-                <li><img src={`${process.env.PUBLIC_URL}/instar.png`} /></li>
-                <li><img src={`${process.env.PUBLIC_URL}/facebook.png`} /></li>
-                <li><img src={`${process.env.PUBLIC_URL}/youtube.png`} /></li>
-                <li><img src={`${process.env.PUBLIC_URL}/wifi.png`} /></li>
-              </ul>
-            </div>
-          </div>
-          <div className='mt-[80px]'>
-            <p className='mb-[31px]'>개인정보처리 방침 | 이메일 무단 수집 거부</p>
-            <p>이디야커피(주) | 대표이사 강태성 | 서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17) | TEL:02-543-6467</p>
-            <p className='mb-[31px]'>FAX:02-543-7191 | 사업자등록번호:107-86-16302 | 통신판매업 신고:강남 제 002519호</p>
-            <p>Copyright 이디야커피(주) All Rights Reserved.</p>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
-
-
-
-
-
 
 
 
