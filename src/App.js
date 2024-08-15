@@ -573,48 +573,28 @@ function MdItem(){
 function StoreEDway(){
   return(
     <>
-    {/* 100% */}
-      <div className='w-full h-[594px] bg-white bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
-
+    {/* 100%  w-full h-[594px] */}
+      <div className='w-full h-[594px] bg-cover flex justify-center ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
+        <div className='w-[1200px] h-full bg-red-100 flex justify-center'>
+          <div className=''>
+            <h4 className='scoop-font'>Store</h4>
+            <p>내 주변 가까운 이디야 매장을 찾아보세요</p>
+            <div>
+              <img src={`${process.env.PUBLIC_URL}/store_map.png`}/>
+            </div>
+          </div>
+          <div>
+            <h4 className='scoop-font'>Store</h4>
+            <p>내 주변 가까운 이디야 매장을 찾아보세요</p>
+            <div>
+              <img src={`${process.env.PUBLIC_URL}/store_map.png`}/>
+            </div>
+          </div>
+        </div>
       </div>  
     </>
   )
 }
-
-
-// function Footer(){
-//   return (
-//     <>
-//     {/* 100% */}
-//       <div className='w-full bg-[#182855] h-[460px] flex  justify-center text-[#afafaf] text-xs'>
-//         {/* 1200px bg-red-200 */}
-//         <div className='w-[1200px] h-full '>
-//           <div className='flex justify-between mt-[110px]'>
-//             {/* 폰트 종류? */}
-//             <h4 className='font-semibold text-2xl'>EDIYA COFFEE</h4>
-
-//             <div>
-//               <ul className='flex justify-center items-center gap-4'>
-//                 <li><img src={`${process.env.PUBLIC_URL}/instar.png`} /></li>
-//                 <li><img src={`${process.env.PUBLIC_URL}/facebook.png`} /></li>
-//                 <li><img src={`${process.env.PUBLIC_URL}/youtube.png`} /></li>
-//                 <li><img src={`${process.env.PUBLIC_URL}/wifi.png`} /></li>
-//               </ul>
-//             </div>
-//           </div>
-//           <div className='mt-[80px]'>
-//             <p className='mb-[31px]'>개인정보처리 방침 | 이메일 무단 수집 거부</p>
-//             <p>이디야커피(주) | 대표이사 강태성 | 서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동 221-17) | TEL:02-543-6467</p>
-//             <p className='mb-[31px]'>FAX:02-543-7191 | 사업자등록번호:107-86-16302 | 통신판매업 신고:강남 제 002519호</p>
-//             <p>Copyright 이디야커피(주) All Rights Reserved.</p>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-
 
 
 
