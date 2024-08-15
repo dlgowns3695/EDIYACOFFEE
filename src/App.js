@@ -216,7 +216,7 @@ function SwiperSection01() {
 
           {/* 왼쪽방향버튼 */}
           <div
-            className={`${buttonStyle} left-[160px]`}
+            className={`${buttonStyle} left-[320px]`}
             onClick={slidePrev}
           >
             <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
@@ -233,7 +233,7 @@ function SwiperSection01() {
 
           {/* 오른쪽방향버튼 d*/}
           <div
-            className={`${buttonStyle} left-[1350px]`}
+            className={`${buttonStyle} left-[1510px]`}
             onClick={slideNext}
           >
             <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
@@ -273,26 +273,20 @@ function PromotionSection02() {
   ];
 
   // 오른쪽 이미지 초기 셋팅
-  // images.slice(1, 4)는 images 배열의 1번 인덱스부터 
-  // 시작하여 4번 인덱스까지의 요소를 추출
   const [rightImages, setRightImages] = useState(images.slice(1, 4));
 
-  // 이 함수가 실행 되면
+  // 자동 슬라이드 상태 관리
+  const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
+
+  // 이 함수가 실행되면 이미지 변경
   const handleImageClick = (clickedImage) => {
-    // 1. 클릭된 이미지의 인덱스를 찾는다.
     const newLeftImageIndex = images.indexOf(clickedImage);
-    // 2. 오른쪽 이미지 배열 업데이트
-    // 클릭된 이미지가 오른쪽 배열에 있다면, 그 이미지를
-    // 현재 왼쪽 이미지와 교체
     const newRightImages = rightImages.map(img =>
-      // 이미지가 있냐ㅑ? 그렇다면 이미지의[index] , 그렇지않으면 기존 이미지
       img === clickedImage ? images[leftImageIndex] : img
     );
 
-    // 상대 업데이트해서 이미지들 배열 벼경
-    setLeftImageIndex(newLeftImageIndex); // useState에서 만든 함수임 (클릭된 이미지로 변경)
-    setRightImages(newRightImages); // useState에서 만든 함수임
-    // 왼쪽이미지를 오른쪽에 배열 새로 추가
+    setLeftImageIndex(newLeftImageIndex);
+    setRightImages(newRightImages);
   };
 
   // 윗 버튼 눌렀을 때
@@ -307,7 +301,7 @@ function PromotionSection02() {
     setRightImages(newRightImages);
   };
 
-  // 아래 버튼 눌렀을 때 
+  // 아래 버튼 눌렀을 때
   const handleMoveDown = () => {
     const newLeftImageIndex = (leftImageIndex + images.length - 1) % images.length;
     const newRightImages = [
@@ -317,6 +311,19 @@ function PromotionSection02() {
     ];
     setLeftImageIndex(newLeftImageIndex);
     setRightImages(newRightImages);
+  };
+
+  // 5초마다 자동으로 이미지 변경 (isAutoSlideActive가 true일 때만)
+  useEffect(() => {
+    if (isAutoSlideActive) {
+      const intervalId = setInterval(handleMoveUp, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [leftImageIndex, isAutoSlideActive]);
+
+  // 자동 슬라이드 토글 함수
+  const toggleAutoSlide = () => {
+    setIsAutoSlideActive(!isAutoSlideActive);
   };
 
   // 공통 css
@@ -350,7 +357,7 @@ function PromotionSection02() {
                 {rightImages.map((image, index) => (
                   <div
                     key={index}
-                    className={`${containerClass} overflow-hidden cursor-pointer image-slide`}
+                    className={`${containerClass} cursor-pointer image-slide`}
                     onClick={() => handleImageClick(image)}
                   >
                     <img className="w-[230px] h-[146px] object-cover" src={image} />
@@ -380,7 +387,7 @@ function PromotionSection02() {
                     </svg>
                   </div>
                   {/* = 버튼 */}
-                  <div className={buttonClass}>
+                  <div className={buttonClass} onClick={toggleAutoSlide}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
                     </svg>
@@ -441,6 +448,11 @@ function MenuSection03() {
                           <SwiperSlide><Section03MenuUl index={1} /></SwiperSlide>
                           <SwiperSlide><Section03MenuUl index={2} /></SwiperSlide>
                           <SwiperSlide><Section03MenuUl index={3} /></SwiperSlide>
+                          <SwiperSlide><Section03MenuUl index={4} /></SwiperSlide>
+                          <SwiperSlide><Section03MenuUl index={5} /></SwiperSlide>
+                          <SwiperSlide><Section03MenuUl index={6} /></SwiperSlide>
+                          <SwiperSlide><Section03MenuUl index={7} /></SwiperSlide>
+
 
 
                           
@@ -482,6 +494,22 @@ function MenuSection03() {
 
 function Section03MenuUl({ index }) {
   const menuItems = [
+      {
+          name: '허쉬 크리미 초콜릿',
+          image: 'menu01.png'
+      },
+      {
+          name: '바닐라 라떼',
+          image: 'menu02.png'
+      },
+      {
+          name: '카라멜 마끼아또',
+          image: 'menu03.png'
+      },
+      {
+          name: '초코 바나나 스무디',
+          image: 'menu04.png'
+      },
       {
           name: '허쉬 크리미 초콜릿',
           image: 'menu01.png'
