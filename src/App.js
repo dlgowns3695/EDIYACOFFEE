@@ -161,78 +161,88 @@ function Navbar() {
 }
 
 function SwiperSection01() {
-  
-  // 스와이퍼 인스턴스를 참조할 ref
   const swiperRef = useRef(null);
+  const imageRefs = useRef([]);
+  const [loaded, setLoaded] = useState(false);
 
-  // 슬라이드를 왼쪽으로 이동하는 함수
+  // 스와이퍼 슬라이드 함수들
   const slidePrev = () => {
     swiperRef.current.swiper.slidePrev();
   };
 
-  // 슬라이드를 오른쪽으로 이동하는 함수
   const slideNext = () => {
     swiperRef.current.swiper.slideNext();
   };
 
-  // 공통 스타일 클래스
   const buttonStyle = 'absolute z-10 w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer';
   const borderStyles = 'absolute rounded-[150px] border-4';
-  
-  const imageRefs = useRef([]);
 
-  useEffect(() => {
-    const images = imageRefs.current;
+  const handleImageLoad = () => {
+    setLoaded(true);
+  };
 
-    const moveImage = (image, direction, speed) => {
-      const screenWidth = window.innerWidth; // 화면의 너비  1920
-      
-      let startPosition = direction === 'left' ? screenWidth : 0; // 초기 위치 설정
-      let currentPos = startPosition;
+  const moveImage = (image, direction, speed) => {
+    const animate = () => {
+      const screenWidth = window.innerWidth;
+      const imageWidth = image.offsetWidth;
+      let currentPos = parseFloat(window.getComputedStyle(image).left);
 
-      // 이미지 초기 위치 설정
-      image.style.transform = `translateX(${currentPos}px)`;
-      console.log(image.style.transform = `translateX(${currentPos}px)`)
-
-      function animate() {
+      function updatePosition() {
         if (direction === 'left') {
-          currentPos -= speed; // 왼쪽으로 이동
+          currentPos -= speed;
 
-          // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
-          if (currentPos< -screenWidth) {
-            currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
+          if (currentPos < -imageWidth) {
+            currentPos = screenWidth;
           }
         } else if (direction === 'right') {
-          currentPos += speed; // 오른쪽으로 이동
+          currentPos += speed;
 
-          // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
-          if (currentPos > screenWidth) {
-            currentPos = -screenWidth; // 화면 왼쪽 끝으로 이동
+          if (currentPos > screenWidth + imageWidth) {
+            currentPos = -imageWidth;
           }
         }
 
-        // 이미지 위치 업데이트
-        image.style.transform = `translateX(${currentPos}px)`;
-        console.log( image.style.transform = `translateX(${currentPos}px)`)
-
-        // 다음 프레임 호출
-        requestAnimationFrame(animate);
+        image.style.left = `${currentPos}px`;
+        requestAnimationFrame(updatePosition);
       }
 
-      // 애니메이션 시작
-      animate();
+      updatePosition();
     };
 
-    // 첫 번째 이미지: 왼쪽으로 이동
-    moveImage(images[0], 'left', 2); // 속도 조절
+    animate();
+  };
 
-    // 두 번째 이미지: 오른쪽으로 이동
-    moveImage(images[1], 'right', 3); // 속도 조절
+  useEffect(() => {
+    if (loaded) {
+      const images = imageRefs.current;
 
-    // 세 번째 이미지: 왼쪽으로 이동
-    moveImage(images[2], 'left', 4); // 속도 조절
+      // 애니메이션 함수 호출
+      moveImage(images[0], 'left', 2);
+      moveImage(images[1], 'right', 3);
+      moveImage(images[2], 'left', 4);
+    }
+  }, [loaded]);
 
-  }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      // 윈도우 사이즈가 변경될 때마다 이미지 애니메이션 업데이트
+      if (loaded) {
+        const images = imageRefs.current;
+        images.forEach((image, index) => {
+          if (image) {
+            // 각 이미지의 애니메이션 재설정
+            const direction = index === 1 ? 'right' : 'left';
+            const speed = index === 1 ? 3 : (index === 2 ? 4 : 2);
+            moveImage(image, direction, speed);
+          }
+        });
+      }
+    };
+
+    // 윈도우 리사이즈 이벤트 리스너 등록
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [loaded]);
 
   return (
     <>
@@ -245,7 +255,6 @@ function SwiperSection01() {
       <div className='w-full relative h-[800px]'>
         <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/section01BG.png`} alt="Background" />
 
-        {/* inset-0 = 4방향 top0 left0 right0 bottom0 // 데스크탑에서 top값 수정하기  */}
         <div className='absolute inset-0 top-[80px] flex items-center justify-center'>
           {/* 배경 보더 */}
           <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
@@ -287,7 +296,7 @@ function SwiperSection01() {
             </div>
           </div>
 
-          {/* 오른쪽방향버튼 d*/}
+          {/* 오른쪽방향버튼 */}
           <div
             className={`${buttonStyle} left-[1510px]`}
             onClick={slideNext}
@@ -306,23 +315,26 @@ function SwiperSection01() {
 
           {/* 장식 이미지들 */}
           <img
-        ref={el => imageRefs.current[0] = el}
-        className='absolute top-[480px] z-10'
-        src={`${process.env.PUBLIC_URL}/human01.png`}
-        alt="human"
-      />
-<img
-        ref={el => imageRefs.current[1] = el}
-        className='absolute top-[550px] z-10'
-        src={`${process.env.PUBLIC_URL}/middleHuman.png`}
-        alt="middle human"
-      />
+            ref={el => imageRefs.current[0] = el}
+            className='absolute top-[480px] left-[200px] z-10'
+            src={`${process.env.PUBLIC_URL}/human01.png`}
+            alt="human"
+            onLoad={handleImageLoad}
+          />
           <img
-        ref={el => imageRefs.current[2] = el}
-        className='absolute top-[600px] z-10'
-        src={`${process.env.PUBLIC_URL}/car.png`}
-        alt="car"
-      />
+            ref={el => imageRefs.current[1] = el}
+            className='absolute top-[550px] left-[400px] z-10'
+            src={`${process.env.PUBLIC_URL}/middleHuman.png`}
+            alt="middle human"
+            onLoad={handleImageLoad}
+          />
+          <img
+            ref={el => imageRefs.current[2] = el}
+            className='absolute top-[600px] left-[1500px] z-10'
+            src={`${process.env.PUBLIC_URL}/car.png`}
+            alt="car"
+            onLoad={handleImageLoad}
+          />
         </div>
       </div>
     </>
