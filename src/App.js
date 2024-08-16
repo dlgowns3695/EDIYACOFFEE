@@ -161,71 +161,89 @@ function Navbar() {
 }
 
 function SwiperSection01() {
-  const swiperRef = useRef(null);
-  const imageRefs = useRef([]);
-  const [loaded, setLoaded] = useState(false);
+  
+  const swiperRef = useRef(null);              // 스와이퍼 인스턴스를 참조할 ref
+  const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
+  const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
 
-  // 스와이퍼 슬라이드 함수들
+  // 스와이퍼 슬라이드를 왼쪽으로 이동하는 함수
   const slidePrev = () => {
-    swiperRef.current.swiper.slidePrev();
+    swiperRef.current.swiper.slidePrev(); // 스와이퍼 인스턴스를 통해 이전 슬라이드로 이동
   };
 
+  // 스와이퍼 슬라이드를 오른쪽으로 이동하는 함수
   const slideNext = () => {
-    swiperRef.current.swiper.slideNext();
+    swiperRef.current.swiper.slideNext(); // 스와이퍼 인스턴스를 통해 다음 슬라이드로 이동
   };
 
+  // 공통 스타일 클래스
   const buttonStyle = 'absolute z-10 w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer';
   const borderStyles = 'absolute rounded-[150px] border-4';
 
+  // 이미지 로드 완료 후 호출되는 함수
   const handleImageLoad = () => {
-    setLoaded(true);
+    setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
   };
 
+  // 이미지 애니메이션 함수
   const moveImage = (image, direction, speed) => {
     const animate = () => {
-      const screenWidth = window.innerWidth;
-      const imageWidth = image.offsetWidth;
+      const screenWidth = window.innerWidth; // 화면의 너비를 
+      const imageWidth = image.offsetWidth;  // 이미지의 너비를 
+      // 이미지의 현재 위치를 가져옵니다
       let currentPos = parseFloat(window.getComputedStyle(image).left);
 
+      // 애니메이션 함수
       function updatePosition() {
+        // 방향에 따라 이미지 위치를 업데이트합니다
         if (direction === 'left') {
-          currentPos -= speed;
+          currentPos -= speed; // 왼쪽으로 이동
 
-          if (currentPos < -imageWidth) {
-            currentPos = screenWidth;
+          // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
+          if (currentPos < -imageWidth) { // 위치가 -110px 이라면 (0번기준 완전히 감춰진)
+            currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
           }
         } else if (direction === 'right') {
-          currentPos += speed;
+          currentPos += speed; // 오른쪽으로 이동
 
+          // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
           if (currentPos > screenWidth + imageWidth) {
-            currentPos = -imageWidth;
+            currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
           }
         }
 
+        // 이미지의 위치를 업데이트합니다
         image.style.left = `${currentPos}px`;
+        // 다음 프레임을 요청합니다
         requestAnimationFrame(updatePosition);
       }
 
-      updatePosition();
+      updatePosition(); // 애니메이션 시작
     };
 
-    animate();
+    animate(); // 애니메이션 함수 호출
   };
 
   useEffect(() => {
     if (loaded) {
+      // 이미지가 로드되면 애니메이션을 시작합니다
       const images = imageRefs.current;
 
-      // 애니메이션 함수 호출
-      moveImage(images[0], 'left', 2);
-      moveImage(images[1], 'right', 3);
-      moveImage(images[2], 'left', 4);
+      // 첫 번째 이미지: 왼쪽으로 이동
+      moveImage(images[0], 'left', 2); // 속도 조절
+
+      // 두 번째 이미지: 오른쪽으로 이동
+      moveImage(images[1], 'right', 3); // 속도 조절
+
+      // 세 번째 이미지: 왼쪽으로 이동
+      moveImage(images[2], 'left', 4); // 속도 조절
     }
-  }, [loaded]);
+  }, [loaded]); // 'loaded'가 true일 때만 애니메이션 시작
 
   useEffect(() => {
+    // 윈도우 사이즈가 변경될 때 호출되는 함수
     const handleResize = () => {
-      // 윈도우 사이즈가 변경될 때마다 이미지 애니메이션 업데이트
+      // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
       if (loaded) {
         const images = imageRefs.current;
         images.forEach((image, index) => {
@@ -239,9 +257,8 @@ function SwiperSection01() {
       }
     };
 
-    // 윈도우 리사이즈 이벤트 리스너 등록
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
+    return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
   }, [loaded]);
 
   return (
@@ -267,22 +284,23 @@ function SwiperSection01() {
 
           <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] overflow-hidden'>
             <Swiper
-              ref={swiperRef}
-              navigation={false}
-              modules={[Navigation]}
+              ref={swiperRef} // 스와이퍼 인스턴스를 참조
+              navigation={false} // 네비게이션 버튼 비활성화
+              modules={[Navigation]} // 네비게이션 모듈 사용
               className='w-full h-full'
-              loop={true}
+              loop={true} // 무한 루프 모드
             >
+              {/* 각 슬라이드 */}
               <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
               <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" /></SwiperSlide>
               <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></SwiperSlide>
             </Swiper>
           </div>
 
-          {/* 왼쪽방향버튼 */}
+          {/* 왼쪽 방향 버튼 */}
           <div
             className={`${buttonStyle} left-[320px]`}
-            onClick={slidePrev}
+            onClick={slidePrev} // 왼쪽 슬라이드 버튼 클릭 시 호출
           >
             <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
             <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
@@ -296,10 +314,10 @@ function SwiperSection01() {
             </div>
           </div>
 
-          {/* 오른쪽방향버튼 */}
+          {/* 오른쪽 방향 버튼 */}
           <div
             className={`${buttonStyle} left-[1510px]`}
-            onClick={slideNext}
+            onClick={slideNext} // 오른쪽 슬라이드 버튼 클릭 시 호출
           >
             <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
             <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
@@ -315,25 +333,25 @@ function SwiperSection01() {
 
           {/* 장식 이미지들 */}
           <img
-            ref={el => imageRefs.current[0] = el}
+            ref={el => imageRefs.current[0] = el} // 첫 번째 이미지 참조
             className='absolute top-[480px] left-[200px] z-10'
             src={`${process.env.PUBLIC_URL}/human01.png`}
             alt="human"
-            onLoad={handleImageLoad}
+            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
           />
           <img
-            ref={el => imageRefs.current[1] = el}
+            ref={el => imageRefs.current[1] = el} // 두 번째 이미지 참조
             className='absolute top-[550px] left-[400px] z-10'
             src={`${process.env.PUBLIC_URL}/middleHuman.png`}
             alt="middle human"
-            onLoad={handleImageLoad}
+            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
           />
           <img
-            ref={el => imageRefs.current[2] = el}
+            ref={el => imageRefs.current[2] = el} // 세 번째 이미지 참조
             className='absolute top-[600px] left-[1500px] z-10'
             src={`${process.env.PUBLIC_URL}/car.png`}
             alt="car"
-            onLoad={handleImageLoad}
+            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
           />
         </div>
       </div>
