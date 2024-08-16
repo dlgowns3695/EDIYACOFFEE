@@ -161,6 +161,7 @@ function Navbar() {
 }
 
 function SwiperSection01() {
+  
   // 스와이퍼 인스턴스를 참조할 ref
   const swiperRef = useRef(null);
 
@@ -178,6 +179,61 @@ function SwiperSection01() {
   const buttonStyle = 'absolute z-10 w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer';
   const borderStyles = 'absolute rounded-[150px] border-4';
   
+  const imageRefs = useRef([]);
+
+  useEffect(() => {
+    const images = imageRefs.current;
+
+    const moveImage = (image, direction, speed) => {
+      const screenWidth = window.innerWidth; // 화면의 너비  1920
+      
+      let startPosition = direction === 'left' ? screenWidth : 0; // 초기 위치 설정
+      let currentPos = startPosition;
+
+      // 이미지 초기 위치 설정
+      image.style.transform = `translateX(${currentPos}px)`;
+      console.log(image.style.transform = `translateX(${currentPos}px)`)
+
+      function animate() {
+        if (direction === 'left') {
+          currentPos -= speed; // 왼쪽으로 이동
+
+          // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
+          if (currentPos< -screenWidth) {
+            currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
+          }
+        } else if (direction === 'right') {
+          currentPos += speed; // 오른쪽으로 이동
+
+          // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
+          if (currentPos > screenWidth) {
+            currentPos = -screenWidth; // 화면 왼쪽 끝으로 이동
+          }
+        }
+
+        // 이미지 위치 업데이트
+        image.style.transform = `translateX(${currentPos}px)`;
+        console.log( image.style.transform = `translateX(${currentPos}px)`)
+
+        // 다음 프레임 호출
+        requestAnimationFrame(animate);
+      }
+
+      // 애니메이션 시작
+      animate();
+    };
+
+    // 첫 번째 이미지: 왼쪽으로 이동
+    moveImage(images[0], 'left', 2); // 속도 조절
+
+    // 두 번째 이미지: 오른쪽으로 이동
+    moveImage(images[1], 'right', 3); // 속도 조절
+
+    // 세 번째 이미지: 왼쪽으로 이동
+    moveImage(images[2], 'left', 4); // 속도 조절
+
+  }, []);
+
   return (
     <>
       {/* 가운데 로고 부분 */}
@@ -249,9 +305,24 @@ function SwiperSection01() {
           </div>
 
           {/* 장식 이미지들 */}
-          <img className='absolute top-[480px] left-[120px] z-10' src={`${process.env.PUBLIC_URL}/human01.png`} alt="human" />
-          <img className='absolute top-[550px] left-[300px] z-10' src={`${process.env.PUBLIC_URL}/middleHuman.png`} alt="middle human" />
-          <img className='absolute top-[600px] left-[1500px] z-10' src={`${process.env.PUBLIC_URL}/car.png`} alt="car" />
+          <img
+        ref={el => imageRefs.current[0] = el}
+        className='absolute top-[480px] z-10'
+        src={`${process.env.PUBLIC_URL}/human01.png`}
+        alt="human"
+      />
+<img
+        ref={el => imageRefs.current[1] = el}
+        className='absolute top-[550px] z-10'
+        src={`${process.env.PUBLIC_URL}/middleHuman.png`}
+        alt="middle human"
+      />
+          <img
+        ref={el => imageRefs.current[2] = el}
+        className='absolute top-[600px] z-10'
+        src={`${process.env.PUBLIC_URL}/car.png`}
+        alt="car"
+      />
         </div>
       </div>
     </>

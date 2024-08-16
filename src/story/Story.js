@@ -171,6 +171,7 @@ function Management() {
               최우선하며, 협력업체와의<br />
               오랜 신뢰를 이어갑니다.
             </p>
+            
           </div>
           <img className="absolute top-[2px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01.png`} alt="Philosophy Icon 1" />
         </div>
@@ -225,7 +226,7 @@ function Management() {
           <div className="border border-[#dcdddf]">
             <img className="object-cover" src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />
           </div>
-          {/* 오른쪽 */}
+          {/* 오른쪽 삐져나온거 수정해야함 20:55 0816 */}
           <div className="flex flex-col items-center gap-[20px] w-[561px] h-[419px]">
             {[
               {
@@ -240,14 +241,17 @@ function Management() {
                 description: '고객과의 소통',
                 hex: '#dcdddf | R220, G221 B223',
               },
-              // ㅅ수정
+              // ㅅ수정 , style에서 조건문 사용이 가능
             ].map((item, index) => (
               <div key={index} className={`${style.borderBox}`}>
                 <div className="w-[152px] h-[152px]" style={{ backgroundColor: item.color }}></div>
                 <div>
                   <h4 className="text-black text-[27px] font-semibold">{item.title}</h4>
                   <p className="text-black text-[20px] mb-4">{item.description}</p>
-                  <p>{item.hex}</p>
+                  <p 
+                    className="text-[20px] mb-4" 
+                    style={{ color: index === 0 ? '#243c84' : '#dcdddf' }}
+                  >{item.hex}</p>
                 </div>
               </div>
             ))}

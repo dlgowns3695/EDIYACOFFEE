@@ -18,21 +18,20 @@
     src: local('Scoop Extrabold'), url('/font/Scoop-Extrabold.ttf') format('truetype');
 }
 
+body{
+  margin: 0; padding: 0;
+  font-family: 'Pretendard-Regular', sans-serif;
+  color: #243c84;
+  overflow-x: hidden;
+  font-size: 16px;
+  letter-spacing: -0.05rem;
+}
+
 .scoop-font {
     font-family: 'Scoop';
 }
 
 
-
-
-body{
-    margin: 0; padding: 0;
-    font-family: 'Pretendard-Regular', sans-serif;
-    color: #243c84;
-    overflow-x: hidden;
-    font-size: 16px;
-    letter-spacing: -0.05rem;
-}
 .preten-font {
     font-family: 'Pretendard-Regular', sans-serif;
     letter-spacing: -0.05rem;
@@ -45,6 +44,51 @@ body{
 .background{
   background-color: #243c84;
 }
+
+@keyframes slideLeftRight {
+  0% {
+    transform: translateX(0); /* 시작 위치 */
+    opacity: 1; /* 처음에는 보임 */
+  }
+
+  25% {
+    transform: translateX(-200px); /* 왼쪽으로 이동 */
+  }
+  35% {
+    transform: translateX(-350px); /* 왼쪽으로 이동 */
+  }
+
+  45% {
+    transform: translateX(-450px); /* 화면 바깥으로 나감 */
+    opacity: 1; /* 사라짐 */
+  }
+
+  46% {
+    transform: translateX(2000px); /* 오른쪽으로 이동, 보이지 않음 */
+    opacity: 1; 
+  }
+
+
+  56% {
+    opacity: 1; /* 다시 보이기 시작 */
+    transform: translateX(1900); /* 처음 위치로 돌아옴 */
+  }
+  66% {
+    opacity: 1; /* 다시 보이기 시작 */
+    transform: translateX(1500); /* 처음 위치로 돌아옴 */
+  }
+  86% {
+    opacity: 1; /* 다시 보이기 시작 */
+    transform: translateX(500); /* 처음 위치로 돌아옴 */
+  }
+
+  100% {
+    transform: translateX(0px); /* 왼쪽으로 이동 */
+  }
+}
+
+
+
 
 
 
