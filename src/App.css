@@ -31,9 +31,15 @@ body{
     color: #243c84;
     overflow-x: hidden;
     font-size: 16px;
+    letter-spacing: -0.05rem;
 }
 .preten-font {
     font-family: 'Pretendard-Regular', sans-serif;
+    letter-spacing: -0.05rem;
+}
+.preten-font300 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
 }
 
 .background{
