@@ -16,14 +16,14 @@
     /* w-[591px] h-[210px] border-[#dcdddf] p-4 flex gap-4 items-center */
 
    
-    width: 591px;           /* w-[591px] */
-    height: 210px;          /* h-[210px] */
+    width: 561px;           /* w-[591px] */
+    height: 200px;          /* h-[210px] */
     border: 1px solid #dcdddf; /* border-[#dcdddf] */
-    padding: 1rem;          /* p-4 (4 * 0.25rem = 1rem) */
+    /* padding: 1rem;          p-4 (4 * 0.25rem = 1rem) */
     display: flex;          /* flex */
     gap: 1rem;              /* gap-4 (4 * 0.25rem = 1rem) */
     align-items: center;    /* items-center */
-      
+    
       
 
 }

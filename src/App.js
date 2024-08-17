@@ -417,7 +417,7 @@ function PromotionSection02() {
   // 5초마다 자동으로 이미지 변경 (isAutoSlideActive가 true일 때만)
   useEffect(() => {
     if (isAutoSlideActive) {
-      const intervalId = setInterval(handleMoveUp, 1000);
+      const intervalId = setInterval(handleMoveUp, 5000);
       return () => clearInterval(intervalId);
     }
   }, [leftImageIndex, isAutoSlideActive]);
@@ -442,7 +442,7 @@ function PromotionSection02() {
         <div className="w-[1200px]">
           <div className="text-center">
             <h1 className="text-[64px] scoop-font">Promotion</h1>
-            <p className="text-2xl mt-2">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+            <p className="text-2xl mt-2 font-semibold ">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
 
             {/* 이미지 컨테이너 */}
             <div className="flex mt-8 h-[486px] justify-between">
@@ -531,7 +531,7 @@ function MenuSection03() {
                   {/* 타이틀 부분 */}
                   <div className='flex flex-col justify-center items-center'>
                       <h1 className='text-[64px] scoop-font'>Menu</h1>
-                      <p className='text-2xl mt-2 mb-12'>이디야의 신제품을 만나보세요.</p>
+                      <p className='text-2xl mt-2 mb-12 font-semibold '>이디야의 신제품을 만나보세요.</p>
                   </div>
 
                   {/* 실제 스와이퍼 들어갈 공간 */}
@@ -698,33 +698,49 @@ function MdItem(){
   )
 }
 
-
-function StoreEDway(){
-  return(
+function StoreEDway() {
+ 
+  return (
     <>
-    {/* 100%  w-full h-[594px] */}
-      <div className='w-full h-[594px] bg-cover flex justify-center ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/bottomImg.png)` }}>
-        <div className='w-[1200px] h-full bg-red-100 flex justify-center'>
-          <div className=''>
-            <h4 className='scoop-font'>Store</h4>
-            <p>내 주변 가까운 이디야 매장을 찾아보세요</p>
+      <div className='relative w-full h-[594px] flex justify-center'>
+        <div className='w-[1200px] h-full bg-red-100'>
+          <div className='flex justify-center mt-[120px] gap-[96px]'>
+            <div className='relative'>
+              <h4 className='scoop-font text-[64px]'>Store</h4>
+              <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
+              <div>
+                <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
+              </div>
+              <div className='ping absolute top-[145px] left-[230px]'>
+                <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
+              </div>
+            </div>
             <div>
-              <img src={`${process.env.PUBLIC_URL}/store_map.png`}/>
+              <h4 className='scoop-font text-[64px]'>ED way</h4>
+              <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
+              <div className='relative'>
+                <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" />
+                <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
+                  <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
+                </div>
+                <div className='absolute top-[-50px] left-[150px]'>
+                  <img className='bg-cover' src={`${process.env.PUBLIC_URL}/picture.png`} alt="Picture" />
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <h4 className='scoop-font'>Store</h4>
-            <p>내 주변 가까운 이디야 매장을 찾아보세요</p>
-            <div>
-              <img src={`${process.env.PUBLIC_URL}/store_map.png`}/>
-            </div>
+          {/* 구름 */}
+          <div className='absolute top-[300px] left-[100px]'>
+            <img src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01" />
+          </div>
+          <div className='absolute top-[400px] left-[800px]'>
+            <img src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02" />
           </div>
         </div>
-      </div>  
+      </div>
     </>
-  )
+  );
 }
-
 
 
 

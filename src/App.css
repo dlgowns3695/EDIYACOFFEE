@@ -87,7 +87,24 @@ body{
   }
 }
 
+@keyframes ping {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8; /* 더 부드럽게 보이도록 투명도 조정 */
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 
+.ping {
+  animation: ping 2s ease-in-out infinite;
+}
 
 
 
