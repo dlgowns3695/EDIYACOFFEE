@@ -52,10 +52,10 @@ function Ambition() {
             Always Beside You,<br />
             <span className='font-semibold'>이디야커피는 언제나 당신 곁에 함께 합니다.</span> 
           </h4>
-          <p data-aos="fade-up" data-aos-delay="200" className="text-black text-[30px] font-semibold mt-[40px] mb-[20px]">
+          <p data-aos="fade-up" data-aos-delay="200" className="text-[#222222] text-[30px] font-semibold mt-[40px] mb-[20px]">
             커피 한잔의 진심
           </p>
-          <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-black">
+          <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-[#222222]">
             해외에 로열티를 내지 않는 순수 국내 브랜드 이디야 커피, 품질 좋고 맛있는 커피를 합리적인 가격으로<br />
             소비자에게 제공하는 것을 우리의 진심이라 믿습니다. 더 맛있는 커피를 만들기 위해 2010년<br /> 커피연구소 설립을 시작으로
             2016년 4월 '고객과 소통하는 커피연구소'를 테마로 [이디야커피랩]을 오픈하여 더 나은<br /> 
@@ -65,7 +65,7 @@ function Ambition() {
 
         {/* 상생협력 */}
         <div className="flex justify-between mt-[282px]">
-          <div className="text-black">
+          <div className="text-[#222222]">
             <h4 data-aos="fade-up" className="text-[52px] text-[#243c84] leading-[62px]">
               함께 행복하기<br />
               <span className='font-semibold'>위한 상생협력</span> 
@@ -165,10 +165,10 @@ function Management() {
 
         <div className="relative top-[0]">
           <div className="absolute top-[170px] left-0 text-right">
-            <h4 className="font-semibold text-[26px] text-black">
+            <h4 className="font-semibold text-[26px] text-[#222222]">
               기본을 지키는 정직한 기업
             </h4>
-            <p className="text-black text-[18px] leading-[26px]">
+            <p className="text-[#222222] text-[18px] leading-[26px]">
               고객에게 우수한 품질의 커피를<br />
               합리적인 가격에 제공하고,<br />
               가맹점주를 위해 매장 수익을<br />
@@ -184,10 +184,10 @@ function Management() {
         {/* 아이콘2 */}
         <div className="relative top-[0] left-[400px]">
           <div className="absolute top-[170px] left-[545px]">
-            <h4 className="font-semibold text-[26px] text-black">
+            <h4 className="font-semibold text-[26px] text-[#222222]">
             신나고 행복한 즐거운 기업
             </h4>
-            <p className="text-black text-[18px] leading-[26px]">
+            <p className="text-[#222222] text-[18px] leading-[26px]">
               수평적 소통이 이루어지는 젊은<br />
               기업문화 업계 최고 수준의<br />
               복지혜택을 통해 직원 모두가 즐겁게<br />
@@ -201,10 +201,10 @@ function Management() {
         {/* 아이콘3 529*/}
         <div className="bg-red-300 relative top-[529px] left-[145px] text-right bg-red-500">
           <div className="absolute top-0 left-0">
-            <h4 className="font-semibold text-[26px] text-black">
+            <h4 className="font-semibold text-[26px] text-[#222222]">
               사람을 생각하는 따뜻한 기업
             </h4>
-            <p className="text-black text-[18px] leading-[26px]">
+            <p className="text-[#222222] text-[18px] leading-[26px]">
               늘 고객의 입장에서 먼저 생각하고,<br />
               가맹점주의 입장을 배려하며<br />
               사회와 함께하려고 노력합니다.
@@ -255,8 +255,8 @@ function Management() {
               <div key={index} className={`${style.borderBox}`}>
                 <div className="w-[152px] h-[152px] ml-[24px]" style={{ backgroundColor: item.color }}></div>
                 <div>
-                  <h4 className="text-black text-[27px] font-semibold">{item.title}</h4>
-                  <p className="text-black text-[20px]">{item.description}</p>
+                  <h4 className="text-[#222222] text-[27px] font-semibold">{item.title}</h4>
+                  <p className="text-[#222222] text-[20px]">{item.description}</p>
                   <p 
                     className="text-[20px]" 
                     style={{ color: index === 0 ? '#243c84' : '#dcdddf' }}

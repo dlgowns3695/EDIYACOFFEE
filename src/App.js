@@ -518,7 +518,7 @@ function PromotionSection02() {
   const [currentIndex, setCurrentIndex] = useState(0);
   // 자동 슬라이드 상태 관리
   const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
-  
+
   const images = [
     `${process.env.PUBLIC_URL}/section02Bn01.png`,
     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
@@ -526,14 +526,21 @@ function PromotionSection02() {
     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
   ];
 
-  // 버튼 클래스
-  const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
+  // 자동 슬라이드 효과
+  useEffect(() => {
+    if (isAutoSlideActive) {
+      const slideInterval = setInterval(() => {
+        handleMoveUp();
+      }, 5000); // 5초마다 슬라이드 이동
+
+      return () => clearInterval(slideInterval); // 클린업
+    }
+  }, [isAutoSlideActive]);
 
   // 위로 이동
   const handleMoveUp = () => {
     setCurrentIndex((prevIndex) => {
       const newIndex = (prevIndex + 1) % images.length;
-      
       return newIndex;
     });
   };
@@ -548,8 +555,11 @@ function PromotionSection02() {
 
   // 자동 슬라이드 토글
   const toggleAutoSlide = () => {
-    // TODO: 자동 슬라이드 구현
+    setIsAutoSlideActive((prev) => !prev); // 상태 토글
   };
+
+  // 버튼 클래스
+  const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
 
   return (
     <>
@@ -585,12 +595,10 @@ function PromotionSection02() {
               <div className='h-full w-[35px] flex justify-center'>
                 <div className='flex flex-col items-center justify-start gap-5'>
                   {/* Indicator circles */}
-                  {images.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-[7px] h-[7px] rounded-full ${index === currentIndex ? 'bg-gray-500' : 'bg-gray-100'}`}
-                    ></div>
-                  ))}
+                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
+                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 1 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
+                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 2 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
+                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 3 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
 
                   {/* 윗 버튼 */}
                   <div className={buttonClass} onClick={handleMoveUp}>
@@ -621,6 +629,7 @@ function PromotionSection02() {
     </>
   );
 }
+
 
 
 function MenuSection03() {
