@@ -100,7 +100,7 @@ function CoreValue() {
       <div className="w-[1200px] h-full flex flex-col items-center">
         <div className="mt-[116px] text-center">
           <h4 data-aos="fade-up"  className="text-[52px] mb-[12px]">이디야의 <span className='font-semibold'>핵심가치</span></h4>
-          <p data-aos="fade-up"  className="text-black text-[24px] font-semibold">
+          <p data-aos="fade-up"  className="text-[#3a4767] text-[24px] font-semibold">
             고객과 가맹점주, 협력사의 상생의 가치를 실천합니다.
           </p>
         </div>
@@ -127,7 +127,7 @@ function CoreValue() {
                 alt="Core Value Icon"
               />
               {item.text.map((line, i) => (
-                <p key={i} className="text-black text-2xl">
+                <p key={i} className="text-[#222222] text-2xl">
                   {line}
                 </p>
               ))}
@@ -153,7 +153,7 @@ function Management() {
         </div>
 
         {/* 써클 */}
-        <div data-aos="fade-up"  className="relative top-[290px] flex justify-center items-center">
+        <div className="relative top-[290px] flex justify-center items-center">
           <div className="absolute w-[474px] h-[474px] rounded-full bg-[#f8f8f8]"></div>
           <div className="absolute w-[362px] h-[362px] rounded-full bg-[#e5e5e5]"></div>
           <div className={`${style.bggradient} absolute w-[226px] h-[226px] rounded-full bg-white`}></div>
@@ -163,7 +163,7 @@ function Management() {
 
         {/* 아이콘1 */}
 
-        <div data-aos="fade-left"  className="relative top-[0]">
+        <div className="relative top-[0]">
           <div className="absolute top-[170px] left-0 text-right">
             <h4 className="font-semibold text-[26px] text-black">
               기본을 지키는 정직한 기업
@@ -182,7 +182,7 @@ function Management() {
         </div>
 
         {/* 아이콘2 */}
-        <div data-aos="fade-right"  className="relative top-[0] left-[400px]">
+        <div className="relative top-[0] left-[400px]">
           <div className="absolute top-[170px] left-[545px]">
             <h4 className="font-semibold text-[26px] text-black">
             신나고 행복한 즐거운 기업
@@ -199,7 +199,7 @@ function Management() {
         </div>
 
         {/* 아이콘3 529*/}
-        <div data-aos="fade-up"  className="bg-red-300 relative top-[529px] left-[145px] text-right bg-red-500">
+        <div className="bg-red-300 relative top-[529px] left-[145px] text-right bg-red-500">
           <div className="absolute top-0 left-0">
             <h4 className="font-semibold text-[26px] text-black">
               사람을 생각하는 따뜻한 기업
@@ -216,9 +216,11 @@ function Management() {
 
         {/* 글로벌 생산성 1위 */}
         <div className="relative w-full flex flex-col items-center absolute top-[848px] text-center">
-          <h4 data-aos="fade-left"   className="text-[52px] preten-font300">글로벌 생산성 1위</h4>
-          <h4 data-aos="fade-right"   className="text-[48px] font-semibold mb-[50px]">커피 전문기업 이디야 커피</h4>
-          <p data-aos="fade-up"   className="text-black preten-font300  ">
+          <h4 data-aos="fade-left"className="text-[52px] preten-font300">글로벌 생산성 1위 <br />
+              <span className="font-semibold">커피 전문기업 이디야 커피</span>
+           </h4>
+          
+          <p data-aos="fade-up"   className="text-[20px] text-[#222222] preten-font300 mt-[50px] ">
             이디야(EDIYA)는 커피의 발상지인 에티오피아의 부족명인 동시에 대륙의 유일한 황제라는 뜻을 갖고,<br />
             최고의 커피 브랜드를 추구하는 이디야의 비전을 상징합니다.<br />
             - 이디야의 CI는 메뉴얼에 의거한 규정사항을 준수해야 합니다.<br />
@@ -228,7 +230,7 @@ function Management() {
         </div>
 
         {/* 로고, 메인컬러 */}
-        <div data-aos="fade-up" className="flex justify-center gap-[47px] absolute top-[1478px]">
+        <div data-aos="fade-up" className="flex justify-center gap-[47px] absolute top-[1488px]">
           {/* 왼쪽 */}
           <div className="border border-[#dcdddf]">
             <img className="object-cover" src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />

@@ -39,6 +39,7 @@ body{
 .preten-font300 {
   font-family: 'Pretendard', sans-serif;
   font-weight: 300;
+  letter-spacing: -0.05rem;
 }
 
 .background{
