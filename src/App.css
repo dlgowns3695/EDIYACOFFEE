@@ -46,6 +46,8 @@ body{
   background-color: #243c84;
 }
 
+
+
 @keyframes slideLeftRight {
   0% {
     transform: translateX(0); /* 시작 위치 */

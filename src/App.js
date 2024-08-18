@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 import { Routes, Route, Link } from 'react-router-dom'
 import About from './about/About';
@@ -185,44 +185,7 @@ function SwiperSection01() {
     setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
   };
 
-  // 이미지 애니메이션 함수
-  const moveImage = (image, direction, speed) => {
-    const animate = () => {
-      const screenWidth = window.innerWidth; // 화면의 너비를 
-      const imageWidth = image.offsetWidth;  // 이미지의 너비를 
-      // 이미지의 현재 위치를 가져옵니다
-      let currentPos = parseFloat(window.getComputedStyle(image).left);
 
-      // 애니메이션 함수
-      function updatePosition() {
-        // 방향에 따라 이미지 위치를 업데이트합니다
-        if (direction === 'left') {
-          currentPos -= speed; // 왼쪽으로 이동
-
-          // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
-          if (currentPos < -imageWidth) { // 위치가 -110px 이라면 (0번기준 완전히 감춰진)
-            currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
-          }
-        } else if (direction === 'right') {
-          currentPos += speed; // 오른쪽으로 이동
-
-          // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
-          if (currentPos > screenWidth + imageWidth) {
-            currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
-          }
-        }
-
-        // 이미지의 위치를 업데이트합니다
-        image.style.left = `${currentPos}px`;
-        // 다음 프레임을 요청합니다
-        requestAnimationFrame(updatePosition);
-      }
-
-      updatePosition(); // 애니메이션 시작
-    };
-
-    animate(); // 애니메이션 함수 호출
-  };
 
   useEffect(() => {
     if (loaded) {
@@ -239,6 +202,46 @@ function SwiperSection01() {
       moveImage(images[2], 'left', 4); // 속도 조절
     }
   }, [loaded]); // 'loaded'가 true일 때만 애니메이션 시작
+
+    // 이미지 애니메이션 함수
+    const moveImage = (image, direction, speed) => {
+      const animate = () => {
+        const screenWidth = window.innerWidth; // 화면의 너비를 
+        const imageWidth = image.offsetWidth;  // 이미지의 너비를 
+        // 이미지의 현재 위치를 가져옵니다
+        let currentPos = parseFloat(window.getComputedStyle(image).left);
+       
+  
+        // 애니메이션 함수
+        function updatePosition() {
+          // 방향에 따라 이미지 위치를 업데이트합니다
+          if (direction === 'left') {
+            currentPos -= speed; // 왼쪽으로 이동
+  
+            // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
+            if (currentPos < -imageWidth) { // 위치가 -110px 이라면 (0번기준 완전히 감춰진)
+              currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
+            }
+          } else if (direction === 'right') {
+            currentPos += speed; // 오른쪽으로 이동
+  
+            // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
+            if (currentPos > screenWidth + imageWidth) {
+              currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
+            }
+          }
+  
+          // 이미지의 위치를 업데이트합니다
+          image.style.left = `${currentPos}px`;
+          // 다음 프레임을 요청합니다
+          requestAnimationFrame(updatePosition);
+        }
+  
+        updatePosition(); // 애니메이션 시작
+      };
+  
+      animate(); // 애니메이션 함수 호출
+    };
 
   useEffect(() => {
     // 윈도우 사이즈가 변경될 때 호출되는 함수
@@ -286,9 +289,12 @@ function SwiperSection01() {
             <Swiper
               ref={swiperRef} // 스와이퍼 인스턴스를 참조
               navigation={false} // 네비게이션 버튼 비활성화
-              modules={[Navigation]} // 네비게이션 모듈 사용
               className='w-full h-full'
+              modules={[Navigation, Autoplay]} // 네비게이션 모듈 사용
               loop={true} // 무한 루프 모드
+              autoplay = {{delay: 2500,
+              disableOnInteraction: false,
+              }}
             >
               {/* 각 슬라이드 */}
               <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
@@ -360,7 +366,8 @@ function SwiperSection01() {
 }
 
 
-
+/*
+기존 코드 0818 18:00
 
 function PromotionSection02() {
   // 왼쪽 이미지 초기 셋팅
@@ -436,24 +443,24 @@ function PromotionSection02() {
 
   return (
     <>
-      {/* 100% 섹션 */}
+     
       <div className="w-full flex items-center justify-center">
-        {/* 80% */}
+    
         <div className="w-[1200px]">
           <div className="text-center">
             <h1 className="text-[64px] scoop-font">Promotion</h1>
             <p className="text-2xl mt-2 font-semibold ">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
 
-            {/* 이미지 컨테이너 */}
+          
             <div className="flex mt-8 h-[486px] justify-between">
-              {/* 왼쪽 이미지 공간 */}
+              
               <div className={`${containerClass} relative`}>
                 <Link to="/">
                   <img className="w-[878px] h-[486px] object-cover" src={images[leftImageIndex]} />
                 </Link>
               </div>
 
-              {/* 오른쪽 이미지 공간 */}
+             
               <div className="flex flex-col justify-between">
                 {rightImages.map((image, index) => (
                   <div
@@ -468,25 +475,137 @@ function PromotionSection02() {
 
               <div className='h-full w-[35px] flex justify-center'>
                 <div className='flex flex-col items-center justify-start gap-5'>
-                  {/* Indicator circles */}
+                 
                   {images.map((_, index) => (
                     <div
                       key={index}
                       className={`${indicatorClass} ${index === leftImageIndex ? activeIndicatorClass : inactiveIndicatorClass}`}
                     ></div>
                   ))}
+                 
+                  <div className={buttonClass} onClick={handleMoveUp}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                    </svg>
+                  </div>
+                 
+                  <div className={buttonClass} onClick={handleMoveDown}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                 
+                  <div className={buttonClass} onClick={toggleAutoSlide}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+*/
+
+function PromotionSection02() {
+  // 초기 이미지 인덱스와 이미지 리스트
+  const [currentIndex, setCurrentIndex] = useState(0);
+  // 자동 슬라이드 상태 관리
+  const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
+  
+  const images = [
+    `${process.env.PUBLIC_URL}/section02Bn01.png`,
+    `${process.env.PUBLIC_URL}/section02SubBn01.png`,
+    `${process.env.PUBLIC_URL}/section02SubBn02.png`,
+    `${process.env.PUBLIC_URL}/section02SubBn03.png`,
+  ];
+
+  // 버튼 클래스
+  const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
+
+  // 위로 이동
+  const handleMoveUp = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % images.length;
+      
+      return newIndex;
+    });
+  };
+
+  // 아래로 이동
+  const handleMoveDown = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + images.length) % images.length;
+      return newIndex;
+    });
+  };
+
+  // 자동 슬라이드 토글
+  const toggleAutoSlide = () => {
+    // TODO: 자동 슬라이드 구현
+  };
+
+  return (
+    <>
+      {/* 100% 섹션 */}
+      <div className="w-full flex items-center justify-center">
+        {/* 80% */}
+        <div className="w-[1200px]">
+          <div className="text-center">
+            <h1 className="text-[64px] scoop-font">Promotion</h1>
+            <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+
+            {/* 이미지 컨테이너 */}
+            <div className="flex mt-8 h-[486px] justify-between">
+              {/* 왼쪽 이미지 공간 */}
+              <div className="rounded-lg relative">
+                <Link to="/">
+                  <img className="w-[878px] h-[486px] object-cover" src={images[currentIndex]} alt="Main Promotion" />
+                </Link>
+              </div>
+
+              {/* 오른쪽 이미지 공간 */}
+              <div className="relative h-[486px] w-[230px] overflow-hidden">
+                {/* 이미지 컨테이너 */}
+                <div className="flex flex-col justify-center gap-[24px] absolute top-0 left-0 w-full transition-transform duration-500" style={{ transform: `translateY(-${currentIndex * 170}px)` }}>
+                  {images.map((image, index) => (
+                    <div key={index} className="rounded-lg relative cursor-pointer image-slide">
+                      <img className="w-full h-[146px] object-cover" src={image} alt={`Sub Promotion ${index + 1}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className='h-full w-[35px] flex justify-center'>
+                <div className='flex flex-col items-center justify-start gap-5'>
+                  {/* Indicator circles */}
+                  {images.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-[7px] h-[7px] rounded-full ${index === currentIndex ? 'bg-gray-500' : 'bg-gray-100'}`}
+                    ></div>
+                  ))}
+
                   {/* 윗 버튼 */}
                   <div className={buttonClass} onClick={handleMoveUp}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                     </svg>
                   </div>
+
                   {/* 아래 버튼 */}
                   <div className={buttonClass} onClick={handleMoveDown}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
+
                   {/* = 버튼 */}
                   <div className={buttonClass} onClick={toggleAutoSlide}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
@@ -503,11 +622,12 @@ function PromotionSection02() {
   );
 }
 
+
 function MenuSection03() {
   // 스와이퍼 인스턴스를 참조할 ref
   const swiperRef2 = useRef(null);
 
-  // 슬라이드를 왼쪽으로 이동하는 함수
+  // 슬라이드를 왼쪽으로 이동하는 함수 // 방향 체크 해보기 0818
   const slidePrev2 = () => {
       if (swiperRef2.current && swiperRef2.current.swiper) {
           swiperRef2.current.swiper.slidePrev();
@@ -538,9 +658,13 @@ function MenuSection03() {
                   <div className='relative w-[1200px]'>
                       <Swiper
                           ref={swiperRef2}
-                          modules={[Navigation]}
+                          
                           className="mySwiper w-full h-full"
-                          loop={true}  // 무한 반복
+                          modules={[Navigation, Autoplay]} // 네비게이션 모듈 사용
+                          loop={true} // 무한 루프 모드
+                          autoplay = {{delay: 2500,
+                          disableOnInteraction: false,
+                          }}
                           slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
                           
 
@@ -554,9 +678,6 @@ function MenuSection03() {
                           <SwiperSlide><Section03MenuUl index={6} /></SwiperSlide>
                           <SwiperSlide><Section03MenuUl index={7} /></SwiperSlide>
 
-
-
-                          
                       </Swiper>
                   </div>
 
@@ -699,48 +820,121 @@ function MdItem(){
 }
 
 function StoreEDway() {
- 
+  const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
+  const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
+
+  // 이미지 로드 완료 후 호출되는 함수
+  const handleImageLoad = () => {
+    setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
+  };
+
+  // 이미지 애니메이션 함수
+  const moveImage = (image, direction, speed) => {
+    const animate = () => {
+      const screenWidth = window.innerWidth; // 화면의 너비
+      const imageWidth = image.offsetWidth;  // 이미지의 너비
+
+      // 이미지의 현재 위치를 가져옴
+      let currentPos = parseFloat(window.getComputedStyle(image).left);
+
+      const updatePosition = () => {
+        // 방향에 따라 이미지 위치 업데이트
+        if (direction === 'left') {
+          currentPos -= speed; // 왼쪽으로 이동
+
+          if (currentPos < -imageWidth) { // 이미지가 왼쪽 화면 밖으로 나가면
+            currentPos = screenWidth + imageWidth; // 화면 오른쪽 끝으로 이동
+            console.log(-imageWidth)
+            console.log(currentPos)
+            console.log(screenWidth)
+          }
+        } else if (direction === 'right') {
+          currentPos += speed; // 오른쪽으로 이동
+
+          if (currentPos > screenWidth) { // 이미지가 오른쪽 화면 밖으로 나가면
+            currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
+          }
+        }
+
+        // 이미지의 위치를 업데이트
+        image.style.left = `${currentPos}px`;
+
+        // 다음 프레임을 요청
+        requestAnimationFrame(updatePosition);
+      };
+
+      updatePosition(); // 애니메이션 시작
+    };
+
+    animate(); // 애니메이션 함수 호출
+  };
+
+  useEffect(() => {
+    if (loaded) {
+      // 이미지가 로드되면 애니메이션을 시작합니다
+      const images = imageRefs.current;
+      moveImage(images[0], 'left', 0.3); // 첫 번째 이미지: 왼쪽으로 이동
+      moveImage(images[1], 'left', 0.5); // 두 번째 이미지: 왼쪽으로 이동
+    }
+  }, [loaded]);
+
+  useEffect(() => {
+    // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
+    const handleResize = () => {
+      const images = imageRefs.current;
+      images.forEach((image, index) => {
+        if (image) {
+          const direction = index === 0 ? 'left' : 'left'; // 모든 이미지 왼쪽으로 이동
+          const speed = index === 0 ? 0.3 : 0.5; // 속도 조절
+          moveImage(image, direction, speed);
+        }
+      });
+    };
+
+    window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
+    return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
+  }, []);
+
   return (
-    <>
-      <div className='relative w-full h-[594px] flex justify-center'>
-        <div className='w-[1200px] h-full bg-red-100'>
-          <div className='flex justify-center mt-[120px] gap-[96px]'>
-            <div className='relative'>
-              <h4 className='scoop-font text-[64px]'>Store</h4>
-              <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
-              <div>
-                <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
-              </div>
-              <div className='ping absolute top-[145px] left-[230px]'>
-                <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
-              </div>
-            </div>
+    <div className='relative w-full h-[594px] flex justify-center'>
+      <div className='w-[1200px] h-full'>
+        <div className='flex justify-center mt-[120px] gap-[96px]'>
+          <div className='relative'>
+            <h4 className='scoop-font text-[64px]'>Store</h4>
+            <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
             <div>
-              <h4 className='scoop-font text-[64px]'>ED way</h4>
-              <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
-              <div className='relative'>
-                <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" />
-                <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
-                  <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
-                </div>
-                <div className='absolute top-[-50px] left-[150px]'>
-                  <img className='bg-cover' src={`${process.env.PUBLIC_URL}/picture.png`} alt="Picture" />
-                </div>
-              </div>
+              <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
+            </div>
+            <div className='ping absolute top-[145px] left-[230px]'>
+              <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
             </div>
           </div>
-          {/* 구름 */}
-          <div className='absolute top-[300px] left-[100px]'>
-            <img src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01" />
-          </div>
-          <div className='absolute top-[400px] left-[800px]'>
-            <img src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02" />
+          <div>
+            <h4 className='scoop-font text-[64px]'>ED way</h4>
+            <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
+            <div className='relative'>
+              <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" />
+              <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
+                <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
+              </div>
+              <div className='absolute top-[-50px] left-[150px]'>
+                <img className='bg-cover' src={`${process.env.PUBLIC_URL}/picture.png`} alt="Picture" />
+              </div>
+            </div>
           </div>
         </div>
+        {/* 구름 */}
+        
+          <img ref={el => imageRefs.current[0] = el} className='absolute top-[300px] left-[100px] bg-cover'  src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01" onLoad={handleImageLoad} />
+        
+        
+          <img ref={el => imageRefs.current[1] = el} className='absolute top-[380px] left-[580px] bg-cover'  src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02" onLoad={handleImageLoad} />
+        
       </div>
-    </>
+    </div>
   );
 }
+
 
 
 
