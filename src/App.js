@@ -1,5 +1,7 @@
 import React, { useState, useRef , useEffect,} from 'react';
 import './App.css'; 
+import AOS from "aos";
+import "aos/dist/aos.css"; // AOS의 CSS 파일을 가져옵니다
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -19,7 +21,7 @@ import Footer from './footer/Footer'
 
 
 
-// 스와이퍼들 버튼 수정하기
+// 스와이퍼들 버튼 수정하기 위치
 // Promotion섹션 작은 이미지 누를때 왼쪽 큰 사이즈로 넘어가기
 // Menu섹션 스와이퍼시 메뉴 하나씩 넘어가기로, 무한대로
 
@@ -29,6 +31,16 @@ import Footer from './footer/Footer'
 // 컴포넌트와 같은 레벨에 있지 않으면 제대로 작동하지 않을 수 있습니다.
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900, // 애니메이션 지속 시간
+      // offset: 100,    // 스크롤에 따른 애니메이션 트리거 지점 조정
+      easing: 'ease-in-out', // 애니메이션의 이징 효과
+      once: true // 애니메이션이 한 번만 실행되도록 설정
+    });
+  }, []);
+
   return (
     <>
       <header><Navbar /></header>
@@ -177,8 +189,8 @@ function SwiperSection01() {
   };
 
   // 공통 스타일 클래스
-  const buttonStyle = 'absolute z-10 w-[71px] h-[71px] bg-white rounded-full flex items-center justify-center cursor-pointer';
-  const borderStyles = 'absolute rounded-[150px] border-4';
+  const buttonStyle = 'absolute z-10 w-[71px] h-[71px] flex items-center justify-center cursor-pointer';
+  const borderStyles = 'absolute rounded-[150px] border-4 z-10';
 
   // 이미지 로드 완료 후 호출되는 함수
   const handleImageLoad = () => {
@@ -267,99 +279,105 @@ function SwiperSection01() {
   return (
     <>
       {/* 가운데 로고 부분 */}
-      <div className='w-[277px] h-[105px] absolute z-10 top-[8.5%] left-[50%] transform -translate-x-1/2'>
+      <div className='w-[277px] h-[105px] absolute z-[100] top-[10%] left-[50%] transform -translate-x-1/2'>
         <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
       </div>
 
       {/* 스와이퍼 섹션 */}
-      <div className='w-full relative h-[800px]'>
-        <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/section01BG.png`} alt="Background" />
-
-        <div className='absolute inset-0 top-[80px] flex items-center justify-center'>
+      <div className='w-full relative h-[898px] flex justify-center items-center' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
+        {/* 스와이퍼 영역 */}
+        <div className='relative w-[1200px] h-[610px] flex justify-center items-center overflow-hidden bg-red-200 rounded-[150px]'>
           {/* 배경 보더 */}
-          <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
-          <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
-          <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
-          <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
-          <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
-          <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
-          <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
+          <div className='pointer-events-none relative z-[120]'>
 
-          <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] overflow-hidden'>
+            <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
+            <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
+            <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
+            <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
+          </div>
+
+          <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] z-[100]'>
             <Swiper
-              ref={swiperRef} // 스와이퍼 인스턴스를 참조
-              navigation={false} // 네비게이션 버튼 비활성화
+              ref={swiperRef}
+              navigation={false}
               className='w-full h-full'
-              modules={[Navigation, Autoplay]} // 네비게이션 모듈 사용
-              loop={true} // 무한 루프 모드
-              autoplay = {{delay: 2500,
-              disableOnInteraction: false,
-              }}
+              modules={[Navigation, Autoplay]}
+              loop={true}
+              autoplay={{ delay: 10500, disableOnInteraction: false }}
             >
-              {/* 각 슬라이드 */}
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></SwiperSlide>
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" /></SwiperSlide>
-              <SwiperSlide><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></SwiperSlide>
+              <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
+              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
+              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
             </Swiper>
           </div>
 
+
+
+        </div>
+
+        {/* 버튼들 */}
+        <div className='absolute w-[1200px] h-[610px] flex justify-between items-center '>
           {/* 왼쪽 방향 버튼 */}
           <div
-            className={`${buttonStyle} left-[320px]`}
-            onClick={slidePrev} // 왼쪽 슬라이드 버튼 클릭 시 호출
+            className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[150]'
+            onClick={slidePrev}
           >
-            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
-            <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
-            <div className='absolute inset-0 flex items-center justify-center z-[100]'>
+            <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+            <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+            <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+            <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
+            <div className='absolute  flex items-center justify-center '>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </div>
+
           </div>
 
           {/* 오른쪽 방향 버튼 */}
           <div
-            className={`${buttonStyle} left-[1510px]`}
-            onClick={slideNext} // 오른쪽 슬라이드 버튼 클릭 시 호출
+            className='relative left-[40px] w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[150]'
+            onClick={slideNext}
           >
-            <div className='absolute w-[99px] h-[99px] bg-[#213779] rounded-full'></div>
-            <div className='absolute w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
-            <div className='absolute w-[71px] h-[71px] bg-white rounded-full'></div>
-            <div className='absolute inset-0 flex items-center justify-center z-[100]'>
+            <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+            <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+            <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+            <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
+            <div className='absolute flex items-center justify-center'>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
             </div>
+
           </div>
 
-          {/* 장식 이미지들 */}
-          <img
-            ref={el => imageRefs.current[0] = el} // 첫 번째 이미지 참조
-            className='absolute top-[480px] left-[200px] z-10'
-            src={`${process.env.PUBLIC_URL}/human01.png`}
-            alt="human"
-            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
-          />
-          <img
-            ref={el => imageRefs.current[1] = el} // 두 번째 이미지 참조
-            className='absolute top-[550px] left-[400px] z-10'
-            src={`${process.env.PUBLIC_URL}/middleHuman.png`}
-            alt="middle human"
-            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
-          />
-          <img
-            ref={el => imageRefs.current[2] = el} // 세 번째 이미지 참조
-            className='absolute top-[600px] left-[1500px] z-10'
-            src={`${process.env.PUBLIC_URL}/car.png`}
-            alt="car"
-            onLoad={handleImageLoad} // 이미지가 로드되면 함수 호출
-          />
         </div>
+
+        {/* 장식 이미지들 */}
+        <img
+          ref={el => imageRefs.current[0] = el}
+          className='absolute top-[600px] left-[200px] z-2'
+          src={`${process.env.PUBLIC_URL}/human01.png`}
+          alt="human"
+          onLoad={handleImageLoad}
+        />
+        <img
+          ref={el => imageRefs.current[1] = el}
+          className='absolute top-[630px] left-[400px] z-2'
+          src={`${process.env.PUBLIC_URL}/middleHuman.png`}
+          alt="middle human"
+          onLoad={handleImageLoad}
+        />
+        <img
+          ref={el => imageRefs.current[2] = el}
+          className='absolute top-[700px] left-[1500px] z-2'
+          src={`${process.env.PUBLIC_URL}/car.png`}
+          alt="car"
+          onLoad={handleImageLoad}
+        />
       </div>
     </>
   );
@@ -568,14 +586,14 @@ function PromotionSection02() {
         {/* 80% */}
         <div className="w-[1200px]">
           <div className="text-center">
-            <h1 className="text-[64px] scoop-font">Promotion</h1>
-            <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+            <h1 data-aos="fade-up" className="text-[64px] scoop-font">Promotion</h1>
+            <p data-aos="fade-up" className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
 
             {/* 이미지 컨테이너 */}
             <div className="flex mt-8 h-[486px] justify-between">
               {/* 왼쪽 이미지 공간 */}
               <div className="rounded-lg relative">
-                <Link to="/">
+                <Link to="/story">
                   <img className="w-[878px] h-[486px] object-cover" src={images[currentIndex]} alt="Main Promotion" />
                 </Link>
               </div>
@@ -652,14 +670,14 @@ function MenuSection03() {
 
   return (
       <>
-          {/* 100% 섹션 */}
+          {/* 100% 섹션  */}
           <div className='w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
               {/* 실제 컨탠츠 들어갈 공간 */}
               <div className='relative w-[1200px] flex justify-center items-center flex-col'>
 
                   {/* 타이틀 부분 */}
                   <div className='flex flex-col justify-center items-center'>
-                      <h1 className='text-[64px] scoop-font'>Menu</h1>
+                      <h1 data-aos="fade-up" className='text-[64px] scoop-font'>Menu</h1>
                       <p className='text-2xl mt-2 mb-12 font-semibold '>이디야의 신제품을 만나보세요.</p>
                   </div>
 
@@ -668,7 +686,7 @@ function MenuSection03() {
                       <Swiper
                           ref={swiperRef2}
                           
-                          className="mySwiper w-full h-full"
+                          className="mySwiper w-full h-full "
                           modules={[Navigation, Autoplay]} // 네비게이션 모듈 사용
                           loop={true} // 무한 루프 모드
                           autoplay = {{delay: 2500,
@@ -709,7 +727,7 @@ function MenuSection03() {
                       onClick={slideNext2}
                   >
                       <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
-                      <div className='absolute inset-0 flex items-center justify-center z-[100]'>
+                      <div className='absolute inset-0 flex items-center justify-center z-[100] '>
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="#fff" className="size-8">
                               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                           </svg>
@@ -760,12 +778,13 @@ function Section03MenuUl({ index }) {
   ];
 
   return (
-      <ul className='flex justify-center items-center gap-4'>
-          <li className='flex flex-col items-center'>
-              <div className='w-[230px] h-[230px] flex justify-center items-center'>
-                  <img className='object-cover' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
+      <ul className='flex justify-center items-center gap-4  '>
+          <li className='flex flex-col items-center  '>
+              <div className='w-[230px] h-[230px]  flex justify-center items-center  '>
+                  <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
               </div>
-              <div className='text-center mt-2'>
+              {/* 텍스트 */}
+              <div className='text-center mt-2  '>
                   <p className='text-black font-semibold text-2xl'>{menuItems[index].name}</p>
                   <div className='flex justify-center mt-1 space-x-1'>
                       <div className='w-[40px] bg-[#243c84] rounded-2xl text-center text-xs text-white'>ICED</div>

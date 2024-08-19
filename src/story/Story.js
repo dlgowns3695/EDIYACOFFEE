@@ -203,7 +203,7 @@ function Management() {
         </div>
 
         {/* 아이콘3 529*/}
-        <div className="bg-red-300 relative top-[529px] left-[145px] text-right bg-red-500">
+        <div className="relative top-[529px] left-[145px] text-right bg-red-500">
           <div className="absolute top-0 left-0">
             <h4 className="font-semibold text-[26px] text-[#222222]">
               사람을 생각하는 따뜻한 기업
@@ -219,8 +219,8 @@ function Management() {
         <img className='absolute top-[755px] left-[430px]' src={`${process.env.PUBLIC_URL}/line03.png`}></img>
 
         {/* 글로벌 생산성 1위 */}
-        <div className="relative w-full flex flex-col items-center absolute top-[848px] text-center">
-          <h4 data-aos="fade-left"className="text-[52px] preten-font300">글로벌 생산성 1위 <br />
+        <div className="relative w-full flex flex-col items-center top-[848px] text-center">
+          <h4 data-aos="fade-up"className="text-[52px] preten-font300">글로벌 생산성 1위 <br />
               <span className="font-semibold">커피 전문기업 이디야 커피</span>
            </h4>
           
