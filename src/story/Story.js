@@ -48,18 +48,22 @@ function Ambition() {
 
         {/* Always Beside You */}
         <div className="mt-[386px]">
-          <h4 data-aos="fade-up" className="text-[52px] leading-[62px]">
+          <h4 data-aos="fade-up" className="text-[52px] leading-20">
             Always Beside You,<br />
             <span className='font-semibold'>이디야커피는 언제나 당신 곁에 함께 합니다.</span> 
           </h4>
-          <p data-aos="fade-up" data-aos-delay="200" className="text-[#222222] text-[30px] font-semibold mt-[40px] mb-[20px]">
+          <p data-aos="fade-up" data-aos-delay="200" className="text-[red] md:text-[#222222] text-[30px] font-semibold mt-[40px] mb-[20px]">
             커피 한잔의 진심
           </p>
           <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-[#222222]">
-            해외에 로열티를 내지 않는 순수 국내 브랜드 이디야 커피, 품질 좋고 맛있는 커피를 합리적인 가격으로<br />
-            소비자에게 제공하는 것을 우리의 진심이라 믿습니다. 더 맛있는 커피를 만들기 위해 2010년<br /> 커피연구소 설립을 시작으로
-            2016년 4월 '고객과 소통하는 커피연구소'를 테마로 [이디야커피랩]을 오픈하여 더 나은<br /> 
-            커피를 위해 끊임없는 연구 개발을 진행하고 있습니다.
+            해외에 로열티를 내지 않는 순수 국내 브랜드<br className='hidden md:block' />
+            이디야 커피, 품질 좋고 맛있는 커피를 합리적인<br className='hidden md:block' />
+            가격으로 소비자에게 제공하는 것을 우리의 진심이라<br className='hidden md:block' />
+            믿습니다. 더 맛있는 커피를 만들기 위해 2010년<br className='hidden md:block' />
+            커피연구소 설립을 시작으로 2016년 4월 '고객과<br className='hidden md:block' />
+            소통하는 커피연구소'를 테마로 [이디야커피랩]을<br className='hidden md:block' />
+            오픈하여 더 나은 커피를 위해 끊임없는 연구 개발을<br className='hidden md:block' />
+            진행하고 있습니다.
           </p>
         </div>
 
@@ -71,14 +75,14 @@ function Ambition() {
               <span className='font-semibold'>위한 상생협력</span> 
             </h4>
             <p data-aos="fade-up" data-aos-delay="200" className="text-[24px] leading-[39px] mt-[72px]">
-              이디야커피는 고객, 가맹점주, 협력사와의<br />
-              상생협력을 무엇보다 소중하게 생각합니다.<br />
-              이디야커피의 "상생협력"은 정직과 신뢰를<br />
-              기반으로 장기적으로 구축되었습니다.<br />
-              고객들에겐 우리의 진심을 제공하고,<br />
-              가맹점주에게는 다양한 지원정책으로<br />
-              미래의 행복으로 인도하며, 협력사와는<br />
-              오랜 기간 쌓아온 굳건한 신뢰로<br />
+              이디야커피는 고객, 가맹점주, 협력사와의<br className='hidden md:block' />
+              상생협력을 무엇보다 소중하게 생각합니다.<br className='hidden md:block' />
+              이디야커피의 "상생협력"은 정직과 신뢰를<br className='hidden md:block' />
+              기반으로 장기적으로 구축되었습니다.<br className='hidden md:block' />
+              고객들에겐 우리의 진심을 제공하고,<br className='hidden md:block' />
+              가맹점주에게는 다양한 지원정책으로<br className='hidden md:block' />
+              미래의 행복으로 인도하며, 협력사와는<br className='hidden md:block' />
+              오랜 기간 쌓아온 굳건한 신뢰로<br className='hidden md:block' />
               양질의 원부자재를 공급받고 있습니다.
             </p>
           </div>
