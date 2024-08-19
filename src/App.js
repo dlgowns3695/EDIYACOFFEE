@@ -190,7 +190,7 @@ function SwiperSection01() {
 
   // 공통 스타일 클래스
   const buttonStyle = 'absolute z-10 w-[71px] h-[71px] flex items-center justify-center cursor-pointer';
-  const borderStyles = 'absolute rounded-[150px] border-4 z-10';
+  const borderStyles = 'absolute rounded-[150px] border-4 ';
 
   // 이미지 로드 완료 후 호출되는 함수
   const handleImageLoad = () => {
@@ -279,16 +279,16 @@ function SwiperSection01() {
   return (
     <>
       {/* 가운데 로고 부분 */}
-      <div className='w-[277px] h-[105px] absolute z-[100] top-[10%] left-[50%] transform -translate-x-1/2'>
+      <div className='w-[277px] h-[105px] absolute z-[250] top-[10%] left-[50%] transform -translate-x-1/2'>
         <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
       </div>
 
       {/* 스와이퍼 섹션 */}
       <div className='w-full relative h-[898px] flex justify-center items-center' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
         {/* 스와이퍼 영역 */}
-        <div className='relative w-[1200px] h-[610px] flex justify-center items-center overflow-hidden bg-red-200 rounded-[150px]'>
+        <div className='relative w-[1200px] h-[610px] flex justify-center items-center  overflow-hidden rounded-[150px]'>
           {/* 배경 보더 */}
-          <div className='pointer-events-none relative z-[120]'>
+          <div className='pointer-events-none absolute flex justify-center items-center   z-[200]'>
 
             <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
             <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
@@ -297,9 +297,10 @@ function SwiperSection01() {
             <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
             <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
-          </div>
 
-          <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] z-[100]'>
+</div>
+
+          <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] '>
             <Swiper
               ref={swiperRef}
               navigation={false}
@@ -322,7 +323,7 @@ function SwiperSection01() {
         <div className='absolute w-[1200px] h-[610px] flex justify-between items-center '>
           {/* 왼쪽 방향 버튼 */}
           <div
-            className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[150]'
+            className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
             onClick={slidePrev}
           >
             <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
@@ -339,7 +340,7 @@ function SwiperSection01() {
 
           {/* 오른쪽 방향 버튼 */}
           <div
-            className='relative left-[40px] w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[150]'
+            className='relative left-[40px] w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
             onClick={slideNext}
           >
             <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
@@ -373,7 +374,7 @@ function SwiperSection01() {
         />
         <img
           ref={el => imageRefs.current[2] = el}
-          className='absolute top-[700px] left-[1500px] z-2'
+          className='absolute top-[700px] left-[1500px] z-[1000]'
           src={`${process.env.PUBLIC_URL}/car.png`}
           alt="car"
           onLoad={handleImageLoad}
