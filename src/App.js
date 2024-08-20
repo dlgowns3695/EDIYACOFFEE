@@ -33,6 +33,9 @@ import Footer from './footer/Footer'
 function App() {
 
   useEffect(() => {
+
+    
+
     AOS.init({
       duration: 900, // 애니메이션 지속 시간
       // offset: 100,    // 스크롤에 따른 애니메이션 트리거 지점 조정
@@ -40,6 +43,15 @@ function App() {
       once: true // 애니메이션이 한 번만 실행되도록 설정
     });
   }, []);
+
+  useEffect(() => {
+    // 페이지가 로드될 때 스크롤을 최상단으로 이동
+    window.scrollTo(0, 0);
+  }, []); // 빈 배열을 의존성 배열로 사용하여 마운트 시 한 번만 실행
+
+  
+
+
 
   return (
     <>
@@ -531,13 +543,121 @@ function PromotionSection02() {
 
 
 */
+// function PromotionSection02() {
+//   // 왼쪽 초기 이미지셋팅
+//   const [leftImage, setLeftImage] = useState(0);
+//   // 오른쪽 초기 이미지셋팅
+//   const [rightImage, setRightImage] = useState([]);
+//   // = 버튼을 눌렀는지 체킹
+//   const [chkBtn, setChkBtn] = useState(false);
+//   // 윗버튼 기능 
+//   // TODO
+
+//   // 아래버튼 기능
+//   // TODO
+
+//   // 자동슬라이드 기능
+//   // TODO
+
+//   // 이미지들 
+//   const images = [
+//     `${process.env.PUBLIC_URL}/section02Bn01.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn02.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
+//   ]
+
+//   const imagesLenght = images.length;
+//   console.log(imagesLenght)
+
+//   return (
+//     <>
+//       {/* 전체 섹션을 감싸는 div */}
+//       <div className="w-full flex items-center justify-center">
+//         <div className="w-[1200px]">
+//           <div className="text-center">
+//             <h1 className="text-[64px] scoop-font">Promotion</h1>
+//             <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+
+//             <div className="flex mt-8 h-[486px] justify-between">
+              
+//               {/* 메인 이미지 영역 */}
+//               <div className="rounded-lg relative">
+//                 <Link to="/">
+//                   <img className="w-[878px] h-[486px] object-cover" src={images[leftImage]} alt="Main Promotion" />
+//                 </Link>
+//               </div>
+
+//               {/* 오른쪽 서브 이미지 슬라이드 영역 */}
+//               <div className="flex flex-col justify-between">
+//                 {/* 첫 번째 서브 이미지 */}
+//                 <div className="rounded-lg relative cursor-pointer image-slide">
+//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn01.png`} alt="Sub Promotion 1" />
+//                 </div>
+//                 {/* 두 번째 서브 이미지 */}
+//                 <div className="rounded-lg relative cursor-pointer image-slide">
+//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn02.png`} alt="Sub Promotion 2" />
+//                 </div>
+//                 {/* 세 번째 서브 이미지 */}
+//                 <div className="rounded-lg relative cursor-pointer image-slide">
+//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn03.png`} alt="Sub Promotion 3" />
+//                 </div>
+//               </div>
+
+//               {/* 내비게이션 및 버튼 섹션 */}
+//               <div className='h-full w-[35px] flex justify-center'>
+//                 <div className='flex flex-col items-center justify-start gap-5'>
+                  
+//                   {/* 네비게이션 포인트 */}
+//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
+//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
+//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
+//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
+
+//                   {/* 이미지 위로 이동 버튼 */}
+//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
+//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+//                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+//                     </svg>
+//                   </div>
+
+//                   {/* 이미지 아래로 이동 버튼 */}
+//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
+//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+//                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+//                     </svg>
+//                   </div>
+
+//                   {/* 자동 슬라이드 토글 버튼 */}
+//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
+//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+//                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+//                     </svg>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
 
 function PromotionSection02() {
-  // 초기 이미지 인덱스와 이미지 리스트
+  // 현재 이미지 인덱스 관리
   const [currentIndex, setCurrentIndex] = useState(0);
-  // 자동 슬라이드 상태 관리
+
+  // 왼쪽 이미지 인덱스
+  const [leftImage, setLeftImage] = useState(0);
+
+  // 오른쪽 이미지들 관리
+  const [rightImages, setRightImages] = useState([]);
+
+  // 자동 슬라이드 상태
   const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
 
+  // 이미지 배열
   const images = [
     `${process.env.PUBLIC_URL}/section02Bn01.png`,
     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
@@ -545,95 +665,102 @@ function PromotionSection02() {
     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
   ];
 
-  // 자동 슬라이드 효과
+  // useEffect를 통해 currentIndex에 따라 leftImage와 rightImages를 업데이트
   useEffect(() => {
-    if (isAutoSlideActive) {
-      const slideInterval = setInterval(() => {
-        handleMoveUp();
-      }, 5000); // 5초마다 슬라이드 이동
+    setLeftImage(currentIndex);
+    const newRightImages = [
+      images[(currentIndex + 1) % images.length],
+      images[(currentIndex + 2) % images.length],
+      images[(currentIndex + 3) % images.length],
+    ];
+    setRightImages(newRightImages);
+  }, [currentIndex]);
 
-      return () => clearInterval(slideInterval); // 클린업
-    }
-  }, [isAutoSlideActive]);
-
-  // 위로 이동
+  // 위 버튼 클릭 시
   const handleMoveUp = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex + 1) % images.length;
-      return newIndex;
-    });
+    const newIndex = (currentIndex + 1) % images.length;
+    setCurrentIndex(newIndex);
   };
 
-  // 아래로 이동
+  // 아래 버튼 클릭 시
   const handleMoveDown = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex - 1 + images.length) % images.length;
-      return newIndex;
-    });
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    setCurrentIndex(newIndex);
   };
 
   // 자동 슬라이드 토글
   const toggleAutoSlide = () => {
-    setIsAutoSlideActive((prev) => !prev); // 상태 토글
+    setIsAutoSlideActive(prev => !prev);
   };
 
-  // 버튼 클래스
+  // 5초마다 자동 슬라이드
+  useEffect(() => {
+    if (isAutoSlideActive) {
+      const intervalId = setInterval(handleMoveUp, 5000);
+      return () => clearInterval(intervalId);
+    }
+  }, [isAutoSlideActive, currentIndex]);
+
+  // 공통 CSS 클래스
+  const containerClass = "rounded-lg relative";
   const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
+  const indicatorClass = "w-[7px] h-[7px] rounded-full";
+  const activeIndicatorClass = "bg-gray-500";
+  const inactiveIndicatorClass = "bg-gray-100";
 
   return (
     <>
-      {/* 100% 섹션 */}
       <div className="w-full flex items-center justify-center">
-        {/* 80% */}
         <div className="w-[1200px]">
           <div className="text-center">
-            <h1 data-aos="fade-up" className="text-[64px] scoop-font">Promotion</h1>
-            <p data-aos="fade-up" className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+            <h1 className="text-[64px] scoop-font">Promotion</h1>
+            <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
 
-            {/* 이미지 컨테이너 */}
             <div className="flex mt-8 h-[486px] justify-between">
-              {/* 왼쪽 이미지 공간 */}
-              <div className="rounded-lg relative">
-                <Link to="/story">
-                  <img className="w-[878px] h-[486px] object-cover" src={images[currentIndex]} alt="Main Promotion" />
+              {/* 메인 이미지 영역 */}
+              <div className={`${containerClass} relative`}>
+                <Link to="/">
+                  <img className="w-[878px] h-[486px] object-cover" src={images[leftImage]} alt="Main Promotion" />
                 </Link>
               </div>
 
-              {/* 오른쪽 이미지 공간 */}
-              <div className="relative h-[486px] w-[230px] overflow-hidden">
-                {/* 이미지 컨테이너 */}
-                <div className="flex flex-col justify-center gap-[24px] absolute top-0 left-0 w-full transition-transform duration-500" style={{ transform: `translateY(-${currentIndex * 170}px)` }}>
-                  {images.map((image, index) => (
-                    <div key={index} className="rounded-lg relative cursor-pointer image-slide">
-                      <img className="w-full h-[146px] object-cover" src={image} alt={`Sub Promotion ${index + 1}`} />
-                    </div>
-                  ))}
-                </div>
+              {/* 오른쪽 서브 이미지 슬라이드 영역 */}
+              <div className="flex flex-col justify-between">
+                {rightImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`${containerClass} cursor-pointer image-slide`}
+                    onClick={() => setCurrentIndex(images.indexOf(image))}
+                  >
+                    <img className="w-[230px] h-[146px] object-cover" src={image} alt={`Sub Promotion ${index + 1}`} />
+                  </div>
+                ))}
               </div>
 
+              {/* 네비게이션 및 버튼 섹션 */}
               <div className='h-full w-[35px] flex justify-center'>
                 <div className='flex flex-col items-center justify-start gap-5'>
-                  {/* Indicator circles */}
-                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 0 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
-                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 1 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
-                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 2 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
-                  <div className={`w-[7px] h-[7px] rounded-full ${currentIndex === 3 ? 'bg-gray-500' : 'bg-gray-100'}`}></div>
+                  {/* 네비게이션 포인트 */}
+                  <div className={`${indicatorClass} ${0 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
+                  <div className={`${indicatorClass} ${1 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
+                  <div className={`${indicatorClass} ${2 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
+                  <div className={`${indicatorClass} ${3 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
 
-                  {/* 윗 버튼 */}
+                  {/* 위로 이동 버튼 */}
                   <div className={buttonClass} onClick={handleMoveUp}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                     </svg>
                   </div>
 
-                  {/* 아래 버튼 */}
+                  {/* 아래로 이동 버튼 */}
                   <div className={buttonClass} onClick={handleMoveDown}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
 
-                  {/* = 버튼 */}
+                  {/* 자동 슬라이드 토글 버튼 */}
                   <div className={buttonClass} onClick={toggleAutoSlide}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
@@ -648,7 +775,6 @@ function PromotionSection02() {
     </>
   );
 }
-
 
 
 function MenuSection03() {

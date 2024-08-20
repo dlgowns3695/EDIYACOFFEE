@@ -16,6 +16,8 @@ const Story = () => {
     });
   }, []);
 
+  
+
   return (
     <>
       <TopBanner />
