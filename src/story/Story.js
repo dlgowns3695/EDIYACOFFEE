@@ -9,6 +9,22 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
+/*
+ 메뉴바
+ 닫기 버튼 64 64
+
+ 로그인 버튼 185 65
+
+ 각 메뉴들 650 150 양옆 패딩 50
+ > 메뉴, 화살표는 양끝으로 flex
+
+ 하단 아이콘 3개는 58 58
+
+ h-pull w-pull
+
+*/
+
+
 const Story = () => {
 
   useEffect(() => {
@@ -25,7 +41,7 @@ const Story = () => {
   return (
     <>
       <TopBanner />
-      <div className="px-2 md:px-0"> {/* 콘텐츠 부분에 일괄적으로 패딩 적용 */}
+      <div className="px-8 md:px-0"> {/* 콘텐츠 부분에 일괄적으로 패딩 적용 */}
         <Ambition />
         <CoreValue />
         <Management />
@@ -214,7 +230,72 @@ function Management() {
 
         {/* 써클 */}
         <div className="hidden  relative top-[290px] md:flex justify-center items-center">
-          <div className="absolute w-[474px] h-[474px] rounded-full bg-[#f8f8f8]"></div>
+          <div className="absolute w-[474px] h-[474px] rounded-full bg-[#f8f8f8]">
+
+            {/* 아이콘1 */}
+            <div className="relative z-10 top-[-50px] left-[-350px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
+              <img className="hidden md:block absolute top-[115px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01.png`} alt="Philosophy Icon 1" />
+              <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01Mobile.png`} alt="Philosophy Icon 1" />
+
+              <img className='absolute top-[185px] left-[260px] hidden md:block' src={`${process.env.PUBLIC_URL}/line01.png`} alt="Line Decoration" />
+
+              <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-[170px] md:left-0 md:text-right">
+                <h4 className="font-semibold text-[36px] md:text-[26px] text-[#222222] mb-[12px] md:mb-[50px]">
+                  기본을 지키는 정직한 기업
+                </h4>
+                <p className="text-[#222222] text-[28px] leading-[38px] md:text-[18px] md:leading-[26px]">
+                  고객에게 우수한 품질의 커피를<br />
+                  합리적인 가격에 제공하고,<br />
+                  가맹점주를 위해 매장 수익을<br />
+                  최우선하며, 협력업체와의<br />
+                  오랜 신뢰를 이어갑니다.
+                </p>
+              </div>
+            </div>
+          
+            {/* 아이콘2 */}
+            <div className="relative z-10 top-[-50px] left-[40px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
+              <img className="hidden md:block absolute z-10 top-[115px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy02.png`} alt="Philosophy Icon 1" />
+              <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy02Mobile.png`} alt="Philosophy Icon 2" />
+
+              <img className='absolute top-[185px] left-[435px] hidden md:block' src={`${process.env.PUBLIC_URL}/line02.png`} alt="Line Decoration" />
+
+              <div className="relative mt-4 md:mt-0 text-left  md:top-[170px] md:left-[420px] ">
+                <h4 className="font-semibold text-[36px] md:text-[26px]  text-[#222222] mb-[12px] md:mb-[50px]">
+                  신나고 행복한 즐거운 기업
+                </h4>
+                <p className="text-[#222222] text-[28px] leading-[38px] md:text-[18px] md:leading-[26px]">
+                  수평적 소통이 이루어지는 젊은<br />
+                  기업문화 업계 최고 수준의<br />
+                  복지혜택을 통해 직원 모두가 즐겁게<br />
+                  일하는 기업을 만듭니다.
+                </p>
+              </div>
+            </div>
+
+            
+            {/* 아이콘3 */}
+            <div className="relative z-10 top-[60px] left-[-160px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
+              <img className="hidden md:block absolute z-10 top-[115px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy03.png`} alt="Philosophy Icon 1" />
+              <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy03Mobile.png`} alt="Philosophy Icon 2" />
+
+              <img className='absolute top-[190px] left-[250px] hidden md:block' src={`${process.env.PUBLIC_URL}/line03.png`} alt="Line Decoration" />
+
+              <div className="relative mt-4 md:mt-0 text-left  md:top-[195px] md:left-[-130px] md:text-right">
+                <h4 className="font-semibold text-[36px] md:text-[26px]  text-[#222222] mb-[12px] md:mb-[50px]">
+                  사람을 생각하는 따뜻한 기업
+                </h4>
+                <p className="text-[#222222] text-[28px] leading-[38px] md:text-[18px] md:leading-[26px]">
+                  늘 고객의 입장에서 먼저 생각하고,<br />
+                  가맹점주의 입장을 배려하며<br />
+                  사회와 함께하려고 노력합니다.
+                </p>
+              </div>
+            </div>
+
+
+
+          </div>
           <div className="absolute w-[362px] h-[362px] rounded-full bg-[#e5e5e5]"></div>
           <div className={`${style.bggradient} absolute w-[226px] h-[226px] rounded-full bg-white`}></div>
           <div className={`absolute w-[223px] h-[223px] rounded-full bg-white`}></div>
@@ -223,36 +304,18 @@ function Management() {
 
         
         <div className='flex flex-col gap-[86px] md:flex-none '>
-          {/* 아이콘1 */}
-          <div className="relative top-[0] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
-            <img className="hidden md:block absolute top-[115px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01.png`} alt="Philosophy Icon 1" />
-            <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01Mobile.png`} alt="Philosophy Icon 1" />
+          
 
-            <img className='absolute top-[185px] left-[260px] hidden md:block' src={`${process.env.PUBLIC_URL}/line01.png`} alt="Line Decoration" />
 
-            <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-[170px] md:left-0 md:text-right">
-              <h4 className="font-semibold text-[36px] md:text-[26px] text-[#222222] mb-[12px] md:mb-[50px]">
-                기본을 지키는 정직한 기업
-              </h4>
-              <p className="text-[#222222] text-[28px] leading-[38px] md:text-[18px] md:leading-[26px]">
-                고객에게 우수한 품질의 커피를<br />
-                합리적인 가격에 제공하고,<br />
-                가맹점주를 위해 매장 수익을<br />
-                최우선하며, 협력업체와의<br />
-                오랜 신뢰를 이어갑니다.
-              </p>
-            </div>
-          </div>
-
-          {/* 아이콘2 */}
-          <div className="relative top-[0] md:left-[710px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center ">
+          
+          {/* <div className="relative top-[0] md:left-[710px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center ">
             <img className="hidden md:block absolute z-10 top-[0] left-[0] object-cover " src={`${process.env.PUBLIC_URL}/Philosophy02.png`} alt="Philosophy Icon 2" />
             <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy02Mobile.png`} alt="Philosophy Icon 2" />
             
-            <img className='absolute top-[60px] left-[140px] hidden md:block' src={`${process.env.PUBLIC_URL}/line02.png`} alt="Line Decoration" />
+            <img className='absolute top-[60px] left-[120px] hidden md:block' src={`${process.env.PUBLIC_URL}/line02.png`} alt="Line Decoration" />
           
-            {/* 모바일 버전 수정: 아이콘1과 같은 방식으로 적용 */}
-            <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-[40px] md:left-[235px] ">
+            
+            <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-[40px] md:left-[215px] ">
 
               <h4 className="font-semibold text-[36px] md:text-[26px]  text-[#222222] mb-[12px] md:mb-[50px]">
                 신나고 행복한 즐거운 기업
@@ -267,14 +330,14 @@ function Management() {
 
 
           </div>
-          {/* 아이콘33 */}
+          
           <div className="relative top-[0] md:top-[250px] md:left-[520px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
             <img className="absolute top-[0px] left-[0] object-cover hidden md:block z-10" src={`${process.env.PUBLIC_URL}/Philosophy03.png`} alt="Philosophy Icon 3" />
             <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy03Mobile.png`} alt="Philosophy Icon 3" />
 
             <img className='absolute top-[85px] left-[-60px] hidden md:block' src={`${process.env.PUBLIC_URL}/line03.png`} alt="Line Decoration" />
           
-            {/* 모바일 버전 수정: 아이콘1과 같은 방식으로 적용 */}
+           
             <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-[90px] md:left-[-350px] ">
 
             <h4 className="font-semibold text-[36px] md:text-[26px]  text-[#222222] mb-[12px] md:mb-[50px]">
@@ -288,7 +351,7 @@ function Management() {
             </div>
 
 
-          </div>
+          </div> */}
 
         </div>
 
@@ -302,7 +365,7 @@ function Management() {
 
 
 
-        <div className='w-full h-[auto] relative flex flex-col justify-center top-[100px] '>
+        <div className='w-full h-[auto] relative flex flex-col justify-center top-[270px] '>
           {/* 글로벌 생산성 1위 0821 top값 수정해야함 */}
           <div className="relative w-full flex flex-col items-center top-[0] md:top-[648px] text-center">
             <h4 data-aos="fade-up"className="text-[58px] leading-[74px] md:text-[52px] preten-font300">글로벌 생산성 1위 <br />

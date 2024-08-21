@@ -11,6 +11,7 @@ module.exports = {
       '2xl': '1536px',
       // 새로 추가한 1200px 커스텀 breakpoint
       'custom1200': {'min': '1200px'},
+      
     }
   },
   plugins: [],
