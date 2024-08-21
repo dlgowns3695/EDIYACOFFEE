@@ -75,8 +75,17 @@ function Ambition() {
           </p>
         </div>
 
+        {/* 인물사진 */}
+        <div data-aos="fade-left" className='hidden md:block absolute top-[940px] left-[600px]'>
+          <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
+        </div>
+        {/* 위치값 수정 0820 해야함 */}
+        <div data-aos="fade-left" className='block md:hidden absolute top-[1110px] left-[180px]'>
+          <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanMobileBn.png`} alt="Human"/> 
+        </div>
+
         {/* 상생협력 */}
-        <div className="flex justify-between mt-[282px]">
+        <div className="flex justify-between relative top-[1000px] md:top-0 md:mt-[282px]">
           <div className="text-[#222222]">
 
             <h4 data-aos="fade-up" className="text-[58px] leading-[82px] md:text-[52px] text-[#243c84] md:leading-[62px]">
@@ -97,14 +106,7 @@ function Ambition() {
           </div>
         </div>
 
-        {/* 인물사진 */}
-        <div data-aos="fade-left" className='hidden md:block absolute top-[940px] left-[600px]'>
-          <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
-        </div>
-        {/* 위치값 수정 0820 해야함 */}
-        <div data-aos="fade-left" className='block md:hidden absolute top-[940px] left-[600px]'>
-          <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanMobileBn.png`} alt="Human"/> 
-        </div>
+
       </div>
     </div>
   );
@@ -160,11 +162,11 @@ function CoreValue() {
 // 아이콘 세로, 수정해야함 0802
 function Management() {
   return (
-    <div className="w-full h-[2570px] md:h-[2100px] flex justify-center relative">
+    <div className="w-full h-[2600px] md:h-[2100px] flex justify-center relative">
       
       <div data-aos="fade-up"  className=" w-[1200px] relative  h-full ">
         {/* 이디야의 경영철학 */}
-        <div className="flex justify-center mt-[156px] text-center">
+        <div className="flex justify-center mt-[156px] mb-[156px] md:mb-[0px] text-center">
           <h4 className="text-[58px] md:text-[52px]">
             이디야의 <span className="font-semibold">경영철학</span>
           </h4>
@@ -180,7 +182,7 @@ function Management() {
         </div>
 
         
-        <div className='flex flex-col gap-[106px] md:flex-none bg-red-200'>
+        <div className='flex flex-col gap-[86px] md:flex-none '>
           {/* 아이콘1 */}
           <div className="relative top-[0] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
             <img className="hidden md:block absolute top-[115px] left-[314px] object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01.png`} alt="Philosophy Icon 1" />
@@ -226,7 +228,7 @@ function Management() {
 
           </div>
           {/* 아이콘33 */}
-          <div className="relative top-[0] md:top-[210px] md:left-[520px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
+          <div className="relative top-[0] md:top-[250px] md:left-[520px] flex gap-[32px] md:gap-0 md:flex-none justify-center items-center md:items-start">
             <img className="absolute top-[0px] left-[0] object-cover hidden md:block z-10" src={`${process.env.PUBLIC_URL}/Philosophy03.png`} alt="Philosophy Icon 3" />
             <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy03Mobile.png`} alt="Philosophy Icon 3" />
 
@@ -280,64 +282,70 @@ function Management() {
 
 
 
+        <div className='w-full h-[auto] relative flex flex-col justify-center top-[100px] '>
+          {/* 글로벌 생산성 1위 0821 top값 수정해야함 */}
+          <div className="relative w-full flex flex-col items-center top-[0] md:top-[648px] text-center">
+            <h4 data-aos="fade-up"className="text-[58px] leading-[74px] md:text-[52px] preten-font300">글로벌 생산성 1위 <br />
+                <span className="font-semibold">커피 전문기업 이디야 커피</span>
+            </h4>
+            
+            {/* 0820 폰트크기 체크 */}
+            <p data-aos="fade-up"   className="text-[20px] text-[#222222] preten-font300 mt-[50px] hidden md:block ">
+              이디야(EDIYA)는 커피의 발상지인 에티오피아의 부족명인 동시에 대륙의 유일한 황제라는 뜻을 갖고,<br />
+              최고의 커피 브랜드를 추구하는 이디야의 비전을 상징합니다.<br />
+              - 이디야의 CI는 메뉴얼에 의거한 규정사항을 준수해야 합니다.<br />
+              - 지정된 컬러를 반드시 사용하고, CI의 무단적인 변형도 일체 불허합니다.
+            </p>
+
+          </div>
 
 
-
-        {/* 글로벌 생산성 1위 0821 top값 수정해야함 */}
-        <div className="relative w-full flex flex-col items-center top-[648px] text-center">
-          <h4 data-aos="fade-up"className="text-[58px] leading-[74px] md:text-[52px] preten-font300">글로벌 생산성 1위 <br />
-              <span className="font-semibold">커피 전문기업 이디야 커피</span>
-           </h4>
+          {/* 로고, 메인컬러 */}
+          <div data-aos="fade-up" className="flex md:flex-row flex-col items-center md:items-start justify-center gap-[47px] relative md:absolute top-[100px] md:top-[1050px]">
+            {/* 왼쪽 */}
+            <div className="border border-[#dcdddf]">
+              <img className="object-cover" src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />
+            </div>
           
-          {/* 0820 폰트크기 체크 */}
-          <p data-aos="fade-up"   className="text-[20px] text-[#222222] preten-font300 mt-[50px] ">
-            이디야(EDIYA)는 커피의 발상지인 에티오피아의 부족명인 동시에 대륙의 유일한 황제라는 뜻을 갖고,<br />
-            최고의 커피 브랜드를 추구하는 이디야의 비전을 상징합니다.<br />
-            - 이디야의 CI는 메뉴얼에 의거한 규정사항을 준수해야 합니다.<br />
-            - 지정된 컬러를 반드시 사용하고, CI의 무단적인 변형도 일체 불허합니다.
-          </p>
-
-        </div>
-
-
-        {/* 로고, 메인컬러 */}
-        <div data-aos="fade-up" className="flex md:flex-row flex-col justify-center gap-[47px] absolute top-[1488px]">
-          {/* 왼쪽 */}
-          <div className="border border-[#dcdddf]">
-            <img className="object-cover" src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />
-          </div>
-         
-          <div className="flex flex-col gap-[20px] w-[560px] h-[419px] ">
-            {[
-              {
-                color: '#243c84',
-                title: 'Ediya Coffee Blue',
-                description: '품질에 대한 자신감',
-                hex: '#243c84 | R1, G47 B107',
-              },
-              {
-                color: '#dcdddf',
-                title: 'Ediya Coffee Gray',
-                description: '고객과의 소통',
-                hex: '#dcdddf | R220, G221 B223',
-              },
-              
-            ].map((item, index) => (
-              <div key={index} className={`${style.borderBox}`}>
-                <div className="w-[152px] h-[152px] ml-[24px]" style={{ backgroundColor: item.color }}></div>
-                <div>
-                  <h4 className="text-[#222222] text-[27px] font-semibold">{item.title}</h4>
-                  <p className="text-[#222222] text-[20px]">{item.description}</p>
-                  <p 
-                    className="text-[20px]" 
-                    style={{ color: index === 0 ? '#243c84' : '#dcdddf' }}
-                  >{item.hex}</p>
+            <div className="flex flex-col gap-[20px] w-[560px] h-[420px] ">
+              {[
+                {
+                  color: '#243c84',
+                  title: 'Ediya Coffee Blue',
+                  description: '품질에 대한 자신감',
+                  hex: '#243c84 | R1, G47 B107',
+                },
+                {
+                  color: '#dcdddf',
+                  title: 'Ediya Coffee Gray',
+                  description: '고객과의 소통',
+                  hex: '#dcdddf | R220, G221 B223',
+                },
+                
+              ].map((item, index) => (
+                <div key={index} className={`${style.borderBox}`}>
+                  <div className="w-[152px] h-[152px] ml-[24px]" style={{ backgroundColor: item.color }}></div>
+                  <div>
+                    <h4 className="text-[#222222] text-[27px] font-semibold">{item.title}</h4>
+                    <p className="text-[#222222] text-[20px]">{item.description}</p>
+                    <p 
+                      className="text-[20px]" 
+                      style={{ color: index === 0 ? '#243c84' : '#dcdddf' }}
+                    >{item.hex}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
         </div>
+
+
+
+
+
       </div>
+
     </div>
   );
 }

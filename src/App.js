@@ -38,7 +38,7 @@ function App() {
 
     AOS.init({
       duration: 900, // 애니메이션 지속 시간
-      // offset: 100,    // 스크롤에 따른 애니메이션 트리거 지점 조정
+      offset: 10,    // 스크롤에 따른 애니메이션 트리거 지점 조정
       easing: 'ease-in-out', // 애니메이션의 이징 효과
       once: true // 애니메이션이 한 번만 실행되도록 설정
     });
@@ -713,8 +713,10 @@ function PromotionSection02() {
       <div className="w-full flex items-center justify-center">
         <div className="w-[1200px]">
           <div className="text-center">
-            <h1 className="text-[64px] scoop-font">Promotion</h1>
-            <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+            <div data-aos="fade-up">
+              <h1 className="text-[64px] scoop-font">Promotion</h1>
+              <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+            </div>
 
             <div className="flex mt-8 h-[486px] justify-between">
               {/* 메인 이미지 영역 */}
@@ -803,8 +805,8 @@ function MenuSection03() {
               <div className='relative w-[1200px] flex justify-center items-center flex-col'>
 
                   {/* 타이틀 부분 */}
-                  <div className='flex flex-col justify-center items-center'>
-                      <h1 data-aos="fade-up" className='text-[64px] scoop-font'>Menu</h1>
+                  <div data-aos="fade-up"  className='flex flex-col justify-center items-center'>
+                      <h1 className='text-[64px] scoop-font'>Menu</h1>
                       <p className='text-2xl mt-2 mb-12 font-semibold '>이디야의 신제품을 만나보세요.</p>
                   </div>
 
@@ -937,15 +939,15 @@ function MdItem(){
           <div>
             {/* 타이틀 */}
             <div className='flex flex-col items-center mb-16'>
-              <h1 className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
-              <p className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
+              <h1 data-aos="fade-up" className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
+              <p data-aos="fade-up" className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
             </div>
 
             {/* MD상품 */}
             <div className='flex items-center justify-center gap-36'>
               {/* 텀블러 */}
-              <div className='flex flex-col items-center'>
-                {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
+              <div data-aos="fade-up"  className='flex flex-col items-center'>
+                
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
                   <img className='absolute top-[-10%] left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
@@ -954,8 +956,8 @@ function MdItem(){
                 <p className='text-black text-[36px] mt-[-20px]'>스마일 텀블러</p>
               </div>
               {/* 파우치 */}
-              <div className='flex flex-col items-center'>
-                {/* PSD에서 다시 정렬하고 가져와야할듯함. */}
+              <div data-aos="fade-up"  className='flex flex-col items-center'>
+                
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
                   <img className='absolute top-[15%] left-[8%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
@@ -975,100 +977,121 @@ function MdItem(){
 }
 
 function StoreEDway() {
-  const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
-  const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
+  // const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
+  // const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
 
-  // 이미지 로드 완료 후 호출되는 함수
-  const handleImageLoad = () => {
-    setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
-  };
+  // // 이미지 로드 완료 후 호출되는 함수
+  // const handleImageLoad = () => {
+  //   setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
+  // };
 
-  // 이미지 애니메이션 함수
-  const moveImage = (image, direction, speed) => {
-    const animate = () => {
-      const screenWidth = window.innerWidth; // 화면의 너비
-      const imageWidth = image.offsetWidth;  // 이미지의 너비
+  // // 이미지 애니메이션 함수
+  // const moveImage = (image, direction, speed) => {
+  //   const animate = () => {
+  //     const screenWidth = window.innerWidth; // 화면의 너비
+  //     const imageWidth = image.offsetWidth;  // 이미지의 너비
 
-      // 이미지의 현재 위치를 가져옴
-      let currentPos = parseFloat(window.getComputedStyle(image).left);
+  //     // 이미지의 현재 위치를 가져옴
+  //     let currentPos = parseFloat(window.getComputedStyle(image).left);
 
-      const updatePosition = () => {
-        // 방향에 따라 이미지 위치 업데이트
-        if (direction === 'left') {
-          currentPos -= speed; // 왼쪽으로 이동
+  //     const updatePosition = () => {
+  //       // 방향에 따라 이미지 위치 업데이트
+  //       if (direction === 'left') {
+  //         currentPos -= speed; // 왼쪽으로 이동
 
-          if (currentPos < -imageWidth) { // 이미지가 왼쪽 화면 밖으로 나가면
-            currentPos = screenWidth + imageWidth; // 화면 오른쪽 끝으로 이동
-            console.log(-imageWidth)
-            console.log(currentPos)
-            console.log(screenWidth)
-          }
-        } else if (direction === 'right') {
-          currentPos += speed; // 오른쪽으로 이동
+  //         if (currentPos < -imageWidth) { // 이미지가 왼쪽 화면 밖으로 나가면
+  //           currentPos = screenWidth + imageWidth; // 화면 오른쪽 끝으로 이동
+  //           console.log(-imageWidth)
+  //           console.log(currentPos)
+  //           console.log(screenWidth)
+  //         }
+  //       } else if (direction === 'right') {
+  //         currentPos += speed; // 오른쪽으로 이동
 
-          if (currentPos > screenWidth) { // 이미지가 오른쪽 화면 밖으로 나가면
-            currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
-          }
-        }
+  //         if (currentPos > screenWidth) { // 이미지가 오른쪽 화면 밖으로 나가면
+  //           currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
+  //         }
+  //       }
 
-        // 이미지의 위치를 업데이트
-        image.style.left = `${currentPos}px`;
+  //       // 이미지의 위치를 업데이트
+  //       image.style.left = `${currentPos}px`;
 
-        // 다음 프레임을 요청
-        requestAnimationFrame(updatePosition);
-      };
+  //       // 다음 프레임을 요청
+  //       requestAnimationFrame(updatePosition);
+  //     };
 
-      updatePosition(); // 애니메이션 시작
-    };
+  //     updatePosition(); // 애니메이션 시작
+  //   };
 
-    animate(); // 애니메이션 함수 호출
-  };
+  //   animate(); // 애니메이션 함수 호출
+  // };
 
-  useEffect(() => {
-    if (loaded) {
-      // 이미지가 로드되면 애니메이션을 시작합니다
-      const images = imageRefs.current;
-      moveImage(images[0], 'left', 0.3); // 첫 번째 이미지: 왼쪽으로 이동
-      moveImage(images[1], 'left', 0.5); // 두 번째 이미지: 왼쪽으로 이동
-    }
-  }, [loaded]);
+  // useEffect(() => {
+  //   if (loaded) {
+  //     // 이미지가 로드되면 애니메이션을 시작합니다
+  //     const images = imageRefs.current;
+  //     moveImage(images[0], 'left', 0.3); // 첫 번째 이미지: 왼쪽으로 이동
+  //     moveImage(images[1], 'left', 0.5); // 두 번째 이미지: 왼쪽으로 이동
+  //   }
+  // }, [loaded]);
 
-  useEffect(() => {
-    // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
-    const handleResize = () => {
-      const images = imageRefs.current;
-      images.forEach((image, index) => {
-        if (image) {
-          const direction = index === 0 ? 'left' : 'left'; // 모든 이미지 왼쪽으로 이동
-          const speed = index === 0 ? 0.3 : 0.5; // 속도 조절
-          moveImage(image, direction, speed);
-        }
-      });
-    };
+  // useEffect(() => {
+  //   // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
+  //   const handleResize = () => {
+  //     const images = imageRefs.current;
+  //     images.forEach((image, index) => {
+  //       if (image) {
+  //         const direction = index === 0 ? 'left' : 'left'; // 모든 이미지 왼쪽으로 이동
+  //         const speed = index === 0 ? 0.3 : 0.5; // 속도 조절
+  //         moveImage(image, direction, speed);
+  //       }
+  //     });
+  //   };
 
-    window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
-    return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
-  }, []);
+  //   window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
+  //   return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
+  // }, []);
 
   return (
     <div className='relative w-full h-[594px] flex justify-center'>
+
       <div className='w-[1200px] h-full'>
+
         <div className='flex justify-center mt-[120px] gap-[96px]'>
-          <div className='relative'>
+
+          <div className='relative bg-green-200'>
+
             <h4 className='scoop-font text-[64px]'>Store</h4>
             <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
-            <div>
+            <div className='relative'>
               <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
+
+              <div className='ping absolute top-0 left-[40%]'>
+                <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
+              </div>
             </div>
-            <div className='ping absolute top-[145px] left-[230px]'>
-              <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
+            
+
+
+            {/* 구름 */}
+        
+            <div className='absolute top-[130px] left-[0px] cloud1Ani'>          
+              <img  className=' bg-cover'  src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01"  />
             </div>
+
+            <div className='absolute top-[250px] left-[200px] cloud2Ani'>         
+              <img  className=' bg-cover'  src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02"  />
+            </div>
+
           </div>
-          <div>
+
+          <div className='bg-green-500'>
             <h4 className='scoop-font text-[64px]'>ED way</h4>
             <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
             <div className='relative'>
-              <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" />
+              <div className='bg-red-200 w-[523px] h-[167px] rounded-full'></div>
+              {/* <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" /> */}
+
               <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
                 <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
               </div>
@@ -1077,14 +1100,10 @@ function StoreEDway() {
               </div>
             </div>
           </div>
+
         </div>
-        {/* 구름 */}
-        
-          <img ref={el => imageRefs.current[0] = el} className='absolute top-[300px] left-[100px] bg-cover'  src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01" onLoad={handleImageLoad} />
-        
-        
-          <img ref={el => imageRefs.current[1] = el} className='absolute top-[380px] left-[580px] bg-cover'  src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02" onLoad={handleImageLoad} />
-        
+
+
       </div>
     </div>
   );
