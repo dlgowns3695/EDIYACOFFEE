@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>
-      <header><Navbar /></header>
+      {/* <header><Navbar /></header> */}
       
       <main>
         <Routes>

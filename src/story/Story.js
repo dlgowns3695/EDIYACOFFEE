@@ -46,21 +46,23 @@ function TopBanner(){
 // 포부 첫번째 섹션
 function Ambition() {
   return (
-    <div className="w-full h-[3100px] md:h-[1885px] bg-white flex justify-center relative ">
+    <div className="w-full h-[3100px] md:h-[1885px] bg-white flex justify-center relative overflow-hidden ">
 
-      <div data-aos="fade-left" className="text-[130px] left-[10%]  absolute md:left-[50%] text-[#ebebeb] md:text-[220px] scoop-font whitespace-nowrap mt-[61px]">
+      <div data-aos="fade-left" className="text-[130px] left-[30%]  absolute md:left-[50%] text-[#ebebeb] md:text-[220px] scoop-font whitespace-nowrap mt-[36px] md:mt-[61px]">
         Ediya Coffee
       </div>
 
       <div className="relative w-[1200px] h-full">
 
         {/* Always Beside You */}
-        <div className="mt-[386px]">
+        <div className="mt-[210px] md:mt-[386px]">
           <h4 data-aos="fade-up" className="text-[58px] leading-[82px] md:text-[52px] md:leading-20">
             Always Beside You,<br />
-            <span className='font-semibold'>이디야커피는 언제나 당신 곁에 함께 합니다.</span> 
+            <span className='font-semibold'>이디야커피는 언제나<br/>
+              당신 곁에<br/>
+              함께 합니다.</span> 
           </h4>
-          <p data-aos="fade-up" data-aos-delay="200" className="text-[40px] md:text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-[20px]">
+          <p data-aos="fade-up" data-aos-delay="200" className="text-[40px] text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-[20px]">
             커피 한잔의 진심
           </p>
           <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-[#222222]">
@@ -80,19 +82,19 @@ function Ambition() {
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
         </div>
         {/* 위치값 수정 0820 해야함 */}
-        <div data-aos="fade-left" className='block md:hidden absolute top-[1110px] left-[180px]'>
+        <div data-aos="fade-left" className='block md:hidden absolute top-[1330px] left-[9.4rem]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanMobileBn.png`} alt="Human"/> 
         </div>
 
         {/* 상생협력 */}
-        <div className="flex justify-between relative top-[1000px] md:top-0 md:mt-[282px]">
+        <div className="flex justify-between relative top-[1000px] left-[9.4rem] mt-[37px] md:top-0 md:left-0 md:mt-[282px]">
           <div className="text-[#222222]">
 
             <h4 data-aos="fade-up" className="text-[58px] leading-[82px] md:text-[52px] text-[#243c84] md:leading-[62px]">
               함께 행복하기<br />
               <span className='font-semibold'>위한 상생협력</span> 
             </h4>
-            <p data-aos="fade-up" data-aos-delay="200" className="text-[32px] leading-[48px] md:text-[24px] md:leading-[39px] mt-[72px]">
+            <p data-aos="fade-up" data-aos-delay="200" className="text-[32px] leading-[48px] mt-[57px] md:text-[24px] md:leading-[39px] md:mt-[72px]">
               이디야커피는 고객, 가맹점주, 협력사와의<br className='hidden md:block' />
               상생협력을 무엇보다 소중하게 생각합니다.<br className='hidden md:block' />
               이디야커피의 "상생협력"은 정직과 신뢰를<br className='hidden md:block' />
@@ -159,12 +161,12 @@ function CoreValue() {
   );
 }
 
-// 아이콘 세로, 수정해야함 0802
+
 function Management() {
   return (
     <div className="w-full h-[2600px] md:h-[2100px] flex justify-center relative">
       
-      <div data-aos="fade-up"  className=" w-[1200px] relative  h-full ">
+      <div data-aos="fade-up"  className="bg-green-200 w-[1200px] relative  h-full ">
         {/* 이디야의 경영철학 */}
         <div className="flex justify-center mt-[156px] mb-[156px] md:mb-[0px] text-center">
           <h4 className="text-[58px] md:text-[52px]">
@@ -173,7 +175,7 @@ function Management() {
         </div>
 
         {/* 써클 */}
-        <div className="hidden md:block relative top-[290px] md:flex justify-center items-center">
+        <div className="hidden  relative top-[290px] md:flex justify-center items-center">
           <div className="absolute w-[474px] h-[474px] rounded-full bg-[#f8f8f8]"></div>
           <div className="absolute w-[362px] h-[362px] rounded-full bg-[#e5e5e5]"></div>
           <div className={`${style.bggradient} absolute w-[226px] h-[226px] rounded-full bg-white`}></div>
@@ -250,26 +252,6 @@ function Management() {
 
           </div>
 
-          
-          {/* <div className="relative md:top-[529px] md:left-[145px]">
-          
-            <div className="relative mt-4 md:mt-0 text-left md:absolute md:top-0 md:left-0 md:text-right">
-              <h4 className="font-semibold text-[26px] md:text-[36px] text-[#222222]">
-                사람을 생각하는 따뜻한 기업
-              </h4>
-              <p className="text-[#222222] text-[18px] leading-[26px] md:text-[28px] md:leading-[38px]">
-                늘 고객의 입장에서 먼저 생각하고,<br />
-                가맹점주의 입장을 배려하며<br />
-                사회와 함께하려고 노력합니다.
-              </p>
-            </div>
-          </div>
-
-          <img className="absolute top-[658px] left-[524px] object-cover hidden md:block" src={`${process.env.PUBLIC_URL}/Philosophy03.png`} alt="Philosophy Icon 3" />
-          <img className="block md:hidden object-cover" src={`${process.env.PUBLIC_URL}/Philosophy03Mobile.png`} alt="Philosophy Icon 3" />
-
-          <img className='absolute top-[755px] left-[430px] hidden md:block' src={`${process.env.PUBLIC_URL}/line03.png`} alt="Line Decoration" />
-         */}
         </div>
 
 
