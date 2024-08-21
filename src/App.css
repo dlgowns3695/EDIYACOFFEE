@@ -12,6 +12,20 @@
 }
 
 @font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
     font-family: Scoop;
     font-weight: 700;
     font-display: swap;
@@ -51,48 +65,55 @@ body{
 @keyframes cloud1Ani{
   0%{
     transform: translateX(0);
+    transform: translateX(10px);
   }
   /* 25%{
     transform: translateX(200px);
   } */
   50%{
     transform: translateX(300px);
+    transform: translateX(-20px);
   }
   /* 75%{
     transform: translateX(200px);
   } */
   100%{
     transform: translateX(0px);
+    transform: translateX(10px);
   }
 }
 
 .cloud1Ani {
   animation: cloud1Ani 40s ease-in-out infinite;
+  animation: cloud1Ani 10s ease-in-out infinite;
 }
 
 
 @keyframes cloud2Ani{
   0%{
     transform: translateX(0px);
+    transform: translateX(-10px);
   }
   /* 25%{
     transform: translateX(200px);
   } */
   50%{
     transform: translateX(-150px);
+    transform: translateX(30px);
   }
   /* 75%{
     transform: translateX(200px);
   } */
   100%{
     transform: translateX(0px);
+    transform: translateX(-10px);
   }
 }
 
 .cloud2Ani {
   animation: cloud2Ani 40s ease-in-out infinite;
+  animation: cloud2Ani 15s ease-in-out infinite;
 }
-
 
 
 @keyframes ping {

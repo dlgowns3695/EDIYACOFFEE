@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from './story.module.css';
 import Footer from '../footer/Footer';
 import '../App.css'; 
 import AOS from "aos";
 import "aos/dist/aos.css"; // AOS의 CSS 파일을 가져옵니다
+
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const Story = () => {
 
@@ -21,9 +25,11 @@ const Story = () => {
   return (
     <>
       <TopBanner />
-      <Ambition />
-      <CoreValue />
-      <Management />
+      <div className="px-2 md:px-0"> {/* 콘텐츠 부분에 일괄적으로 패딩 적용 */}
+        <Ambition />
+        <CoreValue />
+        <Management />
+      </div>
       <Footer />
     </>
   )
@@ -45,6 +51,36 @@ function TopBanner(){
 
 // 포부 첫번째 섹션
 function Ambition() {
+  gsap.registerPlugin(ScrollTrigger);
+  const triggerRef = useRef(null);
+  const imgPcRef = useRef(null);
+  const imgMobileRef = useRef(null);
+
+  useEffect(() => {
+    gsap.timeline({
+        scrollTrigger : {
+            trigger : triggerRef.current, // 스크롤트리거 대상 : 어떤 요소를 만났을때 재생
+            start : 'top center', // 시작점 'top 90%' : 트리거 대상.con02 ul의 top 부분과 브라우저의 90% 부터 애니메이션 시작 'center center'으로 바꾸기
+            // end : '20% 0%', // 끝점 '20% 100%' : 트리거 대상.con02 ul의 20%와 브라우저의 100%가 만날때 애니메이션 종료 '20% 20%'으로 바꾸기
+            // scrub : 1, // 스크롤 이벤트는 스크롤 사용될때만 재생되도록 만들어주는 속성, 부드럽게 되감기 1 : 애니메이션 좀 빠름, 10 : 부드러움  // 잔상
+            markers:true,
+        }
+    })
+    .to(imgPcRef.current, {y:'-400px', duration:1.5 ,ease:'ease-in-out'}) 
+},[]);
+
+  useEffect(() => {
+    gsap.timeline({
+        scrollTrigger : {
+            trigger : triggerRef.current,
+            start : 'top center', 
+            markers:true,
+        }
+    })
+    .to(imgMobileRef.current, {y:'-200px', duration:1.5 ,ease:'ease-in-out'}) 
+},[]);
+
+
   return (
     <div className="w-full h-[3100px] md:h-[1885px] bg-white flex justify-center relative overflow-hidden ">
 
@@ -55,14 +91,14 @@ function Ambition() {
       <div className="relative w-[1200px] h-full">
 
         {/* Always Beside You */}
-        <div className="mt-[210px] md:mt-[386px]">
-          <h4 data-aos="fade-up" className="text-[58px] leading-[82px] md:text-[52px] md:leading-20">
+        <div className="mt-[210px] md:mt-[386px] ">
+          <h4 data-aos="fade-up" className="text-[58px] leading-[82px]   md:text-[52px] md:leading-20">
             Always Beside You,<br />
-            <span className='font-semibold'>이디야커피는 언제나<br/>
-              당신 곁에<br/>
+            <span className='font-semibold'>이디야커피는 언제나<br className='block md:hidden'/>
+              당신 곁에<br className='block md:hidden'/>
               함께 합니다.</span> 
           </h4>
-          <p data-aos="fade-up" data-aos-delay="200" className="text-[40px] text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-[20px]">
+          <p data-aos="fade-up" data-aos-delay="200" ref={triggerRef} className="text-[40px] text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-[20px]">
             커피 한잔의 진심
           </p>
           <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-[#222222]">
@@ -78,19 +114,21 @@ function Ambition() {
         </div>
 
         {/* 인물사진 */}
-        <div data-aos="fade-left" className='hidden md:block absolute top-[940px] left-[600px]'>
+        <div ref={imgPcRef} className='hidden md:block absolute top-[1340px] left-[600px] w-[605px] h-[777px]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
         </div>
-        {/* 위치값 수정 0820 해야함 */}
-        <div data-aos="fade-left" className='block md:hidden absolute top-[1330px] left-[9.4rem]'>
+
+        {/* 위치값 수정 0820 해야함, 현재위치에서 gsap로 위로 올리기 글자랑 간격 180px, 현재 1330*/} 
+        <div ref={imgMobileRef} className='block md:hidden absolute top-[1150px] left-[9.4rem]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanMobileBn.png`} alt="Human"/> 
         </div>
 
         {/* 상생협력 */}
-        <div className="flex justify-between relative top-[1000px] left-[9.4rem] mt-[37px] md:top-0 md:left-0 md:mt-[282px]">
+        <div className="flex justify-between mt-[37px] relative top-[1000px] left-[9.4rem]  md:top-[282px] md:left-0 md:mt-0 ">
+         
           <div className="text-[#222222]">
 
-            <h4 data-aos="fade-up" className="text-[58px] leading-[82px] md:text-[52px] text-[#243c84] md:leading-[62px]">
+            <h4 data-aos="fade-up"  className="text-[58px] leading-[82px] md:text-[52px] text-[#243c84] md:leading-[62px]">
               함께 행복하기<br />
               <span className='font-semibold'>위한 상생협력</span> 
             </h4>

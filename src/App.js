@@ -14,18 +14,7 @@ import About from './about/About';
 import Menus from './menus/Menus';
 import Story from './story/Story';
 import Store from './store/Store';
-import styles from './componentsCss/MenuSection03.global.css'; // CSS Modules로 가져오기
 import Footer from './footer/Footer'
-
-// import Home from './pages/Home';
-
-
-
-// 스와이퍼들 버튼 수정하기 위치
-// Promotion섹션 작은 이미지 누를때 왼쪽 큰 사이즈로 넘어가기
-// Menu섹션 스와이퍼시 메뉴 하나씩 넘어가기로, 무한대로
-
-// App 컴포넌트
 
 // Routes와 Route 컴포넌트는 Navbar, SwiperSection01, PromotionSection02, MenuSection03, MdItem, StoreEDway, Footer 
 // 컴포넌트와 같은 레벨에 있지 않으면 제대로 작동하지 않을 수 있습니다.
@@ -33,8 +22,6 @@ import Footer from './footer/Footer'
 function App() {
 
   useEffect(() => {
-
-    
 
     AOS.init({
       duration: 900, // 애니메이션 지속 시간
@@ -55,7 +42,7 @@ function App() {
 
   return (
     <>
-      {/* <header><Navbar /></header> */}
+      <header><Navbar /></header>
       
       <main>
         <Routes>
@@ -128,59 +115,65 @@ function Navbar() {
   }, []);
 
   return (
-    <div
-      ref={headerRef}
-      style={{
-        transition: 'background-color 0.3s ease-in-out',
-      }}
-      className="fixed z-[999] w-full h-[130px] flex items-center justify-center"
-    >
-      {/* 1200px 내용물공간 */}
-      <div className="w-[1200px] h-full flex justify-between items-center">
-        {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
-        <div className="flex items-center">
-          {/* 로고 */}
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
-              alt="ediyalogo"
-            />
+    // 모바일일 경우 히든, 피씨는 on
+    <>
+
+      <div
+        ref={headerRef}
+        style={{transition: 'background-color 0.3s ease-in-out'}}
+        className="fixed z-[999] w-full h-[130px] md:flex items-center justify-center hidden"
+      >
+        {/* 1200px 내용물공간 */}
+        <div className="w-[1200px] h-full flex justify-between items-center">
+          {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
+          <div className="flex items-center">
+            {/* 로고 */}
+            <div><img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo"/></div>
+            {/* 메뉴 */}
+            <div>
+              <ul className="flex space-x-8 font-bold text-lg">
+                <li ref={(el) => (linkRefs.current[0] = el)}>
+                  <Link to="/">ABOUT</Link>
+                </li>
+                <li ref={(el) => (linkRefs.current[1] = el)}>
+                  <Link to="/menus">MENU</Link>
+                </li>
+                <li ref={(el) => (linkRefs.current[2] = el)}>
+                  <Link to="/story">STORY</Link>
+                </li>
+                <li ref={(el) => (linkRefs.current[3] = el)}>
+                  <Link to="/store">STORE</Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          {/* 메뉴 */}
-          <div>
-            <ul className="flex space-x-8 font-bold text-lg">
-              <li ref={(el) => (linkRefs.current[0] = el)}>
-                <Link to="/">ABOUT</Link>
-              </li>
-              <li ref={(el) => (linkRefs.current[1] = el)}>
-                <Link to="/menus">MENU</Link>
-              </li>
-              <li ref={(el) => (linkRefs.current[2] = el)}>
-                <Link to="/story">STORY</Link>
-              </li>
-              <li ref={(el) => (linkRefs.current[3] = el)}>
-                <Link to="/store">STORE</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        {/* 오른쪽: 콘택트 */}
-        <div className="text-white">
-          <div className="flex items-center gap-6">
-            <ul className="flex space-x-4 font-bold">
-              <li ref={contact01Refs} className="text-[#243c84]">KR</li>
-              <li ref={contact02Refs} className="text-[#d2d6e5]">EN</li>
-            </ul>
-            <div
-              ref={contactBtnRef}
-              className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]"
-            >
-              가맹문의
+          {/* 오른쪽: 콘택트 */}
+          <div className="text-white">
+            <div className="flex items-center gap-6">
+              <ul className="flex space-x-4 font-bold">
+                <li ref={contact01Refs} className="text-[#243c84]">KR</li>
+                <li ref={contact02Refs} className="text-[#d2d6e5]">EN</li>
+              </ul>
+              <div
+                ref={contactBtnRef}
+                className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]"
+              >
+                가맹문의
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* 모바일 nav바 */}
+      <div className=''>
+
+      </div>
+    
+    </>
+
+
+    
   );
 }
 
@@ -321,9 +314,9 @@ function SwiperSection01() {
               loop={true}
               autoplay={{ delay: 10500, disableOnInteraction: false }}
             >
-              <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
-              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
-              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover rounded-[150px]' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
+              <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
+              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
+              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
             </Swiper>
           </div>
 
@@ -713,7 +706,7 @@ function PromotionSection02() {
       <div className="w-full flex items-center justify-center">
         <div className="w-[1200px]">
           <div className="text-center">
-            <div data-aos="fade-up">
+            <div>
               <h1 className="text-[64px] scoop-font">Promotion</h1>
               <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
             </div>
@@ -805,7 +798,7 @@ function MenuSection03() {
               <div className='relative w-[1200px] flex justify-center items-center flex-col'>
 
                   {/* 타이틀 부분 */}
-                  <div data-aos="fade-up"  className='flex flex-col justify-center items-center'>
+                  <div className='flex flex-col justify-center items-center'>
                       <h1 className='text-[64px] scoop-font'>Menu</h1>
                       <p className='text-2xl mt-2 mb-12 font-semibold '>이디야의 신제품을 만나보세요.</p>
                   </div>
@@ -939,14 +932,14 @@ function MdItem(){
           <div>
             {/* 타이틀 */}
             <div className='flex flex-col items-center mb-16'>
-              <h1 data-aos="fade-up" className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
-              <p data-aos="fade-up" className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
+              <h1 className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
+              <p className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
             </div>
 
             {/* MD상품 */}
             <div className='flex items-center justify-center gap-36'>
               {/* 텀블러 */}
-              <div data-aos="fade-up"  className='flex flex-col items-center'>
+              <div data-aos="fade-up" className='flex flex-col items-center'>
                 
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
@@ -956,7 +949,7 @@ function MdItem(){
                 <p className='text-black text-[36px] mt-[-20px]'>스마일 텀블러</p>
               </div>
               {/* 파우치 */}
-              <div data-aos="fade-up"  className='flex flex-col items-center'>
+              <div data-aos="fade-up" data-aos-delay="200" className='flex flex-col items-center'>
                 
                 <div className='relative'>
                   <img src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
@@ -975,95 +968,20 @@ function MdItem(){
     </>
   )
 }
-
+// custom1200 --> 1200 미만일때 
 function StoreEDway() {
-  // const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
-  // const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
-
-  // // 이미지 로드 완료 후 호출되는 함수
-  // const handleImageLoad = () => {
-  //   setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
-  // };
-
-  // // 이미지 애니메이션 함수
-  // const moveImage = (image, direction, speed) => {
-  //   const animate = () => {
-  //     const screenWidth = window.innerWidth; // 화면의 너비
-  //     const imageWidth = image.offsetWidth;  // 이미지의 너비
-
-  //     // 이미지의 현재 위치를 가져옴
-  //     let currentPos = parseFloat(window.getComputedStyle(image).left);
-
-  //     const updatePosition = () => {
-  //       // 방향에 따라 이미지 위치 업데이트
-  //       if (direction === 'left') {
-  //         currentPos -= speed; // 왼쪽으로 이동
-
-  //         if (currentPos < -imageWidth) { // 이미지가 왼쪽 화면 밖으로 나가면
-  //           currentPos = screenWidth + imageWidth; // 화면 오른쪽 끝으로 이동
-  //           console.log(-imageWidth)
-  //           console.log(currentPos)
-  //           console.log(screenWidth)
-  //         }
-  //       } else if (direction === 'right') {
-  //         currentPos += speed; // 오른쪽으로 이동
-
-  //         if (currentPos > screenWidth) { // 이미지가 오른쪽 화면 밖으로 나가면
-  //           currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
-  //         }
-  //       }
-
-  //       // 이미지의 위치를 업데이트
-  //       image.style.left = `${currentPos}px`;
-
-  //       // 다음 프레임을 요청
-  //       requestAnimationFrame(updatePosition);
-  //     };
-
-  //     updatePosition(); // 애니메이션 시작
-  //   };
-
-  //   animate(); // 애니메이션 함수 호출
-  // };
-
-  // useEffect(() => {
-  //   if (loaded) {
-  //     // 이미지가 로드되면 애니메이션을 시작합니다
-  //     const images = imageRefs.current;
-  //     moveImage(images[0], 'left', 0.3); // 첫 번째 이미지: 왼쪽으로 이동
-  //     moveImage(images[1], 'left', 0.5); // 두 번째 이미지: 왼쪽으로 이동
-  //   }
-  // }, [loaded]);
-
-  // useEffect(() => {
-  //   // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
-  //   const handleResize = () => {
-  //     const images = imageRefs.current;
-  //     images.forEach((image, index) => {
-  //       if (image) {
-  //         const direction = index === 0 ? 'left' : 'left'; // 모든 이미지 왼쪽으로 이동
-  //         const speed = index === 0 ? 0.3 : 0.5; // 속도 조절
-  //         moveImage(image, direction, speed);
-  //       }
-  //     });
-  //   };
-
-  //   window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
-  //   return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
-  // }, []);
-
   return (
-    <div className='relative w-full h-[594px] flex justify-center'>
+    <div className='relative w-full h-[1000px] custom1200:h-[594px] flex justify-center'>
 
       <div className='w-[1200px] h-full'>
 
-        <div className='flex justify-center mt-[120px] gap-[96px]'>
+        <div className='flex flex-col items-center custom1200:flex-row justify-center mt-[120px] gap-[46px] md:gap-[96px]'>
 
-          <div className='relative bg-green-200'>
+          <div className='relative w-[580px]'>
 
             <h4 className='scoop-font text-[64px]'>Store</h4>
             <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
-            <div className='relative'>
+            <div className='relative w-[580px] '>
               <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
 
               <div className='ping absolute top-0 left-[40%]'>
@@ -1071,7 +989,6 @@ function StoreEDway() {
               </div>
             </div>
             
-
 
             {/* 구름 */}
         
@@ -1085,11 +1002,11 @@ function StoreEDway() {
 
           </div>
 
-          <div className='bg-green-500'>
+          <div className='w-[580px]'>
             <h4 className='scoop-font text-[64px]'>ED way</h4>
             <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
             <div className='relative'>
-              <div className='bg-red-200 w-[523px] h-[167px] rounded-full'></div>
+              <div className='bg-red-200 w-[580px] h-[171px] rounded-full'></div>
               {/* <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" /> */}
 
               <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
@@ -1105,6 +1022,7 @@ function StoreEDway() {
 
 
       </div>
+
     </div>
   );
 }
