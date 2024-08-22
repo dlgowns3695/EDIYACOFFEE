@@ -43,6 +43,7 @@ function App() {
   return (
     <>
       <header><Navbar /></header>
+      <MobileMenu></MobileMenu>
       
       <main>
         <Routes>
@@ -165,9 +166,22 @@ function Navbar() {
         </div>
       </div>
 
-      {/* 모바일 nav바 */}
-      <div className=''>
+      {/* 모바일 nav바 452px = 모바일 탑 배너크기 */}
+      <div className='absolute block md:hidden w-full h-[452px] '>
+        <div className='flex justify-between items-center px-8 pt-8'>
 
+          <div className='w-[176px] h-[176px]'>
+            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
+          </div>
+
+          {/* 여기 햄버거 바를 눌렀을 경우 100vw 만큼 오른쪽에서 왼쪽으로 나오게끔. */}
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-16">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </div>
+
+        </div>
       </div>
     
     </>
@@ -175,6 +189,125 @@ function Navbar() {
 
     
   );
+}
+
+function MobileMenu() {
+  return(
+    <>
+
+      <div className='absolute w-full h-full bg-red-100 z-10'>
+
+        <div className='flex justify-between items-center px-6 pt-8 bg-red-300'>
+          <div className='w-[176px] h-[176px]'>
+            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
+          </div>
+
+          {/* 닫기버튼을 눌렀을 경우 메뉴 다시 움직여서 사라지기 */}
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-16">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </div>
+        </div>
+
+        {/* 검정 192033 파랑 243c84 */}
+        <div className='flex gap-8 bg-red-500 pl-8 '>
+
+          <div className=' w-[185px] h-[65px] bg-[#243c84] flex justify-center items-center rounded-full '>
+            <p className='text-[#fff] text-[24px]'>로그인</p>
+          </div>
+
+          <div className=' w-[185px] h-[65px] bg-[#192033] flex justify-center items-center rounded-full '>
+            <p className='text-[#fff] text-[24px]'>회원가입</p>
+          </div>
+        </div>
+
+        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
+
+          <div>
+            <h4 className='text-[36px] scoop-font'>About</h4>
+          </div>
+
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+
+          </div>
+
+          
+
+        </div>
+        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
+
+          <div>
+            <h4 className='text-[36px] scoop-font'>About</h4>
+          </div>
+
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+
+          </div>
+
+          
+
+        </div>
+        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
+
+          <div>
+            <h4 className='text-[36px] scoop-font'>About</h4>
+          </div>
+
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+
+          </div>
+
+          
+
+        </div>
+        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
+
+          <div>
+            <h4 className='text-[36px] scoop-font'>About</h4>
+          </div>
+
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+
+          </div>
+
+          
+
+        </div>
+
+        <div className='text-[32px] font-semibold'>
+          <p>KOREAN | ENGLISH | 가맹문의</p>
+        </div>
+
+        <div className='flex gap-8 bg-red-400 pl-8'>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/facebookMobile.png`}/>
+          </div>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/instarMobile.png`}/>
+          </div>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/youtubeMobile.png`}/>
+          </div>
+        </div>
+
+      </div>
+    
+    
+    </>
+  )
 }
 
 function SwiperSection01() {
