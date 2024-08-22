@@ -36,14 +36,27 @@ function App() {
     window.scrollTo(0, 0);
   }, []); // 빈 배열을 의존성 배열로 사용하여 마운트 시 한 번만 실행
 
+
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!isMenuOpen);
+  const closeMenu = () => setMenuOpen(false);
   
 
 
 
   return (
     <>
+      {/* 피씨네브바 */}
       <header><Navbar /></header>
-      <MobileMenu></MobileMenu>
+
+      {/* 모바일네브바 */}
+      <MobileNavbar onMenuToggle={toggleMenu} />
+
+      <div className={`relative h-screen z-[999] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500`}>
+        <MobileMenu onClose={closeMenu}/>
+      </div>
+      
       
       <main>
         <Routes>
@@ -122,10 +135,10 @@ function Navbar() {
       <div
         ref={headerRef}
         style={{transition: 'background-color 0.3s ease-in-out'}}
-        className="fixed z-[999] w-full h-[130px] md:flex items-center justify-center hidden"
+        className="hidden md:fixed z-[999] w-full h-[130px] md:flex items-center justify-center "
       >
         {/* 1200px 내용물공간 */}
-        <div className="w-[1200px] h-full flex justify-between items-center">
+        <div className="hidden  w-[1200px] h-full md:flex justify-between items-center">
           {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
           <div className="flex items-center">
             {/* 로고 */}
@@ -166,23 +179,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* 모바일 nav바 452px = 모바일 탑 배너크기 */}
-      <div className='absolute block md:hidden w-full h-[452px] '>
-        <div className='flex justify-between items-center px-8 pt-8'>
 
-          <div className='w-[176px] h-[176px]'>
-            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
-          </div>
-
-          {/* 여기 햄버거 바를 눌렀을 경우 100vw 만큼 오른쪽에서 왼쪽으로 나오게끔. */}
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-16">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </div>
-
-        </div>
-      </div>
     
     </>
 
@@ -191,124 +188,236 @@ function Navbar() {
   );
 }
 
-function MobileMenu() {
+function MobileNavbar({ onMenuToggle }){
   return(
     <>
+      {/* 모바일 nav바 452px = 모바일 탑 배너크기 */}
+      <div className='absolute z-[999] block md:hidden w-full h-[452px]  '>
+        <div className='flex justify-between items-center px-8 pt-8'>
 
-      <div className='absolute w-full h-full bg-red-100 z-10'>
-
-        <div className='flex justify-between items-center px-6 pt-8 bg-red-300'>
           <div className='w-[176px] h-[176px]'>
             <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
           </div>
 
-          {/* 닫기버튼을 눌렀을 경우 메뉴 다시 움직여서 사라지기 */}
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-16">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          {/* 여기 햄버거 바를 눌렀을 경우 100vw 만큼 오른쪽에서 왼쪽으로 나오게끔. */}
+          <div onClick={onMenuToggle}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-16">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </div>
-        </div>
-
-        {/* 검정 192033 파랑 243c84 */}
-        <div className='flex gap-8 bg-red-500 pl-8 '>
-
-          <div className=' w-[185px] h-[65px] bg-[#243c84] flex justify-center items-center rounded-full '>
-            <p className='text-[#fff] text-[24px]'>로그인</p>
-          </div>
-
-          <div className=' w-[185px] h-[65px] bg-[#192033] flex justify-center items-center rounded-full '>
-            <p className='text-[#fff] text-[24px]'>회원가입</p>
-          </div>
-        </div>
-
-        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
-
-          <div>
-            <h4 className='text-[36px] scoop-font'>About</h4>
-          </div>
-
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-
-          </div>
-
-          
 
         </div>
-        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
-
-          <div>
-            <h4 className='text-[36px] scoop-font'>About</h4>
-          </div>
-
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-
-          </div>
-
-          
-
-        </div>
-        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
-
-          <div>
-            <h4 className='text-[36px] scoop-font'>About</h4>
-          </div>
-
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-
-          </div>
-
-          
-
-        </div>
-        <div className='w-full h-[150px] bg-blue-100 flex items-center justify-between px-8'>
-
-          <div>
-            <h4 className='text-[36px] scoop-font'>About</h4>
-          </div>
-
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-12">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-
-          </div>
-
-          
-
-        </div>
-
-        <div className='text-[32px] font-semibold'>
-          <p>KOREAN | ENGLISH | 가맹문의</p>
-        </div>
-
-        <div className='flex gap-8 bg-red-400 pl-8'>
-          <div>
-            <img src={`${process.env.PUBLIC_URL}/facebookMobile.png`}/>
-          </div>
-          <div>
-            <img src={`${process.env.PUBLIC_URL}/instarMobile.png`}/>
-          </div>
-          <div>
-            <img src={`${process.env.PUBLIC_URL}/youtubeMobile.png`}/>
-          </div>
-        </div>
-
       </div>
-    
-    
     </>
   )
 }
+
+function MobileMenu({ onClose }) {
+  // Menu 서브메뉴 열림 상태를 관리하는 state
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+
+  // Menu 클릭 시 서브메뉴 열림/닫힘을 토글하는 함수
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <>
+      <div className="absolute w-full h-full z-[10] bg-green-200">
+        {/* 상단 로고 및 닫기 버튼 섹션 */}
+        <div className="flex justify-between items-center px-6 pt-8 bg-red-300">
+          <div className="w-[176px] h-[176px]">
+            <img
+              className="w-full h-full object-cover"
+              src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
+              alt="Logo"
+            />
+          </div>
+
+          {/* 닫기 버튼 */}
+          <div onClick={onClose} className="cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="size-16"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* 로그인 및 회원가입 버튼 섹션 */}
+        <div className="flex gap-8 bg-red-500 pl-8">
+          <div className="w-[185px] h-[65px] bg-[#243c84] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-[24px]">로그인</p>
+          </div>
+
+          <div className="w-[185px] h-[65px] bg-[#192033] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-[24px]">회원가입</p>
+          </div>
+        </div>
+
+        {/* 메뉴 리스트 섹션 */}
+        <ul className="w-full">
+          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
+            <div>
+              <h4 className="text-[36px] scoop-font">About</h4>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="size-12"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </div>
+          </li>
+
+          {/* Menu 리스트 아이템 */}
+          <li className="w-full bg-blue-100 px-8">
+            {/* Menu 타이틀과 화살표 */}
+            <div
+              className="h-[150px] flex items-center justify-between cursor-pointer"
+              onClick={toggleMenu} // 클릭 시 서브메뉴 열림/닫힘 토글
+            >
+              <h4 className="text-[36px] scoop-font">Menu</h4>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className={`size-12 transform transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-180' : 'rotate-0'
+                }`} // 서브메뉴가 열리면 화살표를 180도 회전
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </div>
+
+            {/* 서브메뉴 리스트 */}
+            <ul
+              className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+                isMenuOpen ? 'max-h-[280px] py-4' : 'max-h-0'
+              }`} // 서브메뉴가 열리면 max-height를 늘리고, 서서히 열리도록 애니메이션 적용
+            >
+              <li className="text-[24px] bg-red-200 py-2">커피메뉴</li>
+              <li className="text-[24px] bg-red-200 py-2">플랫치노</li>
+              <li className="text-[24px] bg-red-200 py-2">베이커리</li>
+              <li className="text-[24px] bg-red-200 py-2">빙수</li>
+            </ul>
+          </li>
+
+          {/* 다른 메뉴 리스트 아이템들 */}
+          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
+            <div>
+              <h4 className="text-[36px] scoop-font">Story</h4>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="size-12"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </div>
+          </li>
+
+          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
+            <div>
+              <h4 className="text-[36px] scoop-font">Store</h4>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2.5"
+                stroke="currentColor"
+                className="size-12"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
+
+        {/* 언어 선택 및 가맹문의 섹션 */}
+        <div className="bg-red-500 relative top-[100px] flex gap-8 text-[32px] pl-8">
+          <div>
+            <p>KOREAN</p>
+          </div>
+          <div>
+            <p>|</p>
+          </div>
+          <div>
+            <p>ENGLISH</p>
+          </div>
+          <div>
+            <p>|</p>
+          </div>
+          <div>
+            <p>가맹문의</p>
+          </div>
+        </div>
+
+        {/* 소셜 미디어 아이콘 섹션 */}
+        <div className="flex relative top-[120px] items-center gap-8 bg-red-400 pl-8">
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/facebookMobile.png`}
+              alt="Facebook"
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/instarMobile.png`}
+              alt="Instagram"
+            />
+          </div>
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/youtubeMobile.png`}
+              alt="YouTube"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 
 function SwiperSection01() {
   
@@ -592,11 +701,11 @@ function PromotionSection02() {
   };
 
   // 공통 css
-  const containerClass = "rounded-lg relative";
-  const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
-  const indicatorClass = "w-[7px] h-[7px] rounded-full";
-  const activeIndicatorClass = "bg-gray-500";
-  const inactiveIndicatorClass = "bg-gray-100";
+  const containerclassName = "rounded-lg relative";
+  const buttonclassName = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
+  const indicatorclassName = "w-[7px] h-[7px] rounded-full";
+  const activeIndicatorclassName = "bg-gray-500";
+  const inactiveIndicatorclassName = "bg-gray-100";
 
   return (
     <>
@@ -611,7 +720,7 @@ function PromotionSection02() {
           
             <div className="flex mt-8 h-[486px] justify-between">
               
-              <div className={`${containerClass} relative`}>
+              <div className={`${containerclassName} relative`}>
                 <Link to="/">
                   <img className="w-[878px] h-[486px] object-cover" src={images[leftImageIndex]} />
                 </Link>
@@ -622,7 +731,7 @@ function PromotionSection02() {
                 {rightImages.map((image, index) => (
                   <div
                     key={index}
-                    className={`${containerClass} cursor-pointer image-slide`}
+                    className={`${containerclassName} cursor-pointer image-slide`}
                     onClick={() => handleImageClick(image)}
                   >
                     <img className="w-[230px] h-[146px] object-cover" src={image} />
@@ -636,23 +745,23 @@ function PromotionSection02() {
                   {images.map((_, index) => (
                     <div
                       key={index}
-                      className={`${indicatorClass} ${index === leftImageIndex ? activeIndicatorClass : inactiveIndicatorClass}`}
+                      className={`${indicatorclassName} ${index === leftImageIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}
                     ></div>
                   ))}
                  
-                  <div className={buttonClass} onClick={handleMoveUp}>
+                  <div className={buttonclassName} onClick={handleMoveUp}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                     </svg>
                   </div>
                  
-                  <div className={buttonClass} onClick={handleMoveDown}>
+                  <div className={buttonclassName} onClick={handleMoveDown}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
                  
-                  <div className={buttonClass} onClick={toggleAutoSlide}>
+                  <div className={buttonclassName} onClick={toggleAutoSlide}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
                     </svg>
@@ -828,11 +937,11 @@ function PromotionSection02() {
   }, [isAutoSlideActive, currentIndex]);
 
   // 공통 CSS 클래스
-  const containerClass = "rounded-lg relative";
-  const buttonClass = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
-  const indicatorClass = "w-[7px] h-[7px] rounded-full";
-  const activeIndicatorClass = "bg-gray-500";
-  const inactiveIndicatorClass = "bg-gray-100";
+  const containerclassName = "rounded-lg relative";
+  const buttonclassName = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
+  const indicatorclassName = "w-[7px] h-[7px] rounded-full";
+  const activeIndicatorclassName = "bg-gray-500";
+  const inactiveIndicatorclassName = "bg-gray-100";
 
   return (
     <>
@@ -846,7 +955,7 @@ function PromotionSection02() {
 
             <div className="flex mt-8 h-[486px] justify-between">
               {/* 메인 이미지 영역 */}
-              <div className={`${containerClass} relative`}>
+              <div className={`${containerclassName} relative`}>
                 <Link to="/">
                   <img className="w-[878px] h-[486px] object-cover" src={images[leftImage]} alt="Main Promotion" />
                 </Link>
@@ -857,7 +966,7 @@ function PromotionSection02() {
                 {rightImages.map((image, index) => (
                   <div
                     key={index}
-                    className={`${containerClass} cursor-pointer image-slide`}
+                    className={`${containerclassName} cursor-pointer image-slide`}
                     onClick={() => setCurrentIndex(images.indexOf(image))}
                   >
                     <img className="w-[230px] h-[146px] object-cover" src={image} alt={`Sub Promotion ${index + 1}`} />
@@ -869,27 +978,27 @@ function PromotionSection02() {
               <div className='h-full w-[35px] flex justify-center'>
                 <div className='flex flex-col items-center justify-start gap-5'>
                   {/* 네비게이션 포인트 */}
-                  <div className={`${indicatorClass} ${0 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
-                  <div className={`${indicatorClass} ${1 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
-                  <div className={`${indicatorClass} ${2 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
-                  <div className={`${indicatorClass} ${3 === currentIndex ? activeIndicatorClass : inactiveIndicatorClass}`}></div>
+                  <div className={`${indicatorclassName} ${0 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
+                  <div className={`${indicatorclassName} ${1 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
+                  <div className={`${indicatorclassName} ${2 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
+                  <div className={`${indicatorclassName} ${3 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
 
                   {/* 위로 이동 버튼 */}
-                  <div className={buttonClass} onClick={handleMoveUp}>
+                  <div className={buttonclassName} onClick={handleMoveUp}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
                     </svg>
                   </div>
 
                   {/* 아래로 이동 버튼 */}
-                  <div className={buttonClass} onClick={handleMoveDown}>
+                  <div className={buttonclassName} onClick={handleMoveDown}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </div>
 
                   {/* 자동 슬라이드 토글 버튼 */}
-                  <div className={buttonClass} onClick={toggleAutoSlide}>
+                  <div className={buttonclassName} onClick={toggleAutoSlide}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
                     </svg>
