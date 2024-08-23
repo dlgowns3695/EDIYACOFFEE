@@ -248,7 +248,7 @@ function MobileMenu({ onClose }) {
     <>
       <div className="absolute w-full h-full z-[10] bg-white ">
         <div className="flex justify-between items-center px-4 ">
-          <div className="w-[176px] h-[176px]">
+          <div className="w-[100px] h-[100px]">
             <img
               className="w-full h-full object-cover"
               src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
@@ -261,9 +261,9 @@ function MobileMenu({ onClose }) {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="2"
+              strokeWidth="1.5"
               stroke="currentColor"
-              className="size-16"
+              className="size-12"
             >
               <path
                 strokeLinecap="round"
@@ -508,7 +508,7 @@ function SwiperSection01() {
   };
 
   // 공통 스타일 클래스
-  const borderStyles = 'absolute rounded-[150px] border-4 ';
+  const borderStyles = 'absolute rounded-[4.5rem] md:rounded-[150px] border-4 ';
 
   // 이미지 로드 완료 후 호출되는 함수
   const handleImageLoad = () => {
@@ -605,14 +605,15 @@ function SwiperSection01() {
             <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
             
-            <div className={`${borderStyles} w-[500px] h-[720px] border-[#172650]`}></div>
-            <div className={`${borderStyles} w-[498px] h-[716px] border-[#243c84]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[494px] h-[712px] border-[#203573]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[488px] h-[704px] border-[#233b81]`}></div>
-            <div className={`${borderStyles} w-[480px] h-[696px] border-[#1f326c]`}></div>
-            <div className={`${borderStyles} w-[476px] h-[692px] border-[#182855]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[474px] h-[689px] border-[#21387b]`}></div>
+            <div className={`${borderStyles} w-[366px] h-[720px] border-[#172650]`}></div>
+            <div className={`${borderStyles} w-[364px] h-[716px] border-[#243c84]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[360px] h-[712px] border-[#203573]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[364px] h-[704px] border-[#233b81]`}></div>
+            <div className={`${borderStyles} w-[356px] h-[696px] border-[#1f326c]`}></div>
+            <div className={`${borderStyles} w-[352px] h-[692px] border-[#182855]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[350px] h-[689px] border-[#21387b]`}></div>
 
+            474 -> 400 74차이
      * 
      */
 
@@ -620,37 +621,39 @@ function SwiperSection01() {
 
     <>
     {/* 모바일 위치 잡기 */}
-      <div className='relative top-[100px] md:top-0'>
+      <div className='relative top-[000px] md:top-0'>
         {/* 가운데 로고 부분 */}
-        <div className='w-[277px] h-[105px] absolute z-[250] top-[10%] left-[50%] transform -translate-x-1/2'>
+        <div className='w-[277px] h-[105px] absolute z-[250] top-[20%] md:top-[10%] left-[50%] transform -translate-x-1/2'>
           <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
         </div>
 
-        {/* 스와이퍼 섹션 */}
+        {/* 스와이퍼 섹션 & 뒷배경 */}
         <div className='w-full relative h-[898px] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
           {/* 스와이퍼 영역 rounded-[150px] */}
-          <div className='relative w-[1200px] h-[620px] flex justify-center items-center  overflow-hidden rounded-[150px]'>
+          <div className='relative w-[380px] h-[620px] flex justify-center items-center  overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
             {/* 배경 보더 */}
-            <div className='pointer-events-none absolute flex justify-center items-center   z-[200]'>
+            <div className='pointer-events-none absolute flex justify-center items-center  z-[200]'>
 
-              <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
-              <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
-              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
-              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
-              <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
-              <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
-              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
+              
+              <div className={`pointer-events-none ${borderStyles} w-[380px] h-[620px] border-[#172650]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[374px] h-[616px] border-[#243c84]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[370px] h-[612px] border-[#203573]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[374px] h-[604px] border-[#233b81]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[366px] h-[596px] border-[#1f326c]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[362px] h-[592px] border-[#182855]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[360px] h-[589px] border-[#21387b]`}></div>
 
           </div>
-
-            <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] '>
+            
+            {/* border-4 border-[#2d3c72] rounded-[150px] */}
+            <div className='relative w-[350px] h-[600px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px] '>
               <Swiper
                 ref={swiperRef}
                 navigation={false}
                 className='w-full h-full'
                 modules={[Navigation, Autoplay]}
                 loop={true}
-                autoplay={{ delay: 10500, disableOnInteraction: false }}
+                autoplay={{ delay: 5500, disableOnInteraction: false }}
               >
                 <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
                 <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
@@ -799,8 +802,8 @@ function PromotionSection02() {
         <div className="w-[1200px]">
           <div className="text-center">
             <div>
-              <h1 className="text-[64px] scoop-font">Promotion</h1>
-              <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+              <h1 className="text-5xl md:text-[64px] scoop-font">Promotion</h1>
+              <p className="text-xl md:text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
             </div>
 
             <div className="flex mt-8 h-[486px] justify-between">
@@ -1014,42 +1017,47 @@ function MdItem(){
   return(
     <>
     {/* 100% */}
-      <div className='w-full h-[1283px] bg-red-400'>
+      <div className='w-full h-[871px] md:h-[1283px] bg-red-400'>
         {/* 인도네시아 나무 배경 */}
         <Link to="/"><div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}></div></Link> 
 
         {/* 갈색배경 */}
-        <div className='w-full h-[928px] bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
+        <div className='w-full h-full bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
           
           <div>
             {/* 타이틀 */}
             <div className='flex flex-col items-center mb-16'>
-              <h1 className='text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
-              <p className='text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
+              <h1 className='text-5xl md:text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
+              <p className='text-xl md:text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
             </div>
 
             {/* MD상품 */}
-            <div className='flex items-center justify-center gap-36'>
+            <div className='flex items-center justify-center gap-12 md:gap-36'>
+
               {/* 텀블러 */}
               <div data-aos="fade-up" className='flex flex-col items-center'>
                 
                 <div className='relative'>
-                  <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
-                  <img className='absolute top-[-10%] left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
+                  <img className='w-[150px] h-[345px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[-10%] md:left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
                 </div>
                 <h4 className='font-semibold text-3xl md:text-[36px] mt-[-68px]'>SUBSUB</h4>
-                <p className='text-black text-2xl md:text-[36px] mt-[-20px]'>스마일 텀블러</p>
+                <p className='text-black text-2xl md:text-[36px] mt-0 md:mt-[-20px]'>스마일 텀블러</p>
               </div>
               {/* 파우치 */}
               <div data-aos="fade-up" data-aos-delay="200" className='flex flex-col items-center'>
                 
-                <div className='relative'>
-                  <img src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
-                  <img className='absolute top-[15%] left-[8%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                <div className='relative top-[5.5rem]'>
+                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[15%] left-[8%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
                 </div>
                 
-                <h4 className='font-semibold text-[36px] mt-[-74px]'>SUBSUB</h4>
-                <p className='text-black text-[36px] mt-[-20px]'>몽글파우치세트</p>
+                <div className='mt-[50px] md:mt-0'>
+                  <h4 className='font-semibold text-3xl md:text-[36px] mt-0 md:mt-[-74px]'>SUBSUB</h4>
+                  <p className='text-black text-2xl md:text-[36px] mt-0 md:mt-[-20px]'>몽글파우치세트</p>
+                
+
+                </div>
               </div>
 
             </div>
@@ -1063,17 +1071,22 @@ function MdItem(){
 // custom1200 --> 1200 미만일때 
 function StoreEDway() {
   return (
-    <div className='relative w-full h-[1000px] custom1200:h-[594px] flex justify-center'>
+    <div className='relative  w-full h-[1500px] md:h-[1000px] custom1200:h-[594px] flex justify-center'>
 
-      <div className='w-[1200px] h-full'>
+      <div className='w-full md:w-[1200px] h-full'>
 
-        <div className='flex flex-col items-center custom1200:flex-row justify-center mt-[120px] gap-[46px] md:gap-[96px]'>
+        <div className='flex flex-col items-center custom1200:flex-row justify-center mt-[120px] gap-[250px] md:gap-[96px]'>
 
-          <div className='relative w-[580px]'>
+          <div className='relative w-full md:w-[580px] text-center'>
 
-            <h4 className='scoop-font text-[64px]'>Store</h4>
-            <p className='text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
-            <div className='relative w-[580px] '>
+            <h4 className='scoop-font  text-5xl md:text-[64px]'>Store</h4>
+            <p className='text-xl md:text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
+            
+            <div className='block md:hidden px-4'>
+              <img  src={`${process.env.PUBLIC_URL}/StoreMobileMap.png`}/>
+            </div>
+
+            <div className='relative w-auto md:w-[580px] hidden md:block'>
               <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
 
               <div className='ping absolute top-0 left-[40%]'>
@@ -1094,17 +1107,18 @@ function StoreEDway() {
 
           </div>
 
-          <div className='w-[580px]'>
-            <h4 className='scoop-font text-[64px]'>ED way</h4>
+          <div className=' text-center'>
+            <h4 className='scoop-font  text-5xl md:text-[64px]'>ED way</h4>
             <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
-            <div className='relative'>
-              <div className='bg-red-200 w-[580px] h-[171px] rounded-full'></div>
-              {/* <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" /> */}
+            <div className='relative flex justify-center'>
 
-              <div className='absolute top-[50%] translate-y-[-50%] left-[10px]'>
+              <div className='hidden md:block bg-[#f8f1e7] w-[350px] h-[300px] md:w-[480px] md:h-[171px] rounded-[50px]  md:rounded-full'></div>
+              <div className='block md:hidden'><img src={`${process.env.PUBLIC_URL}/EDway.png`} alt="EDway" /></div> {/* <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" /> */}
+
+              <div className='hidden md:block absolute top-[50%] translate-y-[-50%] left-[10px]'>
                 <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
               </div>
-              <div className='absolute top-[-50px] left-[150px]'>
+              <div className='hidden md:block absolute top-0 md:top-[-50px] left-[150px]'>
                 <img className='bg-cover' src={`${process.env.PUBLIC_URL}/picture.png`} alt="Picture" />
               </div>
             </div>

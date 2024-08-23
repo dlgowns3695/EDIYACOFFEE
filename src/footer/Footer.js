@@ -2,29 +2,29 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div className='w-full bg-[#212530] h-[835px] md:h-[460px] flex justify-center text-[#afafaf] text-xs'>
+    <div className='w-full bg-[#212530] h-[750px] md:h-[460px] flex justify-center text-[#afafaf] text-xs'>
       {/* flex justify-center << 모바일, 구조 수정하기  */}
-      <div className='w-[1200px] h-full '>
+      <div className='w-full md:w-[1200px] h-full '>
 
         {/* 피씨 EDIYA COFFEE, ul, li */}
         <div className='hidden md:block'>
 
-        <div className=' md:flex justify-between mt-[110px]'>  
-          <h4 className='font-semibold text-[27px] mt-69px mb-58px md:mt-0 md:mb-0 md:text-2xl'>EDIYA COFFEE</h4>
-          
-          {/* ul li */}
-          <div>
-            <ul className='flex justify-center items-center gap-4 '>
-              <li><img src={`${process.env.PUBLIC_URL}/instar.png`} alt="Instagram" /></li>
-              <li><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt="Facebook" /></li>
-              <li><img src={`${process.env.PUBLIC_URL}/youtube.png`} alt="YouTube" /></li>
-              <li><img src={`${process.env.PUBLIC_URL}/wifi.png`} alt="Wi-Fi" /></li>
-            </ul>
+          <div className=' md:flex justify-between mt-[110px]'>  
+            <h4 className='font-semibold text-[27px] mt-69px mb-58px md:mt-0 md:mb-0 md:text-2xl'>EDIYA COFFEE</h4>
+            
+            {/* ul li */}
+            <div>
+              <ul className='flex justify-center items-center gap-4 '>
+                <li><img src={`${process.env.PUBLIC_URL}/instar.png`} alt="Instagram" /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt="Facebook" /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/youtube.png`} alt="YouTube" /></li>
+                <li><img src={`${process.env.PUBLIC_URL}/wifi.png`} alt="Wi-Fi" /></li>
+              </ul>
 
+            </div>
+
+            
           </div>
-
-          
-        </div>
 
         {/* 아래 문구 */}
         <div className='mt-[80px] hidden md:block text-[16px] tracking-[-0.0025rem]'>
@@ -38,7 +38,7 @@ function Footer() {
 
         
         {/* 아래 문구 */}
-        <div className='w-full h-full  flex justify-center  md:hidden '>
+        <div className='pl-8 w-full h-full  flex justify-center  md:hidden '>
 
           <div className='mt-[80px] leading-[48px] text-lg md:text-[24px] w-[600px]'>
             <h4 className='font-black text-[48px] pb-[66px]'>EDIYA COFFEE</h4>
