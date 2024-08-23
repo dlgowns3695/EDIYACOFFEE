@@ -314,7 +314,7 @@ function MobileMenu({ onClose }) {
             {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isAboutOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+                isAboutOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
               }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
               onClick={handleAboutClick}
             >
@@ -351,7 +351,7 @@ function MobileMenu({ onClose }) {
             {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isMenuOpen ? 'h-[280px] opacity-100' : 'h-0 opacity-0'
+                isMenuOpen ? 'h-[200px] opacity-100' : 'h-0 opacity-0'
               }`
               
               } // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 
@@ -394,7 +394,7 @@ function MobileMenu({ onClose }) {
             {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isStoryOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+                isStoryOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
               }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
               onClick={handleStoryClick}
             >
@@ -431,7 +431,7 @@ function MobileMenu({ onClose }) {
             {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isStoreOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+                isStoreOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
               }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
               onClick={handleStoreClick}
             >
