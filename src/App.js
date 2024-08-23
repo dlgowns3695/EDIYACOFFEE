@@ -508,14 +508,12 @@ function SwiperSection01() {
   };
 
   // 공통 스타일 클래스
-  const buttonStyle = 'absolute z-10 w-[71px] h-[71px] flex items-center justify-center cursor-pointer';
   const borderStyles = 'absolute rounded-[150px] border-4 ';
 
   // 이미지 로드 완료 후 호출되는 함수
   const handleImageLoad = () => {
     setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
   };
-
 
 
   useEffect(() => {
@@ -596,360 +594,140 @@ function SwiperSection01() {
   }, [loaded]);
 
   return (
-    <>
-      {/* 가운데 로고 부분 */}
-      <div className='w-[277px] h-[105px] absolute z-[250] top-[10%] left-[50%] transform -translate-x-1/2'>
-        <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
-      </div>
 
-      {/* 스와이퍼 섹션 */}
-      <div className='w-full relative h-[898px] flex justify-center items-center' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
-        {/* 스와이퍼 영역 */}
-        <div className='relative w-[1200px] h-[610px] flex justify-center items-center  overflow-hidden rounded-[150px]'>
-          {/* 배경 보더 */}
-          <div className='pointer-events-none absolute flex justify-center items-center   z-[200]'>
-
-            <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
+    /**
+     * 
+     *             <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
             <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
             <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
             <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
+            
+            <div className={`${borderStyles} w-[500px] h-[720px] border-[#172650]`}></div>
+            <div className={`${borderStyles} w-[498px] h-[716px] border-[#243c84]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[494px] h-[712px] border-[#203573]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[488px] h-[704px] border-[#233b81]`}></div>
+            <div className={`${borderStyles} w-[480px] h-[696px] border-[#1f326c]`}></div>
+            <div className={`${borderStyles} w-[476px] h-[692px] border-[#182855]`}></div>
+            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[474px] h-[689px] border-[#21387b]`}></div>
 
-</div>
-
-          <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] '>
-            <Swiper
-              ref={swiperRef}
-              navigation={false}
-              className='w-full h-full'
-              modules={[Navigation, Autoplay]}
-              loop={true}
-              autoplay={{ delay: 10500, disableOnInteraction: false }}
-            >
-              <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
-              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
-              <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
-            </Swiper>
-          </div>
+     * 
+     */
 
 
 
-        </div>
-
-        {/* 버튼들 */}
-        <div className='absolute w-[1200px] h-[610px] flex justify-between items-center '>
-          {/* 왼쪽 방향 버튼 */}
-          <div
-            className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
-            onClick={slidePrev}
-          >
-            <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
-            <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
-            <div className='absolute  flex items-center justify-center '>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-              </svg>
-            </div>
-
-          </div>
-
-          {/* 오른쪽 방향 버튼 */}
-          <div
-            className='relative left-[40px] w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
-            onClick={slideNext}
-          >
-            <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
-            <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
-            <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
-            <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
-            <div className='absolute flex items-center justify-center'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-              </svg>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* 장식 이미지들 */}
-        <img
-          ref={el => imageRefs.current[0] = el}
-          className='absolute top-[600px] left-[200px] z-2'
-          src={`${process.env.PUBLIC_URL}/human01.png`}
-          alt="human"
-          onLoad={handleImageLoad}
-        />
-        <img
-          ref={el => imageRefs.current[1] = el}
-          className='absolute top-[630px] left-[400px] z-2'
-          src={`${process.env.PUBLIC_URL}/middleHuman.png`}
-          alt="middle human"
-          onLoad={handleImageLoad}
-        />
-        <img
-          ref={el => imageRefs.current[2] = el}
-          className='absolute top-[700px] left-[1500px] z-[1000]'
-          src={`${process.env.PUBLIC_URL}/car.png`}
-          alt="car"
-          onLoad={handleImageLoad}
-        />
-      </div>
-    </>
-  );
-}
-
-
-/*
-기존 코드 0818 18:00
-
-function PromotionSection02() {
-  // 왼쪽 이미지 초기 셋팅
-  const [leftImageIndex, setLeftImageIndex] = useState(0);
-  // 이미지들 배열 0 1 2 3
-  const images = [
-    `${process.env.PUBLIC_URL}/section02Bn01.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn01.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn02.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn03.png`,
-  ];
-
-  // 오른쪽 이미지 초기 셋팅
-  const [rightImages, setRightImages] = useState(images.slice(1, 4));
-
-  // 자동 슬라이드 상태 관리
-  const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
-
-  // 이 함수가 실행되면 이미지 변경
-  const handleImageClick = (clickedImage) => {
-    const newLeftImageIndex = images.indexOf(clickedImage);
-    const newRightImages = rightImages.map(img =>
-      img === clickedImage ? images[leftImageIndex] : img
-    );
-
-    setLeftImageIndex(newLeftImageIndex);
-    setRightImages(newRightImages);
-  };
-
-  // 윗 버튼 눌렀을 때
-  const handleMoveUp = () => {
-    const newLeftImageIndex = (leftImageIndex + 1) % images.length;
-    const newRightImages = [
-      images[(newLeftImageIndex + 1) % images.length],
-      images[(newLeftImageIndex + 2) % images.length],
-      images[(newLeftImageIndex + 3) % images.length],
-    ];
-    setLeftImageIndex(newLeftImageIndex);
-    setRightImages(newRightImages);
-  };
-
-  // 아래 버튼 눌렀을 때
-  const handleMoveDown = () => {
-    const newLeftImageIndex = (leftImageIndex + images.length - 1) % images.length;
-    const newRightImages = [
-      images[(newLeftImageIndex + 1) % images.length],
-      images[(newLeftImageIndex + 2) % images.length],
-      images[(newLeftImageIndex + 3) % images.length],
-    ];
-    setLeftImageIndex(newLeftImageIndex);
-    setRightImages(newRightImages);
-  };
-
-  // 5초마다 자동으로 이미지 변경 (isAutoSlideActive가 true일 때만)
-  useEffect(() => {
-    if (isAutoSlideActive) {
-      const intervalId = setInterval(handleMoveUp, 5000);
-      return () => clearInterval(intervalId);
-    }
-  }, [leftImageIndex, isAutoSlideActive]);
-
-  // 자동 슬라이드 토글 함수
-  const toggleAutoSlide = () => {
-    setIsAutoSlideActive(!isAutoSlideActive);
-  };
-
-  // 공통 css
-  const containerclassName = "rounded-lg relative";
-  const buttonclassName = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
-  const indicatorclassName = "w-[7px] h-[7px] rounded-full";
-  const activeIndicatorclassName = "bg-gray-500";
-  const inactiveIndicatorclassName = "bg-gray-100";
-
-  return (
     <>
-     
-      <div className="w-full flex items-center justify-center">
-    
-        <div className="w-[1200px]">
-          <div className="text-center">
-            <h1 className="text-[64px] scoop-font">Promotion</h1>
-            <p className="text-2xl mt-2 font-semibold ">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+    {/* 모바일 위치 잡기 */}
+      <div className='relative top-[100px] md:top-0'>
+        {/* 가운데 로고 부분 */}
+        <div className='w-[277px] h-[105px] absolute z-[250] top-[10%] left-[50%] transform -translate-x-1/2'>
+          <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
+        </div>
 
-          
-            <div className="flex mt-8 h-[486px] justify-between">
-              
-              <div className={`${containerclassName} relative`}>
-                <Link to="/">
-                  <img className="w-[878px] h-[486px] object-cover" src={images[leftImageIndex]} />
-                </Link>
-              </div>
+        {/* 스와이퍼 섹션 */}
+        <div className='w-full relative h-[898px] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
+          {/* 스와이퍼 영역 rounded-[150px] */}
+          <div className='relative w-[1200px] h-[620px] flex justify-center items-center  overflow-hidden rounded-[150px]'>
+            {/* 배경 보더 */}
+            <div className='pointer-events-none absolute flex justify-center items-center   z-[200]'>
 
-             
-              <div className="flex flex-col justify-between">
-                {rightImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`${containerclassName} cursor-pointer image-slide`}
-                    onClick={() => handleImageClick(image)}
-                  >
-                    <img className="w-[230px] h-[146px] object-cover" src={image} />
-                  </div>
-                ))}
-              </div>
+              <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
+              <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
+              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
+              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
+              <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
+              <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
+              <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
 
-              <div className='h-full w-[35px] flex justify-center'>
-                <div className='flex flex-col items-center justify-start gap-5'>
-                 
-                  {images.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`${indicatorclassName} ${index === leftImageIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}
-                    ></div>
-                  ))}
-                 
-                  <div className={buttonclassName} onClick={handleMoveUp}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                    </svg>
-                  </div>
-                 
-                  <div className={buttonclassName} onClick={handleMoveDown}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </div>
-                 
-                  <div className={buttonclassName} onClick={toggleAutoSlide}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+
+            <div className='relative w-[1174px] h-[589px] border-4 border-[#2d3c72] rounded-[150px] '>
+              <Swiper
+                ref={swiperRef}
+                navigation={false}
+                className='w-full h-full'
+                modules={[Navigation, Autoplay]}
+                loop={true}
+                autoplay={{ delay: 10500, disableOnInteraction: false }}
+              >
+                <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
+                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
+                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
+              </Swiper>
+            </div>
+
+
+
+          </div>
+
+          {/* 버튼들 */}
+          <div className='absolute w-[1200px] h-[610px] hidden  md:flex justify-between items-center  '>
+            {/* 왼쪽 방향 버튼 */}
+            <div
+              className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
+              onClick={slidePrev}
+            >
+              <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+              <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+              <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+              <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
+              <div className='absolute  flex items-center justify-center '>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+              </div>
+
+            </div>
+
+            {/* 오른쪽 방향 버튼 */}
+            <div
+              className='relative left-[40px] w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
+              onClick={slideNext}
+            >
+              <div className='absolute  w-[91px] h-[91px] bg-[#182855] rounded-full'></div>
+              <div className='absolute  w-[83px] h-[83px] bg-[#1f326c] rounded-full'></div>
+              <div className='absolute  w-[79px] h-[79px] bg-[#233b81] rounded-full'></div>
+              <div className='absolute  w-[71px] h-[71px] bg-white rounded-full'></div>
+              <div className='absolute flex items-center justify-center'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="#21387b" className="w-12 h-12">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* 장식 이미지들 */}
+          <img
+            ref={el => imageRefs.current[0] = el}
+            className='absolute top-[600px] left-[200px] z-2'
+            src={`${process.env.PUBLIC_URL}/human01.png`}
+            alt="human"
+            onLoad={handleImageLoad}
+          />
+          <img
+            ref={el => imageRefs.current[1] = el}
+            className='absolute top-[630px] left-[400px] z-2'
+            src={`${process.env.PUBLIC_URL}/middleHuman.png`}
+            alt="middle human"
+            onLoad={handleImageLoad}
+          />
+          <img
+            ref={el => imageRefs.current[2] = el}
+            className='absolute top-[700px] left-[1500px] z-[1000]'
+            src={`${process.env.PUBLIC_URL}/car.png`}
+            alt="car"
+            onLoad={handleImageLoad}
+          />
         </div>
       </div>
+
     </>
   );
 }
-
-
-*/
-// function PromotionSection02() {
-//   // 왼쪽 초기 이미지셋팅
-//   const [leftImage, setLeftImage] = useState(0);
-//   // 오른쪽 초기 이미지셋팅
-//   const [rightImage, setRightImage] = useState([]);
-//   // = 버튼을 눌렀는지 체킹
-//   const [chkBtn, setChkBtn] = useState(false);
-//   // 윗버튼 기능 
-//   // TODO
-
-//   // 아래버튼 기능
-//   // TODO
-
-//   // 자동슬라이드 기능
-//   // TODO
-
-//   // 이미지들 
-//   const images = [
-//     `${process.env.PUBLIC_URL}/section02Bn01.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn02.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
-//   ]
-
-//   const imagesLenght = images.length;
-//   console.log(imagesLenght)
-
-//   return (
-//     <>
-//       {/* 전체 섹션을 감싸는 div */}
-//       <div className="w-full flex items-center justify-center">
-//         <div className="w-[1200px]">
-//           <div className="text-center">
-//             <h1 className="text-[64px] scoop-font">Promotion</h1>
-//             <p className="text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
-
-//             <div className="flex mt-8 h-[486px] justify-between">
-              
-//               {/* 메인 이미지 영역 */}
-//               <div className="rounded-lg relative">
-//                 <Link to="/">
-//                   <img className="w-[878px] h-[486px] object-cover" src={images[leftImage]} alt="Main Promotion" />
-//                 </Link>
-//               </div>
-
-//               {/* 오른쪽 서브 이미지 슬라이드 영역 */}
-//               <div className="flex flex-col justify-between">
-//                 {/* 첫 번째 서브 이미지 */}
-//                 <div className="rounded-lg relative cursor-pointer image-slide">
-//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn01.png`} alt="Sub Promotion 1" />
-//                 </div>
-//                 {/* 두 번째 서브 이미지 */}
-//                 <div className="rounded-lg relative cursor-pointer image-slide">
-//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn02.png`} alt="Sub Promotion 2" />
-//                 </div>
-//                 {/* 세 번째 서브 이미지 */}
-//                 <div className="rounded-lg relative cursor-pointer image-slide">
-//                   <img className="w-[230px] h-[146px] object-cover" src={`${process.env.PUBLIC_URL}/section02SubBn03.png`} alt="Sub Promotion 3" />
-//                 </div>
-//               </div>
-
-//               {/* 내비게이션 및 버튼 섹션 */}
-//               <div className='h-full w-[35px] flex justify-center'>
-//                 <div className='flex flex-col items-center justify-start gap-5'>
-                  
-//                   {/* 네비게이션 포인트 */}
-//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
-//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
-//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
-//                   <div className="w-[7px] h-[7px] rounded-full bg-gray-100"></div>
-
-//                   {/* 이미지 위로 이동 버튼 */}
-//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
-//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-//                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-//                     </svg>
-//                   </div>
-
-//                   {/* 이미지 아래로 이동 버튼 */}
-//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
-//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-//                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-//                     </svg>
-//                   </div>
-
-//                   {/* 자동 슬라이드 토글 버튼 */}
-//                   <div className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer">
-//                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-//                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-//                     </svg>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
 
 function PromotionSection02() {
   // 현재 이미지 인덱스 관리
