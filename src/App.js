@@ -53,12 +53,14 @@ function App() {
       {/* 모바일네브바 */}
       <MobileNavbar onMenuToggle={toggleMenu} />
 
-      <div className={`relative h-screen z-[999] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500`}>
-        <MobileMenu onClose={closeMenu}/>
+      <div className="menu-wrapper">
+        <div className={`menu-content ${isMenuOpen ? 'menu-visible' : ''}`}>
+          <MobileMenu onClose={closeMenu} />
+        </div>
       </div>
       
       
-      <main>
+      <main className='overflow-hidden'>
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/" element={<About />} />
@@ -142,7 +144,7 @@ function Navbar() {
           {/* 왼쪽: 로고와 메뉴, 수직정렬 */}
           <div className="flex items-center">
             {/* 로고 */}
-            <div><img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo"/></div>
+            <Link to="/"><div className='cursor-pointer'><img src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo"/></div></Link>
             {/* 메뉴 */}
             <div>
               <ul className="flex space-x-8 font-bold text-lg">
@@ -165,12 +167,12 @@ function Navbar() {
           <div className="text-white">
             <div className="flex items-center gap-6">
               <ul className="flex space-x-4 font-bold">
-                <li ref={contact01Refs} className="text-[#243c84]">KR</li>
-                <li ref={contact02Refs} className="text-[#d2d6e5]">EN</li>
+                <li ref={contact01Refs} className="text-[#243c84] cursor-pointer">KR</li>
+                <li ref={contact02Refs} className="text-[#d2d6e5] cursor-pointer">EN</li>
               </ul>
               <div
                 ref={contactBtnRef}
-                className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84]"
+                className="flex items-center justify-center rounded-full w-[114px] h-[40px] bg-[#243c84] cursor-pointer"
               >
                 가맹문의
               </div>
@@ -213,19 +215,39 @@ function MobileNavbar({ onMenuToggle }){
 }
 
 function MobileMenu({ onClose }) {
-  // Menu 서브메뉴 열림 상태를 관리하는 state
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isAboutOpen, setIsAboutOpen] = useState(false); // Menu 섹션 열림/닫힘 상태
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu 섹션 열림/닫힘 상태
+  const [isStoryOpen, setIsStoryOpen] = useState(false); // Story 섹션 열림/닫힘 상태
+  const [isStoreOpen, setIsStoreOpen] = useState(false); // Store 섹션 열림/닫힘 상태
 
-  // Menu 클릭 시 서브메뉴 열림/닫힘을 토글하는 함수
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleAbout = () => setIsAboutOpen(!isAboutOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleStory = () => setIsStoryOpen(!isStoryOpen);
+  const toggleStore = () => setIsStoreOpen(!isStoreOpen);
+
+  const handleAboutClick = () => {
+    toggleAbout();
+    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
+  };
+  const handleMenuClick = () => {
+    toggleMenu();
+    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
+  };
+
+  const handleStoryClick = () => {
+    toggleStory();
+    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
+  };
+
+  const handleStoreClick = () => {
+    toggleStore();
+    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
   };
 
   return (
     <>
-      <div className="absolute w-full h-full z-[10] bg-green-200">
-        {/* 상단 로고 및 닫기 버튼 섹션 */}
-        <div className="flex justify-between items-center px-6 pt-8 bg-red-300">
+      <div className="absolute w-full h-full z-[10] bg-white ">
+        <div className="flex justify-between items-center px-4 ">
           <div className="w-[176px] h-[176px]">
             <img
               className="w-full h-full object-cover"
@@ -234,7 +256,6 @@ function MobileMenu({ onClose }) {
             />
           </div>
 
-          {/* 닫기 버튼 */}
           <div onClick={onClose} className="cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -253,8 +274,7 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        {/* 로그인 및 회원가입 버튼 섹션 */}
-        <div className="flex gap-8 bg-red-500 pl-8">
+        <div className="flex gap-8 pl-8">
           <div className="w-[185px] h-[65px] bg-[#243c84] flex justify-center items-center rounded-full">
             <p className="text-[#fff] text-[24px]">로그인</p>
           </div>
@@ -264,20 +284,24 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        {/* 메뉴 리스트 섹션 */}
         <ul className="w-full">
-          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
-            <div>
+          {/* Menu 리스트 아이템 */}
+          <li className="w-full px-8">
+            {/* Menu 타이틀과 화살표 */}
+            <div
+              className="h-[150px] flex items-center justify-between cursor-pointer"
+              onClick={toggleAbout} // 클릭 시 서브메뉴 열림/닫힘 토글
+            >
               <h4 className="text-[36px] scoop-font">About</h4>
-            </div>
-            <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="2.5"
                 stroke="currentColor"
-                className="size-12"
+                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                  isAboutOpen ? 'rotate-180' : 'rotate-0'
+                }`} // 서브메뉴가 열리면 화살표를 180도 회전
               >
                 <path
                   strokeLinecap="round"
@@ -286,10 +310,20 @@ function MobileMenu({ onClose }) {
                 />
               </svg>
             </div>
+
+            {/* 서브메뉴 리스트 */}
+            <ul
+              className={`overflow-hidden transition-height duration-500 ease-in-out ${
+                isAboutOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
+              onClick={handleAboutClick}
+            >
+              <Link to="/"><li className="text-[24px] py-2">About</li></Link>
+            </ul>
           </li>
 
           {/* Menu 리스트 아이템 */}
-          <li className="w-full bg-blue-100 px-8">
+          <li className="w-full px-8">
             {/* Menu 타이틀과 화살표 */}
             <div
               className="h-[150px] flex items-center justify-between cursor-pointer"
@@ -302,7 +336,7 @@ function MobileMenu({ onClose }) {
                 viewBox="0 0 24 24"
                 strokeWidth="2.5"
                 stroke="currentColor"
-                className={`size-12 transform transition-transform duration-300 ${
+                className={`size-12 transform transition-transform duration-300 ease-in-out ${
                   isMenuOpen ? 'rotate-180' : 'rotate-0'
                 }`} // 서브메뉴가 열리면 화살표를 180도 회전
               >
@@ -316,30 +350,38 @@ function MobileMenu({ onClose }) {
 
             {/* 서브메뉴 리스트 */}
             <ul
-              className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
-                isMenuOpen ? 'max-h-[280px] py-4' : 'max-h-0'
-              }`} // 서브메뉴가 열리면 max-height를 늘리고, 서서히 열리도록 애니메이션 적용
+              className={`overflow-hidden transition-height duration-500 ease-in-out ${
+                isMenuOpen ? 'h-[280px] opacity-100' : 'h-0 opacity-0'
+              }`
+              
+              } // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 
+              
+              onClick={handleMenuClick}
             >
-              <li className="text-[24px] bg-red-200 py-2">커피메뉴</li>
-              <li className="text-[24px] bg-red-200 py-2">플랫치노</li>
-              <li className="text-[24px] bg-red-200 py-2">베이커리</li>
-              <li className="text-[24px] bg-red-200 py-2">빙수</li>
+              <li className="text-[24px] py-2">커피메뉴</li>
+              <li className="text-[24px] py-2">플랫치노</li>
+              <li className="text-[24px] py-2">베이커리</li>
+              <li className="text-[24px] py-2">빙수</li>
             </ul>
           </li>
 
-          {/* 다른 메뉴 리스트 아이템들 */}
-          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
-            <div>
+          {/* Story 리스트 아이템 */}
+          <li className="w-full px-8">
+            {/* Story 타이틀과 화살표 */}
+            <div
+              className="h-[150px] flex items-center justify-between cursor-pointer"
+              onClick={toggleStory} // 클릭 시 서브메뉴 열림/닫힘 토글
+            >
               <h4 className="text-[36px] scoop-font">Story</h4>
-            </div>
-            <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="2.5"
                 stroke="currentColor"
-                className="size-12"
+                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                  isStoryOpen ? 'rotate-180' : 'rotate-0'
+                }`} // 서브메뉴가 열리면 화살표를 180도 회전
               >
                 <path
                   strokeLinecap="round"
@@ -348,20 +390,35 @@ function MobileMenu({ onClose }) {
                 />
               </svg>
             </div>
+
+            {/* 서브메뉴 리스트 */}
+            <ul
+              className={`overflow-hidden transition-height duration-500 ease-in-out ${
+                isStoryOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
+              onClick={handleStoryClick}
+            >
+              <Link to="/story"><li className="text-[24px] py-2">Story</li></Link>
+            </ul>
           </li>
 
-          <li className="w-full h-[150px] bg-blue-100 flex items-center justify-between px-8">
-            <div>
+          {/* Story 리스트 아이템 */}
+          <li className="w-full px-8">
+            {/* Story 타이틀과 화살표 */}
+            <div
+              className="h-[150px] flex items-center justify-between cursor-pointer"
+              onClick={toggleStore} // 클릭 시 서브메뉴 열림/닫힘 토글
+            >
               <h4 className="text-[36px] scoop-font">Store</h4>
-            </div>
-            <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="2.5"
                 stroke="currentColor"
-                className="size-12"
+                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                  isStoreOpen ? 'rotate-180' : 'rotate-0'
+                }`} // 서브메뉴가 열리면 화살표를 180도 회전
               >
                 <path
                   strokeLinecap="round"
@@ -370,11 +427,23 @@ function MobileMenu({ onClose }) {
                 />
               </svg>
             </div>
+
+            {/* 서브메뉴 리스트 */}
+            <ul
+              className={`overflow-hidden transition-height duration-500 ease-in-out ${
+                isStoreOpen ? 'h-[100px] opacity-100' : 'h-0 opacity-0'
+              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
+              onClick={handleStoreClick}
+            >
+              <li className="text-[24px] py-2">가맹문의</li>
+            </ul>
           </li>
+
+
         </ul>
 
-        {/* 언어 선택 및 가맹문의 섹션 */}
-        <div className="bg-red-500 relative top-[100px] flex gap-8 text-[32px] pl-8">
+        
+        <div className="relative top-[100px] flex gap-8 text-[32px] pl-8">
           <div>
             <p>KOREAN</p>
           </div>
@@ -392,8 +461,7 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        {/* 소셜 미디어 아이콘 섹션 */}
-        <div className="flex relative top-[120px] items-center gap-8 bg-red-400 pl-8">
+        <div className="flex relative top-[120px] items-center gap-8  pl-8">
           <div>
             <img
               src={`${process.env.PUBLIC_URL}/facebookMobile.png`}
@@ -413,10 +481,14 @@ function MobileMenu({ onClose }) {
             />
           </div>
         </div>
+
       </div>
+      
     </>
   );
 }
+
+
 
 
 function SwiperSection01() {

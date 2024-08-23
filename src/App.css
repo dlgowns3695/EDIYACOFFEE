@@ -136,3 +136,28 @@ body{
 }
 
 
+.menu-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0; /* 오른쪽에 고정 */
+  width: 100vw; /* 전체 화면 너비 */
+  height: 100vh;
+  overflow: hidden; /* 내용이 너비를 넘어가지 않도록 설정 */
+  
+}
+
+.menu-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%; /* 기본 너비 설정 */
+  background-color: #fff; /* 메뉴 배경 색상, 필요에 따라 조정 */
+  transform: translateX(100%); /* 기본적으로 오른쪽으로 이동 */
+  transition: transform 0.5s ease; /* 애니메이션 설정 */
+  z-index: 99999999;
+}
+
+.menu-content.menu-visible {
+  transform: translateX(0); /* 메뉴가 열릴 때 화면에 보이도록 */
+}

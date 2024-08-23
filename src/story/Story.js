@@ -130,7 +130,7 @@ function Ambition() {
         </div>
 
         {/* 인물사진 */}
-        <div ref={imgPcRef} className='hidden md:block absolute top-[1340px] left-[600px] w-[605px] h-[777px]'>
+        <div ref={imgPcRef} className='hidden md:block absolute top-[1340px] right-[0px] w-[405px] custom1200:w-[605px] h-[777px]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
         </div>
 
