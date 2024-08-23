@@ -597,7 +597,7 @@ function SwiperSection01() {
 
     /**
      * 
-     *             <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
+                  <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
             <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
             <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
@@ -628,25 +628,38 @@ function SwiperSection01() {
         </div>
 
         {/* 스와이퍼 섹션 & 뒷배경 */}
-        <div className='w-full relative h-[898px] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
-          {/* 스와이퍼 영역 rounded-[150px] */}
-          <div className='relative w-[380px] h-[620px] flex justify-center items-center  overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
-            {/* 배경 보더 */}
-            <div className='pointer-events-none absolute flex justify-center items-center  z-[200]'>
+        <div className='w-full relative h-[90vh] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
+          <div className='relative w-[80vw] h-[70vh] flex justify-center items-center overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
+            <div className='md:hidden pointer-events-none absolute flex justify-center items-center z-[200]'>
 
-              
-              <div className={`pointer-events-none ${borderStyles} w-[380px] h-[620px] border-[#172650]`}></div>
-              <div className={`pointer-events-none ${borderStyles} w-[374px] h-[616px] border-[#243c84]`}></div>
-              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[370px] h-[612px] border-[#203573]`}></div>
-              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[374px] h-[604px] border-[#233b81]`}></div>
-              <div className={`pointer-events-none ${borderStyles} w-[366px] h-[596px] border-[#1f326c]`}></div>
-              <div className={`pointer-events-none ${borderStyles} w-[362px] h-[592px] border-[#182855]`}></div>
-              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[360px] h-[589px] border-[#21387b]`}></div>
-
-          </div>
             
-            {/* border-4 border-[#2d3c72] rounded-[150px] */}
-            <div className='relative w-[350px] h-[600px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px] '>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-[12px]')} w-[80vw] h-[70vh] border-[#172650]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[79.5vw] h-[69.5vh] border-[#243c84]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[79vw] h-[69vh] border-[#203573]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[78.5vw] h-[68.5vh] border-[#233b81]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[78vw] h-[68vh] border-[#1f326c]`}></div>
+              <div className={`pointer-events-none ${borderStyles} w-[77.5vw] h-[67.5vh] border-[#182855]`}></div>
+              <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-8')} w-[77vw] h-[67vh] border-[#21387b]`}></div>
+
+            
+
+            </div>
+            
+            <div className='hidden pointer-events-none absolute md:flex justify-center items-center z-[200]'>
+
+            
+              <div className={` ${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
+              <div className={` ${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
+              <div className={` ${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
+              <div className={` ${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
+              <div className={` ${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
+              <div className={` ${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
+              <div className={` ${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
+              
+
+            </div>
+
+            <div className='relative w-[75vw] h-[67vh] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
               <Swiper
                 ref={swiperRef}
                 navigation={false}
@@ -655,15 +668,14 @@ function SwiperSection01() {
                 loop={true}
                 autoplay={{ delay: 5500, disableOnInteraction: false }}
               >
-                <SwiperSlide><Link to="/story"> <img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" />   </Link></SwiperSlide>
-                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" />    </Link></SwiperSlide>
-                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover ' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" />    </Link></SwiperSlide>
+                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn01.png`} alt="Slide 1" /></Link></SwiperSlide>
+                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn02.png`} alt="Slide 2" /></Link></SwiperSlide>
+                <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></Link></SwiperSlide>
               </Swiper>
             </div>
-
-
-
           </div>
+
+
 
           {/* 버튼들 */}
           <div className='absolute w-[1200px] h-[610px] hidden  md:flex justify-between items-center  '>
@@ -726,6 +738,8 @@ function SwiperSection01() {
             onLoad={handleImageLoad}
           />
         </div>
+
+
       </div>
 
     </>
@@ -890,10 +904,10 @@ function MenuSection03() {
           {/* 100% 섹션  */}
           <div className='w-full h-[752px] bg-[#edeef2] flex flex-col justify-center items-center mt-[150px]'>
               {/* 실제 컨탠츠 들어갈 공간 */}
-              <div className='relative w-[1200px] flex justify-center items-center flex-col'>
+              <div className='relative bg-red-300 w-full md:w-[1200px] flex justify-center items-center flex-col'>
 
                   {/* 타이틀 부분 */}
-                  <div className='flex flex-col justify-center items-center'>
+                  <div className=' flex flex-col justify-center items-center bg-red-200'>
                       <h1 className='text-5xl md:text-[64px] scoop-font'>Menu</h1>
                       <p className='text-xl md:text-2xl mt-2 mb-12  '>이디야의 신제품을 만나보세요.</p>
                   </div>
@@ -909,7 +923,7 @@ function MenuSection03() {
                           autoplay = {{delay: 2500,
                           disableOnInteraction: false,
                           }}
-                          slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
+                          slidesPerView={3}  // 한 번에 4개의 슬라이드 표시
                           
 
                       >
@@ -1017,12 +1031,12 @@ function MdItem(){
   return(
     <>
     {/* 100% */}
-      <div className='w-full h-[871px] md:h-[1283px] bg-red-400'>
+      <div className='w-full h-auto md:h-[1283px] bg-red-400'>
         {/* 인도네시아 나무 배경 */}
         <Link to="/"><div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}></div></Link> 
 
         {/* 갈색배경 */}
-        <div className='w-full h-full bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
+        <div className='w-full h-[871px] bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
           
           <div>
             {/* 타이틀 */}
@@ -1071,9 +1085,9 @@ function MdItem(){
 // custom1200 --> 1200 미만일때 
 function StoreEDway() {
   return (
-    <div className='relative  w-full h-[1500px] md:h-[1000px] custom1200:h-[594px] flex justify-center'>
+    <div className='relative w-full h-[1400px] md:h-[1000px] custom1200:h-[594px] flex justify-center'>
 
-      <div className='w-full md:w-[1200px] h-full'>
+      <div className='w-full  md:w-[1200px] h-full'>
 
         <div className='flex flex-col items-center custom1200:flex-row justify-center mt-[120px] gap-[250px] md:gap-[96px]'>
 
