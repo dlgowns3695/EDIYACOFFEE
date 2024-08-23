@@ -40,7 +40,7 @@ function Footer() {
         {/* 아래 문구 */}
         <div className='w-full h-full  flex justify-center  md:hidden '>
 
-          <div className='mt-[80px] leading-[48px] text-[24px] w-[600px]'>
+          <div className='mt-[80px] leading-[48px] text-lg md:text-[24px] w-[600px]'>
             <h4 className='font-black text-[48px] pb-[66px]'>EDIYA COFFEE</h4>
             <p>
             사업자등록번호 : 107-86-16302<br/>

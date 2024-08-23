@@ -197,13 +197,13 @@ function MobileNavbar({ onMenuToggle }){
       <div className='absolute z-[999] block md:hidden w-full h-[452px]  '>
         <div className='flex justify-between items-center px-8 pt-8'>
 
-          <div className='w-[176px] h-[176px]'>
+          <div className='w-[100px] h-[100px]'>
             <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
           </div>
 
           {/* 여기 햄버거 바를 눌렀을 경우 100vw 만큼 오른쪽에서 왼쪽으로 나오게끔. */}
           <div onClick={onMenuToggle}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="size-16">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-12">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </div>
@@ -891,8 +891,8 @@ function MenuSection03() {
 
                   {/* 타이틀 부분 */}
                   <div className='flex flex-col justify-center items-center'>
-                      <h1 className='text-[64px] scoop-font'>Menu</h1>
-                      <p className='text-2xl mt-2 mb-12 font-semibold '>이디야의 신제품을 만나보세요.</p>
+                      <h1 className='text-5xl md:text-[64px] scoop-font'>Menu</h1>
+                      <p className='text-xl md:text-2xl mt-2 mb-12  '>이디야의 신제품을 만나보세요.</p>
                   </div>
 
                   {/* 실제 스와이퍼 들어갈 공간 */}
@@ -1037,8 +1037,8 @@ function MdItem(){
                   <img src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
                   <img className='absolute top-[-10%] left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
                 </div>
-                <h4 className='font-semibold text-[36px] mt-[-68px]'>SUBSUB</h4>
-                <p className='text-black text-[36px] mt-[-20px]'>스마일 텀블러</p>
+                <h4 className='font-semibold text-3xl md:text-[36px] mt-[-68px]'>SUBSUB</h4>
+                <p className='text-black text-2xl md:text-[36px] mt-[-20px]'>스마일 텀블러</p>
               </div>
               {/* 파우치 */}
               <div data-aos="fade-up" data-aos-delay="200" className='flex flex-col items-center'>

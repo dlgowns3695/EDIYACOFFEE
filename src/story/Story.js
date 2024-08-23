@@ -58,7 +58,7 @@ function TopBanner(){
       <div className='w-full h-[431px] bg-cover hidden md:block' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/subtitleBG.png)` }}>
       </div>
       {/* 모바일일때 block , pc때 히든 */}
-      <div className='w-full h-[452px] bg-cover md:hidden block ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/subtitleMobileBG.png)` }}>
+      <div className='w-full h-[320px] bg-cover md:hidden block ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/subtitleMobileBG.png)` }}>
       </div>
 
     </>
@@ -108,16 +108,16 @@ function Ambition() {
 
         {/* Always Beside You */}
         <div className="mt-[210px] md:mt-[386px] ">
-          <h4 data-aos="fade-up" className="text-[58px] leading-[82px]   md:text-[52px] md:leading-20">
+          <h4 data-aos="fade-up" className="text-4xl leading-[1.3]   md:text-[52px] md:leading-20">
             Always Beside You,<br />
             <span className='font-semibold'>이디야커피는 언제나<br className='block md:hidden'/>
               당신 곁에<br className='block md:hidden'/>
               함께 합니다.</span> 
           </h4>
-          <p data-aos="fade-up" data-aos-delay="200" ref={triggerRef} className="text-[40px] text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-[20px]">
+          <p data-aos="fade-up" data-aos-delay="200" ref={triggerRef} className="text-3xl text-[#222222] md:text-[30px] font-semibold mt-[40px] mb-10">
             커피 한잔의 진심
           </p>
-          <p data-aos="fade-up" data-aos-delay="400" className="text-[24px] leading-[37px] text-[#222222]">
+          <p data-aos="fade-up" data-aos-delay="400" className="text-xl leading-[1.5] text-[#222222]">
             해외에 로열티를 내지 않는 순수 국내 브랜드<br className='hidden md:block' />
             이디야 커피, 품질 좋고 맛있는 커피를 합리적인<br className='hidden md:block' />
             가격으로 소비자에게 제공하는 것을 우리의 진심이라<br className='hidden md:block' />
@@ -174,8 +174,8 @@ function CoreValue() {
     <div className="w-full h-[1620px] md:h-[700px] bg-[#edeef2] flex justify-center">
       <div className="w-[1200px] h-full flex flex-col items-center">
         <div className="mt-[116px] text-center">
-          <h4 data-aos="fade-up"  className="text-[58px]  md:text-[52px] mb-[12px]">이디야의 <span className='font-semibold'>핵심가치</span></h4>
-          <p data-aos="fade-up"  className="text-[#3a4767] text-[32px] md:text-[24px] font-semibold">
+          <h4 data-aos="fade-up"  className="text-4xl  md:text-[52px] mb-[12px]">이디야의 <span className='font-semibold'>핵심가치</span></h4>
+          <p data-aos="fade-up"  className="text-xl md:text-[24px] ">
             고객과 가맹점주, 협력사의 상생의 가치를 실천합니다.
           </p>
         </div>
@@ -203,7 +203,7 @@ function CoreValue() {
                 alt="Core Value Icon"
               />
               {item.text.map((line, i) => (
-                <p key={i} className="text-[#222222] text-[36px] md:text-2xl">
+                <p key={i} className="text-[#222222] text-2xl">
                   {line}
                 </p>
               ))}
@@ -221,7 +221,7 @@ function Management() {
     // 1200px 이상은 2100px 모바일은 2600px + 70(푸터메뉴)
     <div className="w-full h-[2600px] px-6 custom1200:h-[2100px]  flex justify-center ">
       
-      <div data-aos="fade-up"  className="w-[1200px] h-full ">
+      <div data-aos="fade-up"  className="w-full md:w-[1200px] h-full ">
         {/* 이디야의 경영철학 */}
         <div className="flex justify-center mt-[156px] mb-[100px]  md:mb-[0px] text-center">
           <h4 className="text-[58px] md:text-[52px]">
@@ -305,9 +305,9 @@ function Management() {
         {/* 1200 미만일때 문구3개 flex하기 위해 만든 // 사이즈별로 폰트 조절해야할 듯*/}
         <div className='hidden  px-6 w-full h-[auto] relative top-[180px] md:flex custom1200:hidden justify-center gap-16 '>
 
-          <div className="relative mt-4 md:mt-0 text-left  md:top-[0] md:left-0 ">
-            <h4 className="font-semibold text-[36px] md:text-[22px] text-[#222222] mb-[12px] md:mb-[50px]">
-            1. 기본을 지키는 정직한 기업
+          <div className="relative mt-4 md:mt-0 text-left  md:top-[0] md:left-0 md:text-center">
+            <h4 className="font-semibold text-[36px] md:text-[32px] md:text-center text-[#222222] mb-3 md:mb-4">
+            기본을 지키는<br/>정직한 기업
             </h4>
             <p className="text-[#222222] text-[28px] leading-[38px] md:text-[16px] md:leading-[26px]">
             고객에게 우수한 품질의 커피를<br />
@@ -319,8 +319,8 @@ function Management() {
           </div>
 
           <div className="relative mt-4 md:mt-0 text-left  md:top-[0] md:left-0 md:text-center">
-            <h4 className="font-semibold text-[36px] md:text-[22px] text-[#222222] mb-[12px] md:mb-[50px]">
-            2. 신나고 행복한 즐거운 기업
+            <h4 className="font-semibold text-[36px] md:text-[32px] md:text-center text-[#222222] mb-3 md:mb-4">
+            신나고 행복한<br/>즐거운 기업
             </h4>
             <p className="text-[#222222] text-[28px] leading-[38px] md:text-[16px] md:leading-[26px]">
             수평적 소통이 이루어지는 젊은<br />
@@ -330,9 +330,9 @@ function Management() {
             </p>
           </div>
 
-          <div className="relative mt-4 md:mt-0 text-left  md:top-[0] md:left-0 md:text-right">
-            <h4 className="font-semibold text-[36px] md:text-[22px] text-[#222222] mb-[12px] md:mb-[50px]">
-            3. 사람을 생각하는 따뜻한 기업
+          <div className="relative mt-4 md:mt-0 text-left  md:top-[0] md:left-0 md:text-center">
+            <h4 className="font-semibold text-[36px] md:text-[32px] md:text-center text-[#222222] mb-3 md:mb-4">
+            사람을 생각하는<br/>따뜻한 기업
             </h4>
             <p className="text-[#222222] text-[28px] leading-[38px] md:text-[16px] md:leading-[26px]">
             늘 고객의 입장에서 먼저 생각하고,<br />
@@ -345,20 +345,18 @@ function Management() {
 
 
         {/* 모바일 아이콘 flex col */}
-        <div className='flex flex-col md:hidden gap-32'>
-          <div className='flex justify-start items-center gap-12 px-6'>
+        <div className='w-full md:hidden '>
+          <div className='flex items-center mb-24 gap-4'>
+            <img className="w-[120px]" src={`${process.env.PUBLIC_URL}/Philosophy01Mobile.png`} alt="Philosophy Icon 1" />
             <div>
-              <img className="block object-cover" src={`${process.env.PUBLIC_URL}/Philosophy01Mobile.png`} alt="Philosophy Icon 1" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-[36px]  text-[#222222] mb-[12px]">
+              <h4 className="font-semibold text-2xl  text-[#222222] mb-[12px]">
                 기본을 지키는 정직한 기업
               </h4>
-              <p className="text-[#222222] text-[28px] leading-[38px]">
-                고객에게 우수한 품질의 커피를<br />
-                합리적인 가격에 제공하고,<br />
-                가맹점주를 위해 매장 수익을<br />
-                최우선하며, 협력업체와의<br />
+              <p className="text-[#222222] text-xl leading-[1.5]">
+                고객에게 우수한 품질의 커피를 
+                합리적인 가격에 제공하고, 
+                가맹점주를 위해 매장 수익을 
+                최우선하며, 협력업체와의 
                 오랜 신뢰를 이어갑니다.
               </p>
             </div>
