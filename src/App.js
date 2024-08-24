@@ -6,8 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination  } from 'swiper/modules';
+
 
 import { Routes, Route, Link } from 'react-router-dom'
 import About from './about/About';
@@ -15,6 +17,7 @@ import Menus from './menus/Menus';
 import Story from './story/Story';
 import Store from './store/Store';
 import Footer from './footer/Footer'
+import Per from './per/per'
 
 // Routes와 Route 컴포넌트는 Navbar, SwiperSection01, PromotionSection02, MenuSection03, MdItem, StoreEDway, Footer 
 // 컴포넌트와 같은 레벨에 있지 않으면 제대로 작동하지 않을 수 있습니다.
@@ -83,6 +86,8 @@ function MainContent() {
       <MenuSection03 />
       <MdItem />
       <StoreEDway /> 
+      <Per />
+      {/* <Per2 /> */}
       <Footer />
       
     </>
@@ -629,7 +634,8 @@ function SwiperSection01() {
 
         {/* 스와이퍼 섹션 & 뒷배경 */}
         <div className='w-full relative h-[90vh] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
-          <div className='relative w-[80vw] h-[70vh] flex justify-center items-center overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
+          
+          <div className='relative md:top-0 top-[100px] w-[80vw] h-[70vh] md:w-[1200px] md:h-[620px] flex justify-center items-center overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
             <div className='md:hidden pointer-events-none absolute flex justify-center items-center z-[200]'>
 
             
@@ -659,7 +665,7 @@ function SwiperSection01() {
 
             </div>
 
-            <div className='relative w-[75vw] h-[67vh] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
+            <div className='relative w-[75vw] h-[67vh] md:w-[1174px] md:h-[589px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
               <Swiper
                 ref={swiperRef}
                 navigation={false}
@@ -746,20 +752,299 @@ function SwiperSection01() {
   );
 }
 
+
+/**
+ * 
+
+
+"use client";
+import React, { useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
+// Import Swiper styles
+import "swiper/css";
+
+import { Parallax, EffectFade, Pagination } from "swiper/modules";
+import Title from "../title";
+
+const BigSlideSection = () => {
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index: number, className: string) {
+            return `<img class='${className} !w-20 !h-20' style="background:none !important;" src="images/main/brand-list-logo${index + 1}.svg" alt="" />`;
+            // return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+    };
+
+    return (
+        <>
+            <section>
+                <Title
+                    title="Our Brand"
+                    text={[
+                        "고객의 바른 건강을 생각하는 정관장의",
+                        "다양한 브랜드를 소개합니다.",
+                    ]}
+                    className="my-60 font-bold"
+                />
+                <Swiper
+                    pagination={pagination}
+                    modules={[Parallax, EffectFade, Pagination]}
+                    effect={"fade"}
+                    className="mySwiper"
+                    style={
+                        {
+                            "--swiper-pagination-bottom": "unset",
+                            "--swiper-pagination-top": "0",
+                            "--swiper-pagination-bullet-horizontal-gap": "2rem",
+                        } as React.CSSProperties
+                    }
+                    onSlideChangeTransitionStart={(swiper) => {
+                        // 모든 슬라이드의 이미지를 scale 1.1로 설정
+                        swiper.slides.forEach((slide) => {
+                            const img = slide.querySelector("img");
+                            if (img) {
+                                img.style.transform = "scale(1.05)";
+                            }
+                        });
+
+                        // 활성화된 슬라이드의 이미지만 scale 1로 설정
+                        const activeSlideImg =
+                            swiper.slides[swiper.activeIndex].querySelector(
+                                "img",
+                            );
+                        if (activeSlideImg) {
+                            activeSlideImg.style.transition =
+                                "transform 0.3s ease-in";
+                            activeSlideImg.style.transform = "scale(1)";
+                        }
+                    }}
+                    // onSlideChangeTransitionEnd={(swiper) => {
+                    //     swiper.slides.forEach((slide) => {
+                    //         const img = slide.querySelector("img");
+                    //         if (img) {
+                    //             img.style.transform = "scale(1.05)";
+                    //         }
+                    //     });
+                    //     const activeSlideImg =
+                    //         swiper.slides[swiper.activeIndex].querySelector("img");
+                    //     if (activeSlideImg) {
+                    //         activeSlideImg.style.transform = "scale(1)";
+                    //     }
+                    // }}
+                >
+                    <SwiperSlide>
+                        <img
+                            className="w-full scale-105"
+                            style={{ width: "100%" }}
+                            src="images/main/brand-bg1.jpg"
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <img
+                            className="w-full scale-105"
+                            src="images/main/brand-bg2.jpg"
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <img
+                            className="w-full scale-105"
+                            src="images/main/brand-bg3.jpg"
+                        />
+                    </SwiperSlide>
+                </Swiper>
+            </section>
+        </>
+    );
+};
+
+
+
+
+
+
+
+
+ * 
+ */
+
 function PromotionSection02() {
-  // 현재 이미지 인덱스 관리
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    `${process.env.PUBLIC_URL}/section02SubBn01.png`,
+    `${process.env.PUBLIC_URL}/section02SubBn02.png`,
+    `${process.env.PUBLIC_URL}/section02SubBn03.png`,
+    `${process.env.PUBLIC_URL}/section02Bn01.png`,
+  ];
 
-  // 왼쪽 이미지 인덱스
-  const [leftImage, setLeftImage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0); // 왼쪽 이미지 인덱스
+  const [imgRealIndex, setImgRealIndex] = useState(0); // 오른쪽 이미지 인덱스
+  const [isAutoplay, setIsAutoplay] = useState(true); // 자동 슬라이드 상태
+  const swiperRef = useRef(null); // Swiper 인스턴스를 참조하기 위한 ref
+  const [direction, setDirection] = useState('vertical'); // 스와이퍼 초기 디렉션
 
-  // 오른쪽 이미지들 관리
-  const [rightImages, setRightImages] = useState([]);
+  // 왼쪽 이미지 인덱스 업데이트
+  const updateIndex = (realIndex) => {
+    const newIndex = (realIndex - 1 + images.length) % images.length;
+    setCurrentIndex(newIndex);
+  };
 
-  // 자동 슬라이드 상태
-  const [isAutoSlideActive, setIsAutoSlideActive] = useState(true);
+  // 슬라이드 변경 시 왼쪽 이미지 인덱스 업데이트
+  const handleSlideChange = (swiper) => {
+    const realIndex = swiper.realIndex;
+    updateIndex(realIndex);
+    setImgRealIndex(realIndex);
+  };
 
-  // 이미지 배열
+  // 위로 이동 버튼 클릭 핸들러
+  const handleMoveUp = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext(); // 위로 이동
+    }
+  };
+
+  // 아래로 이동 버튼 클릭 핸들러
+  const handleMoveDown = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev(); // 아래로 이동
+    }
+  };
+
+  // 자동 슬라이드 토글 핸들러
+  const handleAutoplayToggle = () => {
+    if (swiperRef.current) {
+      if (isAutoplay) {
+        swiperRef.current.autoplay.stop();
+        setIsAutoplay(false); // 상태 업데이트
+      } else {
+        setIsAutoplay(true);
+        setTimeout(() => {
+          swiperRef.current.autoplay.start(); // 즉시 시작 (내부 딜레이 적용 (3초))
+        }); 
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDirection(window.innerWidth < 1200 ? 'horizontal' : 'vertical');
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <div className="w-full flex items-center justify-center">
+      <div className="w-full custom1200:w-[1200px]">
+        <div className="text-center">
+          <div>
+            <h1 className="text-5xl md:text-[64px] scoop-font">Promotion</h1>
+            <p className="text-xl md:text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
+          </div>
+
+          {/* 이미지 전체 섹션   */}
+          <div className="flex gap-6 custom1200:gap-0 flex-col custom1200:flex-row mt-8 h-[486px] items-center custom1200:items-start  custom1200:justify-between">
+            {/* 왼쪽 큰 이미지 영역 left-[50%] translate-x-[-50%] */}
+            <div className="rounded-lg relative w-[80%] ">
+              <img 
+                className="w-[878px] h-[486px] object-cover" 
+                src={images[currentIndex]} 
+                alt="Main Promotion" 
+              />
+            </div>
+
+            {/* 오른쪽 서브 이미지 슬라이드 영역 */}
+            <div className="px-6 w-full custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between">
+              <Swiper
+                direction={direction}
+                loop={true}
+                slidesPerView={3}
+                slidesPerGroup={1}
+                spaceBetween={24}
+                className="h-full"
+                onSlideChange={handleSlideChange}
+                autoplay={isAutoplay ? {
+                  delay: 3000, // 3초마다 자동 슬라이드
+                  disableOnInteraction: false, // 사용자 상호작용 시 자동 슬라이드 비활성화 방지
+                } : false}
+                modules={[Autoplay, Pagination]}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }} // Swiper 인스턴스를 참조
+              >
+                {images.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img 
+                      src={image} 
+                      alt={`Small ${index + 1}`} 
+                      className="w-full h-full object-cover" 
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* 네비게이션 및 버튼 섹션 */}
+            <div className='h-full w-[35px] custom1200:flex justify-center hidden '>
+              <div className='flex flex-col items-center justify-start gap-5'>
+                {images.map((_, index) => (
+                  <div 
+                    key={index} 
+                    className={`w-[7px] h-[7px] rounded-full ${index === imgRealIndex ? 'bg-gray-500' : 'bg-gray-100'}`}
+                  ></div>
+                ))}
+
+                {/* 위로 이동 버튼 */}
+                <div 
+                  className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer" 
+                  onClick={handleMoveUp}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                  </svg>
+                </div>
+
+                {/* 아래로 이동 버튼 */}
+                <div 
+                  className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer" 
+                  onClick={handleMoveDown}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </div>
+
+                {/* 자동 슬라이드 토글 버튼 */}
+                <div 
+                  className={`bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer ${isAutoplay ? 'text-gray-500' : 'text-gray-100'}`}
+                  onClick={handleAutoplayToggle}
+                >
+                  {isAutoplay ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5 text-[#222222]">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5 text-[#222222]">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function Per2() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const images = [
     `${process.env.PUBLIC_URL}/section02Bn01.png`,
     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
@@ -767,118 +1052,55 @@ function PromotionSection02() {
     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
   ];
 
-  // useEffect를 통해 currentIndex에 따라 leftImage와 rightImages를 업데이트
-  useEffect(() => {
-    setLeftImage(currentIndex);
-    const newRightImages = [
-      images[(currentIndex + 1) % images.length],
-      images[(currentIndex + 2) % images.length],
-      images[(currentIndex + 3) % images.length],
-    ];
-    setRightImages(newRightImages);
-  }, [currentIndex]);
-
-  // 위 버튼 클릭 시
-  const handleMoveUp = () => {
-    const newIndex = (currentIndex + 1) % images.length;
-    setCurrentIndex(newIndex);
+  // 슬라이드 변경 시 활성화된 슬라이드 인덱스를 콘솔에 출력하는 함수
+  const handleSlideChange = (swiper) => {
+    // realIndex를 사용하여 실제 활성화된 슬라이드 인덱스를 확인
+    const newIndex = swiper.realIndex;
+    setActiveSlide(newIndex);
+    console.log('현재 활성화된 슬라이드 인덱스:', newIndex);
   };
-
-  // 아래 버튼 클릭 시
-  const handleMoveDown = () => {
-    const newIndex = (currentIndex - 1 + images.length) % images.length;
-    setCurrentIndex(newIndex);
-  };
-
-  // 자동 슬라이드 토글
-  const toggleAutoSlide = () => {
-    setIsAutoSlideActive(prev => !prev);
-  };
-
-  // 5초마다 자동 슬라이드
-  useEffect(() => {
-    if (isAutoSlideActive) {
-      const intervalId = setInterval(handleMoveUp, 5000);
-      return () => clearInterval(intervalId);
-    }
-  }, [isAutoSlideActive, currentIndex]);
-
-  // 공통 CSS 클래스
-  const containerclassName = "rounded-lg relative";
-  const buttonclassName = "bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer";
-  const indicatorclassName = "w-[7px] h-[7px] rounded-full";
-  const activeIndicatorclassName = "bg-gray-500";
-  const inactiveIndicatorclassName = "bg-gray-100";
 
   return (
-    <>
-      <div className="w-full flex items-center justify-center">
-        <div className="w-[1200px]">
-          <div className="text-center">
-            <div>
-              <h1 className="text-5xl md:text-[64px] scoop-font">Promotion</h1>
-              <p className="text-xl md:text-2xl mt-2 font-semibold">이디야의 다양한 혜택과 이벤트를 만나보세요.</p>
-            </div>
-
-            <div className="flex mt-8 h-[486px] justify-between">
-              {/* 메인 이미지 영역 */}
-              <div className={`${containerclassName} relative`}>
-                <Link to="/">
-                  <img className="w-[878px] h-[486px] object-cover" src={images[leftImage]} alt="Main Promotion" />
-                </Link>
-              </div>
-
-              {/* 오른쪽 서브 이미지 슬라이드 영역 */}
-              <div className="flex flex-col justify-between">
-                {rightImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`${containerclassName} cursor-pointer image-slide`}
-                    onClick={() => setCurrentIndex(images.indexOf(image))}
-                  >
-                    <img className="w-[230px] h-[146px] object-cover" src={image} alt={`Sub Promotion ${index + 1}`} />
-                  </div>
-                ))}
-              </div>
-
-              {/* 네비게이션 및 버튼 섹션 */}
-              <div className='h-full w-[35px] flex justify-center'>
-                <div className='flex flex-col items-center justify-start gap-5'>
-                  {/* 네비게이션 포인트 */}
-                  <div className={`${indicatorclassName} ${0 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
-                  <div className={`${indicatorclassName} ${1 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
-                  <div className={`${indicatorclassName} ${2 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
-                  <div className={`${indicatorclassName} ${3 === currentIndex ? activeIndicatorclassName : inactiveIndicatorclassName}`}></div>
-
-                  {/* 위로 이동 버튼 */}
-                  <div className={buttonclassName} onClick={handleMoveUp}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-                    </svg>
-                  </div>
-
-                  {/* 아래로 이동 버튼 */}
-                  <div className={buttonclassName} onClick={handleMoveDown}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </div>
-
-                  {/* 자동 슬라이드 토글 버튼 */}
-                  <div className={buttonclassName} onClick={toggleAutoSlide}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="w-[1200px] h-[600px] mx-auto flex">
+      {/* 왼쪽 큰 이미지 영역 */}
+      <div className="w-[80%] h-full bg-gray-300">
+        {/* 큰 이미지 */}
+        <img 
+          src={images[activeSlide]} 
+          alt="Large" 
+          className="w-full h-full object-cover"
+        />
       </div>
-    </>
+
+      {/* 오른쪽 작은 이미지들 슬라이드 영역 */}
+      <div className="w-[20%] h-full flex flex-col justify-center">
+        <Swiper
+          direction="vertical"
+          pagination={{ clickable: true }}
+          loop={true}
+          onSlideChange={handleSlideChange}
+          slidesPerView={3}
+          slidesPerGroup={1}
+          spaceBetween={10}
+          className="h-full"
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img 
+                src={image} 
+                alt={`Small ${index + 1}`} 
+                className="w-full h-full object-cover"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
 }
+
+
+
 
 
 function MenuSection03() {
