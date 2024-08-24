@@ -86,8 +86,7 @@ function MainContent() {
       <MenuSection03 />
       <MdItem />
       <StoreEDway /> 
-      <Per />
-      {/* <Per2 /> */}
+
       <Footer />
       
     </>
@@ -220,32 +219,14 @@ function MobileNavbar({ onMenuToggle }){
 }
 
 function MobileMenu({ onClose }) {
-  const [isAboutOpen, setIsAboutOpen] = useState(false); // Menu 섹션 열림/닫힘 상태
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu 섹션 열림/닫힘 상태
-  const [isStoryOpen, setIsStoryOpen] = useState(false); // Story 섹션 열림/닫힘 상태
-  const [isStoreOpen, setIsStoreOpen] = useState(false); // Store 섹션 열림/닫힘 상태
+  const [openMenu, setOpenMenu] = useState(null); // 현재 열려있는 메뉴를 추적
 
-  const toggleAbout = () => setIsAboutOpen(!isAboutOpen);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleStory = () => setIsStoryOpen(!isStoryOpen);
-  const toggleStore = () => setIsStoreOpen(!isStoreOpen);
-
-  const handleAboutClick = () => {
-    toggleAbout();
-    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
-  };
-  const handleMenuClick = () => {
-    toggleMenu();
-    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
+  const toggleMenu = (menuName) => {
+    setOpenMenu((prevOpenMenu) => (prevOpenMenu === menuName ? null : menuName));
   };
 
-  const handleStoryClick = () => {
-    toggleStory();
-    onClose(); // 서브메뉴 클릭 시 메뉴 닫기
-  };
-
-  const handleStoreClick = () => {
-    toggleStore();
+  const handleMenuClick = (menuName) => {
+    toggleMenu(menuName);
     onClose(); // 서브메뉴 클릭 시 메뉴 닫기
   };
 
@@ -279,34 +260,32 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        <div className="flex gap-8 pl-8">
-          <div className="w-[185px] h-[65px] bg-[#243c84] flex justify-center items-center rounded-full">
-            <p className="text-[#fff] text-[24px]">로그인</p>
+        <div className="flex gap-4 pl-8">
+          <div className="w-[120px] h-[50px] bg-[#243c84] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-2xl">로그인</p>
           </div>
 
-          <div className="w-[185px] h-[65px] bg-[#192033] flex justify-center items-center rounded-full">
-            <p className="text-[#fff] text-[24px]">회원가입</p>
+          <div className="w-[120px] h-[50px] bg-[#192033] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-2xl">회원가입</p>
           </div>
         </div>
 
         <ul className="w-full">
-          {/* Menu 리스트 아이템 */}
           <li className="w-full px-8">
-            {/* Menu 타이틀과 화살표 */}
             <div
-              className="h-[150px] flex items-center justify-between cursor-pointer"
-              onClick={toggleAbout} // 클릭 시 서브메뉴 열림/닫힘 토글
+              className="h-[100px] flex items-center justify-between cursor-pointer"
+              onClick={() => toggleMenu('about')}
             >
-              <h4 className="text-[36px] scoop-font">About</h4>
+              <h4 className="text-3xl scoop-font">About</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="2.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className={`size-12 transform transition-transform duration-300 ease-in-out ${
-                  isAboutOpen ? 'rotate-180' : 'rotate-0'
-                }`} // 서브메뉴가 열리면 화살표를 180도 회전
+                  openMenu === 'about' ? 'rotate-180' : 'rotate-0'
+                }`}
               >
                 <path
                   strokeLinecap="round"
@@ -316,34 +295,33 @@ function MobileMenu({ onClose }) {
               </svg>
             </div>
 
-            {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isAboutOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
-              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
-              onClick={handleAboutClick}
+                openMenu === 'about' ? 'h-[2.5rem] opacity-100' : 'h-0 opacity-0'
+              }`}
+              onClick={() => handleMenuClick('about')}
             >
-              <Link to="/"><li className="text-[24px] py-2">About</li></Link>
+              <Link to="/">
+                <li className="text-[24px] py-2">About</li>
+              </Link>
             </ul>
           </li>
 
-          {/* Menu 리스트 아이템 */}
           <li className="w-full px-8">
-            {/* Menu 타이틀과 화살표 */}
             <div
-              className="h-[150px] flex items-center justify-between cursor-pointer"
-              onClick={toggleMenu} // 클릭 시 서브메뉴 열림/닫힘 토글
+              className="h-[100px] flex items-center justify-between cursor-pointer"
+              onClick={() => toggleMenu('menu')}
             >
-              <h4 className="text-[36px] scoop-font">Menu</h4>
+              <h4 className="text-3xl scoop-font">Menu</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="2.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className={`size-12 transform transition-transform duration-300 ease-in-out ${
-                  isMenuOpen ? 'rotate-180' : 'rotate-0'
-                }`} // 서브메뉴가 열리면 화살표를 180도 회전
+                  openMenu === 'menu' ? 'rotate-180' : 'rotate-0'
+                }`}
               >
                 <path
                   strokeLinecap="round"
@@ -353,40 +331,34 @@ function MobileMenu({ onClose }) {
               </svg>
             </div>
 
-            {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isMenuOpen ? 'h-[200px] opacity-100' : 'h-0 opacity-0'
-              }`
-              
-              } // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 
-              
-              onClick={handleMenuClick}
+                openMenu === 'menu' ? 'h-[10rem] opacity-100' : 'h-0 opacity-0'
+              }`}
+              onClick={() => handleMenuClick('menu')}
             >
-              <li className="text-[24px] py-2">커피메뉴</li>
-              <li className="text-[24px] py-2">플랫치노</li>
-              <li className="text-[24px] py-2">베이커리</li>
-              <li className="text-[24px] py-2">빙수</li>
+              <li className="text-2xl py-1">커피메뉴</li>
+              <li className="text-2xl py-1">플랫치노</li>
+              <li className="text-2xl py-1">베이커리</li>
+              <li className="text-2xl py-1">빙수</li>
             </ul>
           </li>
 
-          {/* Story 리스트 아이템 */}
           <li className="w-full px-8">
-            {/* Story 타이틀과 화살표 */}
             <div
-              className="h-[150px] flex items-center justify-between cursor-pointer"
-              onClick={toggleStory} // 클릭 시 서브메뉴 열림/닫힘 토글
+              className="h-[100px] flex items-center justify-between cursor-pointer"
+              onClick={() => toggleMenu('story')}
             >
-              <h4 className="text-[36px] scoop-font">Story</h4>
+              <h4 className="text-3xl scoop-font">Story</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="2.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className={`size-12 transform transition-transform duration-300 ease-in-out ${
-                  isStoryOpen ? 'rotate-180' : 'rotate-0'
-                }`} // 서브메뉴가 열리면 화살표를 180도 회전
+                  openMenu === 'story' ? 'rotate-180' : 'rotate-0'
+                }`}
               >
                 <path
                   strokeLinecap="round"
@@ -396,34 +368,33 @@ function MobileMenu({ onClose }) {
               </svg>
             </div>
 
-            {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isStoryOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
-              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
-              onClick={handleStoryClick}
+                openMenu === 'story' ? 'h-[2.5rem] opacity-100' : 'h-0 opacity-0'
+              }`}
+              onClick={() => handleMenuClick('story')}
             >
-              <Link to="/story"><li className="text-[24px] py-2">Story</li></Link>
+              <Link to="/story">
+                <li className="text-[24px] py-2">Story</li>
+              </Link>
             </ul>
           </li>
 
-          {/* Story 리스트 아이템 */}
           <li className="w-full px-8">
-            {/* Story 타이틀과 화살표 */}
             <div
-              className="h-[150px] flex items-center justify-between cursor-pointer"
-              onClick={toggleStore} // 클릭 시 서브메뉴 열림/닫힘 토글
+              className="h-[100px] flex items-center justify-between cursor-pointer"
+              onClick={() => toggleMenu('store')}
             >
-              <h4 className="text-[36px] scoop-font">Store</h4>
+              <h4 className="text-3xl scoop-font">Store</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="2.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className={`size-12 transform transition-transform duration-300 ease-in-out ${
-                  isStoreOpen ? 'rotate-180' : 'rotate-0'
-                }`} // 서브메뉴가 열리면 화살표를 180도 회전
+                  openMenu === 'store' ? 'rotate-180' : 'rotate-0'
+                }`}
               >
                 <path
                   strokeLinecap="round"
@@ -433,22 +404,18 @@ function MobileMenu({ onClose }) {
               </svg>
             </div>
 
-            {/* 서브메뉴 리스트 */}
             <ul
               className={`overflow-hidden transition-height duration-500 ease-in-out ${
-                isStoreOpen ? 'h-[50px] opacity-100' : 'h-0 opacity-0'
-              }`} // 서브메뉴가 열리면 height를 늘리고, 서서히 열리도록 애니메이션 적용
-              onClick={handleStoreClick}
+                openMenu === 'store' ? 'h-[2.5rem] opacity-100' : 'h-0 opacity-0'
+              }`}
+              onClick={() => handleMenuClick('store')}
             >
               <li className="text-[24px] py-2">가맹문의</li>
             </ul>
           </li>
-
-
         </ul>
 
-        
-        <div className="relative top-[100px] flex gap-8 text-[32px] pl-8">
+        <div className="absolute bottom-[10%] flex gap-4 text-2xl pl-8">
           <div>
             <p>KOREAN</p>
           </div>
@@ -466,7 +433,7 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        <div className="flex relative top-[120px] items-center gap-8  pl-8">
+        <div className="flex absolute bottom-[2%]  items-center gap-8  pl-8">
           <div>
             <img
               src={`${process.env.PUBLIC_URL}/facebookMobile.png`}
@@ -486,12 +453,11 @@ function MobileMenu({ onClose }) {
             />
           </div>
         </div>
-
       </div>
-      
     </>
   );
 }
+
 
 
 
@@ -626,17 +592,19 @@ function SwiperSection01() {
 
     <>
     {/* 모바일 위치 잡기 */}
-      <div className='relative top-[000px] md:top-0'>
+      <div className='relative top-0 '>
         {/* 가운데 로고 부분 */}
-        <div className='w-[277px] h-[105px] absolute z-[250] top-[20%] md:top-[10%] left-[50%] transform -translate-x-1/2'>
+        <div className='w-[150px] md:w-[277px] absolute z-[250] top-[20.5%] md:top-[10%] left-[50%] transform -translate-x-1/2'>
           <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
         </div>
 
         {/* 스와이퍼 섹션 & 뒷배경 */}
-        <div className='w-full relative h-[90vh] flex justify-center items-center bg-red-300' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
+        <div className='w-full relative h-[90vh] flex justify-center items-center ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/section01BG.png)` }}>
           
-          <div className='relative md:top-0 top-[100px] w-[80vw] h-[70vh] md:w-[1200px] md:h-[620px] flex justify-center items-center overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
-            <div className='md:hidden pointer-events-none absolute flex justify-center items-center z-[200]'>
+          <div className='relative md:top-[50px] top-[100px] w-[80vw] h-[70vh] custom1200:w-[1200px] custom1200:h-[620px] flex justify-center items-center overflow-hidden rounded-[4.5rem] md:rounded-[150px]'>
+            
+            {/* 모바일때 */}
+            <div className='custom1200:hidden pointer-events-none absolute flex justify-center items-center z-[200]'>
 
             
               <div className={`pointer-events-none ${borderStyles.replace('border-4', 'border-[12px]')} w-[80vw] h-[70vh] border-[#172650]`}></div>
@@ -651,7 +619,8 @@ function SwiperSection01() {
 
             </div>
             
-            <div className='hidden pointer-events-none absolute md:flex justify-center items-center z-[200]'>
+            {/* 피씨때 */}
+            <div className='hidden pointer-events-none absolute custom1200:flex justify-center items-center z-[200]'>
 
             
               <div className={` ${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
@@ -665,7 +634,7 @@ function SwiperSection01() {
 
             </div>
 
-            <div className='relative w-[75vw] h-[67vh] md:w-[1174px] md:h-[589px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
+            <div className='relative w-[85vw] h-[67vh] custom1200:w-[1174px] custom1200:h-[589px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
               <Swiper
                 ref={swiperRef}
                 navigation={false}
@@ -679,12 +648,13 @@ function SwiperSection01() {
                 <SwiperSlide><Link to="/story"><img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/bn03.png`} alt="Slide 3" /></Link></SwiperSlide>
               </Swiper>
             </div>
+
           </div>
 
 
 
           {/* 버튼들 */}
-          <div className='absolute w-[1200px] h-[610px] hidden  md:flex justify-between items-center  '>
+          <div className=' absolute w-[1200px] h-[610px] hidden  custom1200:flex justify-between items-center  '>
             {/* 왼쪽 방향 버튼 */}
             <div
               className='relative left-[-40px]  w-[99px] h-[99px] bg-[#213779] rounded-full flex items-center justify-center cursor-pointer z-[250]'
@@ -939,7 +909,7 @@ function PromotionSection02() {
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="mt-[30%] w-full flex items-center justify-center">
       <div className="w-full custom1200:w-[1200px]">
         <div className="text-center">
           <div>
@@ -952,14 +922,14 @@ function PromotionSection02() {
             {/* 왼쪽 큰 이미지 영역 left-[50%] translate-x-[-50%] */}
             <div className="rounded-lg relative w-[80%] ">
               <img 
-                className="w-[878px] h-[486px] object-cover" 
+                className="w-[878px] h-auto md:h-[486px] object-cover" 
                 src={images[currentIndex]} 
                 alt="Main Promotion" 
               />
             </div>
 
             {/* 오른쪽 서브 이미지 슬라이드 영역 */}
-            <div className="px-6 w-full custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between">
+            <div className="px-6 w-full custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between ">
               <Swiper
                 direction={direction}
                 loop={true}
@@ -980,7 +950,7 @@ function PromotionSection02() {
                     <img 
                       src={image} 
                       alt={`Small ${index + 1}`} 
-                      className="w-full h-full object-cover" 
+                      className="w-full h-full object-cover " 
                     />
                   </SwiperSlide>
                 ))}
@@ -1042,62 +1012,62 @@ function PromotionSection02() {
 }
 
 
-function Per2() {
-  const [activeSlide, setActiveSlide] = useState(0);
+// function Per2() {
+//   const [activeSlide, setActiveSlide] = useState(0);
 
-  const images = [
-    `${process.env.PUBLIC_URL}/section02Bn01.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn01.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn02.png`,
-    `${process.env.PUBLIC_URL}/section02SubBn03.png`,
-  ];
+//   const images = [
+//     `${process.env.PUBLIC_URL}/section02Bn01.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn02.png`,
+//     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
+//   ];
 
-  // 슬라이드 변경 시 활성화된 슬라이드 인덱스를 콘솔에 출력하는 함수
-  const handleSlideChange = (swiper) => {
-    // realIndex를 사용하여 실제 활성화된 슬라이드 인덱스를 확인
-    const newIndex = swiper.realIndex;
-    setActiveSlide(newIndex);
-    console.log('현재 활성화된 슬라이드 인덱스:', newIndex);
-  };
+//   // 슬라이드 변경 시 활성화된 슬라이드 인덱스를 콘솔에 출력하는 함수
+//   const handleSlideChange = (swiper) => {
+//     // realIndex를 사용하여 실제 활성화된 슬라이드 인덱스를 확인
+//     const newIndex = swiper.realIndex;
+//     setActiveSlide(newIndex);
+//     console.log('현재 활성화된 슬라이드 인덱스:', newIndex);
+//   };
 
-  return (
-    <div className="w-[1200px] h-[600px] mx-auto flex">
-      {/* 왼쪽 큰 이미지 영역 */}
-      <div className="w-[80%] h-full bg-gray-300">
-        {/* 큰 이미지 */}
-        <img 
-          src={images[activeSlide]} 
-          alt="Large" 
-          className="w-full h-full object-cover"
-        />
-      </div>
+//   return (
+//     <div className="w-[1200px] h-[600px] mx-auto flex">
+//       {/* 왼쪽 큰 이미지 영역 */}
+//       <div className="w-[80%] h-full bg-gray-300">
+//         {/* 큰 이미지 */}
+//         <img 
+//           src={images[activeSlide]} 
+//           alt="Large" 
+//           className="w-full h-full object-cover"
+//         />
+//       </div>
 
-      {/* 오른쪽 작은 이미지들 슬라이드 영역 */}
-      <div className="w-[20%] h-full flex flex-col justify-center">
-        <Swiper
-          direction="vertical"
-          pagination={{ clickable: true }}
-          loop={true}
-          onSlideChange={handleSlideChange}
-          slidesPerView={3}
-          slidesPerGroup={1}
-          spaceBetween={10}
-          className="h-full"
-        >
-          {images.map((image, index) => (
-            <SwiperSlide key={index}>
-              <img 
-                src={image} 
-                alt={`Small ${index + 1}`} 
-                className="w-full h-full object-cover"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </div>
-  );
-}
+//       {/* 오른쪽 작은 이미지들 슬라이드 영역 */}
+//       <div className="w-[20%] h-full flex flex-col justify-center">
+//         <Swiper
+//           direction="vertical"
+//           pagination={{ clickable: true }}
+//           loop={true}
+//           onSlideChange={handleSlideChange}
+//           slidesPerView={3}
+//           slidesPerGroup={1}
+//           spaceBetween={10}
+//           className="h-full"
+//         >
+//           {images.map((image, index) => (
+//             <SwiperSlide key={index}>
+//               <img 
+//                 src={image} 
+//                 alt={`Small ${index + 1}`} 
+//                 className="w-full h-full object-cover"
+//               />
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+//       </div>
+//     </div>
+//   );
+// }
 
 
 
@@ -1268,33 +1238,58 @@ function MdItem(){
             </div>
 
             {/* MD상품 */}
-            <div className='flex items-center justify-center gap-12 md:gap-36'>
+            <div className='relative flex  justify-center gap-12 md:gap-36'>
 
               {/* 텀블러 */}
-              <div data-aos="fade-up" className='flex flex-col items-center'>
+              <div data-aos="fade-up" className=' flex flex-col items-center'>
                 
                 <div className='relative'>
                   <img className='w-[150px] h-[345px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
                   <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[-10%] md:left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
                 </div>
-                <h4 className='font-semibold text-3xl md:text-[36px] mt-[-68px]'>SUBSUB</h4>
-                <p className='text-black text-2xl md:text-[36px] mt-0 md:mt-[-20px]'>스마일 텀블러</p>
-              </div>
-              {/* 파우치 */}
-              <div data-aos="fade-up" data-aos-delay="200" className='flex flex-col items-center'>
+
+                <div className='text-center'>
+                  <h4 className='font-semibold text-3xl md:text-[36px] '>SUBSUB</h4>
+                  <p className='text-black text-2xl md:text-[36px] '>스마일 텀블러</p>
+                </div>
                 
-                <div className='relative top-[5.5rem]'>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="200" className=' flex flex-col items-center'>
+                
+                <div className='relative'>
+                  <img className='w-[150px] h-[345px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                </div>
+
+                <div className='text-center'>
+                  <h4 className='font-semibold text-3xl md:text-[36px] '>SUBSUB</h4>
+                  <p className='text-black text-2xl md:text-[36px] '>몽글몽글파우치</p>
+                </div>
+                
+              </div>
+
+
+
+
+
+
+
+              {/* 파우치 */}
+              {/* <div data-aos="fade-up" data-aos-delay="200" className=' absolute bottom-0 flex flex-col items-center'>
+                
+                <div className=' absolute bottom-0'>
                   <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
                   <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[15%] left-[8%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
                 </div>
                 
-                <div className='mt-[50px] md:mt-0'>
-                  <h4 className='font-semibold text-3xl md:text-[36px] mt-0 md:mt-[-74px]'>SUBSUB</h4>
-                  <p className='text-black text-2xl md:text-[36px] mt-0 md:mt-[-20px]'>몽글파우치세트</p>
+                <div className='text-center'>
+                  <h4 className='font-semibold text-3xl md:text-[36px] '>SUBSUB</h4>
+                  <p className='text-black text-2xl md:text-[36px] '>몽글파우치세트</p>
                 
 
                 </div>
-              </div>
+              </div> */}
 
             </div>
 
@@ -1307,25 +1302,25 @@ function MdItem(){
 // custom1200 --> 1200 미만일때 
 function StoreEDway() {
   return (
-    <div className='relative w-full h-[1400px] md:h-[1000px] custom1200:h-[594px] flex justify-center'>
+    <div className='relative w-full h-[1600px] md:h-[1000px] custom1200:h-[594px] flex justify-center'>
 
       <div className='w-full  md:w-[1200px] h-full'>
 
         <div className='flex flex-col items-center custom1200:flex-row justify-center mt-[120px] gap-[250px] md:gap-[96px]'>
 
-          <div className='relative w-full md:w-[580px] text-center'>
+          <div className='relative w-auto md:w-[580px] text-center'>
 
             <h4 className='scoop-font  text-5xl md:text-[64px]'>Store</h4>
             <p className='text-xl md:text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
             
             <div className='block md:hidden px-4'>
-              <img  src={`${process.env.PUBLIC_URL}/StoreMobileMap.png`}/>
+              <img className='bg-cover' src={`${process.env.PUBLIC_URL}/StoreMobileMap.png`}/>
             </div>
 
             <div className='relative w-auto md:w-[580px] hidden md:block'>
               <img src={`${process.env.PUBLIC_URL}/store_map.png`} alt="Store Map" />
 
-              <div className='ping absolute top-0 left-[40%]'>
+              <div className='hidden md:block ping absolute top-0 left-[40%]'>
                 <img src={`${process.env.PUBLIC_URL}/ping.png`} alt="Ping" />
               </div>
             </div>
@@ -1333,11 +1328,11 @@ function StoreEDway() {
 
             {/* 구름 */}
         
-            <div className='absolute top-[130px] left-[0px] cloud1Ani'>          
+            <div className='hidden md:block absolute top-[130px] left-[0px] cloud1Ani'>          
               <img  className=' bg-cover'  src={`${process.env.PUBLIC_URL}/cloud01.png`} alt="Cloud 01"  />
             </div>
 
-            <div className='absolute top-[250px] left-[200px] cloud2Ani'>         
+            <div className='hidden md:block absolute top-[250px] left-[200px] cloud2Ani'>         
               <img  className=' bg-cover'  src={`${process.env.PUBLIC_URL}/cloud02.png`} alt="Cloud 02"  />
             </div>
 
@@ -1348,13 +1343,13 @@ function StoreEDway() {
             <p className='text-[24px] mb-[20px]'>오랜 시간 우리 곁에 함께한 이디야 커피</p>
             <div className='relative flex justify-center'>
 
-              <div className='hidden md:block bg-[#f8f1e7] w-[350px] h-[300px] md:w-[480px] md:h-[171px] rounded-[50px]  md:rounded-full'></div>
+              <div className='hidden md:block bg-[#f8f1e7] w-[350px] h-[300px] md:w-[580px] md:h-[171px] rounded-[50px]  md:rounded-full'></div>
               <div className='block md:hidden'><img src={`${process.env.PUBLIC_URL}/EDway.png`} alt="EDway" /></div> {/* <img className='bg-cover' src={`${process.env.PUBLIC_URL}/circle.png`} alt="Circle" /> */}
 
               <div className='hidden md:block absolute top-[50%] translate-y-[-50%] left-[10px]'>
                 <img className='bg-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="Ediya Logo" />
               </div>
-              <div className='hidden md:block absolute top-0 md:top-[-50px] left-[150px]'>
+              <div className='hidden md:block absolute top-0 md:top-[-50px] left-[250px]'>
                 <img className='bg-cover' src={`${process.env.PUBLIC_URL}/picture.png`} alt="Picture" />
               </div>
             </div>
