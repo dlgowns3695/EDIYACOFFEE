@@ -160,4 +160,5 @@ body{
 
 .menu-content.menu-visible {
   transform: translateX(0); /* 메뉴가 열릴 때 화면에 보이도록 */
+  position: fixed;
 }

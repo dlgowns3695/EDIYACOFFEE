@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className='w-full bg-[#212530] h-[750px] md:h-[460px] flex justify-center text-[#afafaf] text-xs'>
       {/* flex justify-center << 모바일, 구조 수정하기  */}
-      <div className='w-full md:w-[1200px] h-full '>
+      <div className='w-full md:w-4/5 custom1200:w-[1200px] h-full '>
 
         {/* 피씨 EDIYA COFFEE, ul, li */}
         <div className='hidden md:block'>

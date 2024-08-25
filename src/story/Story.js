@@ -79,7 +79,7 @@ function Ambition() {
             start : 'top center', // 시작점 'top 90%' : 트리거 대상.con02 ul의 top 부분과 브라우저의 90% 부터 애니메이션 시작 'center center'으로 바꾸기
             // end : '20% 0%', // 끝점 '20% 100%' : 트리거 대상.con02 ul의 20%와 브라우저의 100%가 만날때 애니메이션 종료 '20% 20%'으로 바꾸기
             // scrub : 1, // 스크롤 이벤트는 스크롤 사용될때만 재생되도록 만들어주는 속성, 부드럽게 되감기 1 : 애니메이션 좀 빠름, 10 : 부드러움  // 잔상
-            // markers:true,
+            markers:true,
         }
     })
     .to(imgPcRef.current, {y:'400px', duration:1.5 ,ease:'ease-in-out'}) 
@@ -131,7 +131,7 @@ function Ambition() {
 
         {/* 인물사진 위에서 아래로 gsap */}
         {/* 인물사진 */}
-        <div ref={imgPcRef} className='hidden md:block absolute top-[1340px] right-[0px] w-[405px] custom1200:w-[605px] h-[777px]'>
+        <div ref={imgPcRef} className='hidden md:block absolute top-[540px] right-[0px] w-[405px] custom1200:w-[605px] h-[777px]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
         </div>
 
@@ -220,7 +220,7 @@ function CoreValue() {
 function Management() {
   return (
     // 1200px 이상은 2100px 모바일은 2600px + 70(푸터메뉴)
-    <div className="w-full h-[2200px] px-6 custom1200:h-[2100px]  flex justify-center ">
+    <div className="w-full h-[2600px] px-6 custom1200:h-[2100px]  flex justify-center ">
       
       <div data-aos="fade-up"  className="w-full md:w-[1200px] h-full ">
         {/* 이디야의 경영철학 */}
@@ -421,13 +421,14 @@ function Management() {
           {/* 아래 이미지 2개 크기조절 */}
 
           {/* 로고, 메인컬러 */}
-          <div data-aos="fade-up" className="flex custom1200:flex-row flex-col items-center custom1200:items-start justify-center gap-[47px] relative custom1200:absolute   top-[0px] custom1200:top-[400px]">
+          <div data-aos="fade-up" className="flex custom1200:flex-row flex-col items-center custom1200:items-start gap-[47px] ">
             {/* 왼쪽 */}
-            <div className="border border-[#dcdddf] w-11/12 ">
-              <img className="object-cover" src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />
+            <div className="border border-[#dcdddf] w-11/12 md:w-[591px] md:h-[419px] ">
+              <img className="w-full h-full object-cover " src={`${process.env.PUBLIC_URL}/ediyamainInfo.png`} alt="Ediya Main Info" />
             </div>
           
-            <div className="flex flex-col gap-[20px] w-11/12 ">
+          {/* 오른쪽 flex flex-col gap-[20px] w-11/12  */}
+            <div className="flex flex-col gap-4 w-11/12 md:w-auto">
               {[
                 {
                   color: '#243c84',
@@ -443,19 +444,22 @@ function Management() {
                 },
                 
               ].map((item, index) => (
-                <div key={index} className="px-2 py-2 w-full h-full md:w-[591px] md:h-[210px] border-[#dcdddf] border-[1px] flex gap-4 items-center">
+                
+                <div key={index} className="px-8 py-8 md:py-0 w-full h-full md:w-[591px] md:h-[200px] border-[#dcdddf] border-[1px] flex gap-4  items-center">
                   <div className="w-[120px] h-[120px] " style={{ backgroundColor: item.color }}></div>
-                  <div>
-                    <h4 className="text-[#222222] text-xl font-semibold">{item.title}</h4>
-                    <p className="text-[#222222] text-xl">{item.description}</p>
+                  <div className='w-[130px] text-nowrap'>
+                    {/* text-xl */}
+                    <h4 className="text-[#222222] text-sm font-semibold">{item.title}</h4>
+                    <p className="text-[#222222] text-sm">{item.description}</p>
                     <p 
-                      className="text-xl" 
+                      className="text-sm" 
                       style={{ color: index === 0 ? '#243c84' : '#dcdddf' }}
                     >{item.hex}</p>
                   </div>
                 </div>
               ))}
             </div>
+
           </div>
 
         </div>

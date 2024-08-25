@@ -141,7 +141,7 @@ function Navbar() {
       <div
         ref={headerRef}
         style={{transition: 'background-color 0.3s ease-in-out'}}
-        className="hidden md:fixed z-[999] w-full h-[130px] md:flex items-center justify-center "
+        className="hidden md:fixed z-[999999] w-full h-[130px] md:flex items-center justify-center "
       >
         {/* 1200px 내용물공간 */}
         <div className="hidden  w-[1200px] h-full md:flex justify-between items-center">
@@ -195,10 +195,11 @@ function Navbar() {
 }
 
 function MobileNavbar({ onMenuToggle }){
+
   return(
     <>
       {/* 모바일 nav바 452px = 모바일 탑 배너크기 */}
-      <div className='absolute z-[999] block md:hidden w-full h-[452px]  '>
+      <div className=' fixed z-[99999999] block md:hidden w-full h-[452px]  '>
         <div className='flex justify-between items-center px-8 pt-8'>
 
           <div className='w-[100px] h-[100px]'>
@@ -230,6 +231,7 @@ function MobileMenu({ onClose }) {
     onClose(); // 서브메뉴 클릭 시 메뉴 닫기
   };
 
+  
   return (
     <>
       <div className="absolute w-full h-full z-[10] bg-white ">
@@ -1012,79 +1014,20 @@ function PromotionSection02() {
 }
 
 
-// function Per2() {
-//   const [activeSlide, setActiveSlide] = useState(0);
-
-//   const images = [
-//     `${process.env.PUBLIC_URL}/section02Bn01.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn01.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn02.png`,
-//     `${process.env.PUBLIC_URL}/section02SubBn03.png`,
-//   ];
-
-//   // 슬라이드 변경 시 활성화된 슬라이드 인덱스를 콘솔에 출력하는 함수
-//   const handleSlideChange = (swiper) => {
-//     // realIndex를 사용하여 실제 활성화된 슬라이드 인덱스를 확인
-//     const newIndex = swiper.realIndex;
-//     setActiveSlide(newIndex);
-//     console.log('현재 활성화된 슬라이드 인덱스:', newIndex);
-//   };
-
-//   return (
-//     <div className="w-[1200px] h-[600px] mx-auto flex">
-//       {/* 왼쪽 큰 이미지 영역 */}
-//       <div className="w-[80%] h-full bg-gray-300">
-//         {/* 큰 이미지 */}
-//         <img 
-//           src={images[activeSlide]} 
-//           alt="Large" 
-//           className="w-full h-full object-cover"
-//         />
-//       </div>
-
-//       {/* 오른쪽 작은 이미지들 슬라이드 영역 */}
-//       <div className="w-[20%] h-full flex flex-col justify-center">
-//         <Swiper
-//           direction="vertical"
-//           pagination={{ clickable: true }}
-//           loop={true}
-//           onSlideChange={handleSlideChange}
-//           slidesPerView={3}
-//           slidesPerGroup={1}
-//           spaceBetween={10}
-//           className="h-full"
-//         >
-//           {images.map((image, index) => (
-//             <SwiperSlide key={index}>
-//               <img 
-//                 src={image} 
-//                 alt={`Small ${index + 1}`} 
-//                 className="w-full h-full object-cover"
-//               />
-//             </SwiperSlide>
-//           ))}
-//         </Swiper>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
 
 
 function MenuSection03() {
   // 스와이퍼 인스턴스를 참조할 ref
   const swiperRef2 = useRef(null);
 
-  // 슬라이드를 왼쪽으로 이동하는 함수 // 방향 체크 해보기 0818
+  // 슬라이드를 오른쪽으로 이동하는 함수
   const slidePrev2 = () => {
       if (swiperRef2.current && swiperRef2.current.swiper) {
           swiperRef2.current.swiper.slidePrev();
       }
   };
 
-  // 슬라이드를 오른쪽으로 이동하는 함수
+  // 슬라이드를 왼쪽으로 이동하는 함수
   const slideNext2 = () => {
       if (swiperRef2.current && swiperRef2.current.swiper) {
           swiperRef2.current.swiper.slideNext();
@@ -1115,7 +1058,7 @@ function MenuSection03() {
                           autoplay = {{delay: 2500,
                           disableOnInteraction: false,
                           }}
-                          slidesPerView={3}  // 한 번에 4개의 슬라이드 표시
+                          slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
                           
 
                       >
@@ -1134,7 +1077,7 @@ function MenuSection03() {
                   {/* 왼쪽방향버튼 */}
                   <div
                       className='absolute z-10 top-[290px] left-[-30px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slidePrev2}
+                      onClick={slideNext2}
                   >
                       <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100]'>
@@ -1147,7 +1090,7 @@ function MenuSection03() {
                   {/* 오른쪽방향버튼 */}
                   <div
                       className='absolute z-10 top-[290px] left-[1200px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slideNext2}
+                      onClick={slidePrev2}
                   >
                       <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100] '>
@@ -1224,7 +1167,7 @@ function MdItem(){
     <>
     {/* 100% */}
       <div className='w-full h-auto md:h-[1283px] bg-red-400'>
-        {/* 인도네시아 나무 배경 */}
+        {/* 인도네시아 나무 배경 0825 12:47 모바일때 이미지 크기 다시 잡기 */}
         <Link to="/"><div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}></div></Link> 
 
         {/* 갈색배경 */}
@@ -1241,11 +1184,11 @@ function MdItem(){
             <div className='relative flex  justify-center gap-12 md:gap-36'>
 
               {/* 텀블러 */}
-              <div data-aos="fade-up" className=' flex flex-col items-center'>
+              <div data-aos="fade-up" className=' flex flex-col items-center bg-red-200'>
                 
-                <div className='relative'>
+                <div className='relative bg-green-200'>
                   <img className='w-[150px] h-[345px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Tumbler.png`}/>
-                  <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[-10%] md:left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[-10%] md:left-[-10%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
                 </div>
 
                 <div className='text-center'>
@@ -1254,15 +1197,15 @@ function MdItem(){
                 </div>
                 
               </div>
-
-              <div data-aos="fade-up" data-aos-delay="200" className=' flex flex-col items-center'>
+            {/* 이미지 크기 조절해서 동일하게 만든 후 레이아웃 동일하게 잡기 0825 12:47 */}
+              <div data-aos="fade-up" data-aos-delay="200" className='relative bg-red-200 flex flex-col items-center'>
                 
-                <div className='relative'>
-                  <img className='w-[150px] h-[345px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
-                  <img className='w-[70px] h-[70px] md:w-auto md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                <div className=' relative bottom-0 bg-green-200'>
+                  <img className='w-[150px] h-[345px] md:w-[225px] md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
                 </div>
 
-                <div className='text-center'>
+                <div className=' text-center'>
                   <h4 className='font-semibold text-3xl md:text-[36px] '>SUBSUB</h4>
                   <p className='text-black text-2xl md:text-[36px] '>몽글몽글파우치</p>
                 </div>
