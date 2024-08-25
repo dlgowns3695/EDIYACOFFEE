@@ -136,18 +136,8 @@ body{
 }
 
 
-.menu-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0; /* 오른쪽에 고정 */
-  width: 100vw; /* 전체 화면 너비 */
-  height: 100vh;
-  overflow: hidden; /* 내용이 너비를 넘어가지 않도록 설정 */
-  
-}
-
 .menu-content {
-  position: absolute;
+  position: fixed; /* 위치를 항상 fixed로 유지 */
   top: 0;
   right: 0;
   height: 100%;
@@ -160,5 +150,4 @@ body{
 
 .menu-content.menu-visible {
   transform: translateX(0); /* 메뉴가 열릴 때 화면에 보이도록 */
-  position: fixed;
 }

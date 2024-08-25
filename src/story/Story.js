@@ -28,6 +28,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Story = () => {
 
   useEffect(() => {
+    // 페이지가 로드될 때 스크롤을 최상단으로 이동
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, []);
+  
+
+  useEffect(() => {
     AOS.init({
       duration: 900, // 애니메이션 지속 시간
       // offset: 100,    // 스크롤에 따른 애니메이션 트리거 지점 조정
@@ -35,6 +43,8 @@ const Story = () => {
       once: true // 애니메이션이 한 번만 실행되도록 설정
     });
   }, []);
+
+
 
   
 
@@ -70,7 +80,7 @@ function Ambition() {
   gsap.registerPlugin(ScrollTrigger);
   const triggerRef = useRef(null);
   const imgPcRef = useRef(null);
-  const imgMobileRef = useRef(null);
+  // const imgMobileRef = useRef(null);
 
   useEffect(() => {
     gsap.timeline({
@@ -85,16 +95,16 @@ function Ambition() {
     .to(imgPcRef.current, {y:'400px', duration:1.5 ,ease:'ease-in-out'}) 
 },[]);
 
-  useEffect(() => {
-    gsap.timeline({
-        scrollTrigger : {
-            trigger : triggerRef.current,
-            start : 'top 10%', 
-            // markers:true,
-        }
-    })
-    .to(imgMobileRef.current, {y:'450px', duration:2 ,ease:'ease-in-out'}) 
-},[]);
+//   useEffect(() => {
+//     gsap.timeline({
+//         scrollTrigger : {
+//             trigger : triggerRef.current,
+//             start : 'top 10%', 
+//             // markers:true,
+//         }
+//     })
+//     .to(imgMobileRef.current, {y:'450px', duration:2 ,ease:'ease-in-out'}) 
+// },[]);
 
 
   return (
