@@ -17,7 +17,7 @@ import Menus from './menus/Menus';
 import Story from './story/Story';
 import Store from './store/Store';
 import Footer from './footer/Footer'
-
+import ScrollToTop from './scrollto/Scrollto'
 
 
 // Routes와 Route 컴포넌트는 Navbar, SwiperSection01, PromotionSection02, MenuSection03, MdItem, StoreEDway, Footer 
@@ -25,15 +25,15 @@ import Footer from './footer/Footer'
 
 function App() {
 
-  function ScrollToTop() {
-    const { pathname } = useLocation();
+  // function ScrollToTop() {
+  //   const { pathname } = useLocation();
   
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]); // pathname이 변경될 때마다 실행
+  //   useEffect(() => {
+  //     window.scrollTo(0, 0);
+  //   }, [pathname]); // pathname이 변경될 때마다 실행
   
-    return null;
-  }
+  //   return null;
+  // }
   
   
 
@@ -74,6 +74,7 @@ function App() {
       
       
       <main className='overflow-hidden'>
+      <ScrollToTop />
         <Routes>
           
           <Route path="/" element={<MainContent />} />
@@ -1207,8 +1208,8 @@ function MdItem(){
   return(
     <>
     {/* 100% */}
-      <div className='w-full h-auto md:h-[1283px] bg-red-400'>
-        {/* 인도네시아 나무 배경 0825 12:47 모바일때 이미지 크기 다시 잡기 */}
+      <div className='w-full h-auto md:h-[1283px]'>
+        
         {/* <Link to="/"><div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}></div></Link>  */}
         <Link to="/">
           <div className='hidden md:block w-full h-[355px] bg-cover'>
@@ -1227,7 +1228,7 @@ function MdItem(){
           
           <div>
             {/* 타이틀 */}
-            <div className='flex flex-col items-center mb-16'>
+            <div className='flex flex-col items-center mb-8'>
               <h1 className='text-5xl md:text-[64px] scoop-font mt-[130px] '>MD's Item</h1>
               <p className='text-xl md:text-2xl mt-[-6px]'>MD 추천 상품을 만나보세요.</p>
             </div>
@@ -1250,7 +1251,7 @@ function MdItem(){
                 
               </div>
             {/* 이미지 크기 조절해서 동일하게 만든 후 레이아웃 동일하게 잡기 0825 12:47 */}
-              <div data-aos="fade-up" data-aos-delay="200" className='relative  flex flex-col items-center'>
+              <div data-aos="fade-up" data-aos-delay="200" className=' relative  flex flex-col items-center'>
                 
                 <div className=' relative bottom-0 '>
                   <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
