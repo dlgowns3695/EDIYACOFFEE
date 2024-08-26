@@ -275,29 +275,29 @@ function MobileMenu({ onClose }) {
         </div>
 
         <div className="flex gap-4 pl-8">
-          <div className="w-[120px] h-[50px] bg-[#243c84] flex justify-center items-center rounded-full">
-            <p className="text-[#fff] text-2xl">로그인</p>
+          <div className="w-[80px] h-[34px] bg-[#243c84] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-md">로그인</p>
           </div>
 
-          <div className="w-[120px] h-[50px] bg-[#192033] flex justify-center items-center rounded-full">
-            <p className="text-[#fff] text-2xl">회원가입</p>
+          <div className="w-[80px] h-[34px] bg-[#192033] flex justify-center items-center rounded-full">
+            <p className="text-[#fff] text-md">회원가입</p>
           </div>
         </div>
 
-        <ul className="w-full">
-          <li className="w-full px-8">
+        <ul className="w-full mt-8">
+          <li className="w-full  py-4 px-8">
             <div
-              className="h-[100px] flex items-center justify-between cursor-pointer"
+              className=" flex items-center justify-between cursor-pointer"
               onClick={() => toggleMenu('about')}
             >
-              <h4 className="text-3xl scoop-font">About</h4>
+              <h4 className="text-2xl scoop-font">About</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                className={`size-8 transform transition-transform duration-300 ease-in-out ${
                   openMenu === 'about' ? 'rotate-180' : 'rotate-0'
                 }`}
               >
@@ -321,19 +321,19 @@ function MobileMenu({ onClose }) {
             </ul>
           </li>
 
-          <li className="w-full px-8">
+          <li className="w-full  py-4 px-8">
             <div
-              className="h-[100px] flex items-center justify-between cursor-pointer"
+              className="flex items-center justify-between cursor-pointer"
               onClick={() => toggleMenu('menu')}
             >
-              <h4 className="text-3xl scoop-font">Menu</h4>
+              <h4 className="text-2xl scoop-font">Menu</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                className={`size-8 transform transition-transform duration-300 ease-in-out ${
                   openMenu === 'menu' ? 'rotate-180' : 'rotate-0'
                 }`}
               >
@@ -346,31 +346,30 @@ function MobileMenu({ onClose }) {
             </div>
 
             <ul
-              className={`overflow-hidden transition-height duration-500 ease-in-out ${
+              className={`overflow-hidden transition-height duration-500 ease-in-out mt-4 -mb-4 ${
                 openMenu === 'menu' ? 'h-[10rem] opacity-100' : 'h-0 opacity-0'
               }`}
               onClick={() => handleMenuClick('menu')}
             >
-              <li className="text-2xl py-1">커피메뉴</li>
-              <li className="text-2xl py-1">플랫치노</li>
-              <li className="text-2xl py-1">베이커리</li>
-              <li className="text-2xl py-1">빙수</li>
+              {["커피메뉴", "플랫치노", "베이커리", "빙수"].map((v, i) => (
+                <li key={v} className="text-xl py-1">{v}</li>
+              ))}
             </ul>
           </li>
 
-          <li className="w-full px-8">
+          <li className="w-full  py-4 px-8">
             <div
-              className="h-[100px] flex items-center justify-between cursor-pointer"
+              className="flex items-center justify-between cursor-pointer"
               onClick={() => toggleMenu('story')}
             >
-              <h4 className="text-3xl scoop-font">Story</h4>
+              <h4 className="text-2xl scoop-font">Story</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                className={`size-8 transform transition-transform duration-300 ease-in-out ${
                   openMenu === 'story' ? 'rotate-180' : 'rotate-0'
                 }`}
               >
@@ -394,19 +393,19 @@ function MobileMenu({ onClose }) {
             </ul>
           </li>
 
-          <li className="w-full px-8">
+          <li className="w-full  py-4 px-8">
             <div
-              className="h-[100px] flex items-center justify-between cursor-pointer"
+              className="flex items-center justify-between cursor-pointer"
               onClick={() => toggleMenu('store')}
             >
-              <h4 className="text-3xl scoop-font">Store</h4>
+              <h4 className="text-2xl scoop-font">Store</h4>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className={`size-12 transform transition-transform duration-300 ease-in-out ${
+                className={`size-8 transform transition-transform duration-300 ease-in-out ${
                   openMenu === 'store' ? 'rotate-180' : 'rotate-0'
                 }`}
               >
@@ -429,44 +428,50 @@ function MobileMenu({ onClose }) {
           </li>
         </ul>
 
-        <div className="absolute bottom-[10%] flex gap-4 text-2xl pl-8">
-          <div>
-            <p>KOREAN</p>
+        <div className="absolute bottom-0 w-full flex justify-between items-center  gap-4 text-lg mb-8">
+          
+
+          <div className="flex items-center gap-4 px-8">
+            <div>
+              <img
+                className='w-[38px]'
+                src={`${process.env.PUBLIC_URL}/mobileFacebookIcon.png`}
+                alt="mobileFacebookIcon"
+              />
+            </div>
+            <div>
+              <img
+                className='w-[38px]'
+                src={`${process.env.PUBLIC_URL}/mobileInstarIcon.png`}
+                alt="mobileInstarIcon"
+              />
+            </div>
+            <div>
+              <img
+                className='w-[38px]'
+                src={`${process.env.PUBLIC_URL}/mobileYoutubeIcon.png`}
+                alt="mobileYoutubeIcon"
+              />
+            </div>
+          
           </div>
-          <div>
-            <p>|</p>
+
+          <div className='flex mr-8 gap-4 '>
+
+            <div>
+              <p>KR</p>
+            </div>
+            <div>
+              <p>|</p>
+            </div>
+            <div>
+              <p>EN</p>
+            </div>
           </div>
-          <div>
-            <p>ENGLISH</p>
-          </div>
-          <div>
-            <p>|</p>
-          </div>
-          <div>
-            <p>가맹문의</p>
-          </div>
+          
         </div>
 
-        <div className="flex absolute bottom-[2%]  items-center gap-8  pl-8">
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/mobileFacebookIcon.png`}
-              alt="mobileFacebookIcon"
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/mobileInstarIcon.png`}
-              alt="mobileInstarIcon"
-            />
-          </div>
-          <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/mobileYoutubeIcon.png`}
-              alt="mobileYoutubeIcon"
-            />
-          </div>
-        </div>
+        
       </div>
     </>
   );
@@ -648,7 +653,7 @@ function SwiperSection01() {
 
             </div>
 
-            <div className='relative w-[85vw] h-[67vh] custom1200:w-[1174px] custom1200:h-[589px] border-[#172650] border-2 rounded-[4.5rem] md:rounded-[150px]'>
+            <div className='relative w-[85vw] h-[67vh] custom1200:w-[1174px] custom1200:h-[589px] border-[#172650] border-2 rounded-[6rem] md:rounded-[150px] overflow-hidden'>
               <Swiper
                 ref={swiperRef}
                 navigation={false}

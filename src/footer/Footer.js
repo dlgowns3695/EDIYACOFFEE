@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div className='w-full bg-[#212530] h-[750px] md:h-[460px] flex justify-center text-[#afafaf] text-xs'>
+    <div className='w-full bg-[#212530] md:h-[460px] flex justify-center text-[#afafaf] text-xs'>
       {/* flex justify-center << 모바일, 구조 수정하기  */}
       <div className='w-full md:w-4/5 custom1200:w-[1200px] h-full '>
 
@@ -38,25 +38,28 @@ function Footer() {
 
         
         {/* 아래 문구 */}
-        <div className='pl-8 w-full h-full  flex justify-center  md:hidden '>
+        <div className='px-8 w-full h-full  flex justify-center md:hidden '>
 
-          <div className='mt-[80px] leading-[48px] text-lg md:text-[24px] w-[600px]'>
-            <h4 className='font-black text-[48px] pb-[66px]'>EDIYA COFFEE</h4>
-            <p>
+          <div className='my-20 leading-[2.3] text-base md:text-[24px] w-[600px]'>
+            <h4 className='font-black text-4xl pb-8'>EDIYA COFFEE</h4>
+            <p >
             사업자등록번호 : 107-86-16302<br/>
             이디야커피(주) 대표이사 강태성<br/>
             서울특별시 강남구 논현로 636 이디야빌딩<br/>
             TEL : 02-543-6467<br/>
             개인정보처리방침 | 이메일 무단 수집거부<br/>
+            </p>
 
-            <ul className='flex justify-center items-center gap-16 md:hidden w-[300px] mt-[85px] mb-[50px]'>
-                <li><img src={`${process.env.PUBLIC_URL}/instarMobile.png`} alt="Instagram" /></li>
-                <li><img src={`${process.env.PUBLIC_URL}/facebookMobile.png`} alt="Facebook" /></li>
-                <li><img src={`${process.env.PUBLIC_URL}/youtubeMobile.png`} alt="YouTube" /></li>
+            <ul className='flex   items-center gap-16 md:hidden w-[300px] mt-20 mb-8'>
+                <li><img className='w-[34px]' src={`${process.env.PUBLIC_URL}/instarMobile.png`} alt="Instagram" /></li>
+                <li><img className='w-[34px]' src={`${process.env.PUBLIC_URL}/facebookMobile.png`} alt="Facebook" /></li>
+                <li><img className='w-[34px]' src={`${process.env.PUBLIC_URL}/youtubeMobile.png`} alt="YouTube" /></li>
             </ul>
 
-            Copyright 이디야커피(주) All Rights Reserved.
+            <p >
+              Copyright 이디야커피(주) All Rights Reserved.
             </p>
+            
           </div>
 
         </div>
