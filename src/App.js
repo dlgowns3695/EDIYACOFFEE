@@ -1097,7 +1097,7 @@ function MenuSection03() {
                           disableOnInteraction: false,
                           
                           }}
-                          slidesPerView={2}  // 한 번에 4개의 슬라이드 표시
+                          slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
                           
 
                       >
@@ -1186,8 +1186,8 @@ function Section03MenuUl({ index }) {
     // 391 519
       <ul className='flex justify-center items-center '>
           <li className='flex flex-col items-center  '>
-
-              <div className='bg-[#dddddd] rounded-3xl w-[200px] md:w-[230px] h-[400px] md:h-[230px] flex justify-center items-center  '>
+              {/* bg-[#dddddd] rounded-3xl w-[200px] h-[400px] */}
+              <div className='md:w-[230px]  md:h-[230px] flex justify-center items-center  '>
                   <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
               </div>
 

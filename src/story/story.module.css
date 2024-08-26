@@ -23,7 +23,6 @@
     display: flex;          /* flex */
     gap: 1rem;              /* gap-4 (4 * 0.25rem = 1rem) */
     align-items: center;    /* items-center */
-    
-      
+       
 
 }
