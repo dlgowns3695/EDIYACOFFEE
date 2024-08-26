@@ -591,35 +591,11 @@ function SwiperSection01() {
 
   return (
 
-    /**
-     * 
-                  <div className={`${borderStyles} w-[1200px] h-[620px] border-[#172650]`}></div>
-            <div className={`${borderStyles} w-[1198px] h-[616px] border-[#243c84]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1194px] h-[612px] border-[#203573]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1188px] h-[604px] border-[#233b81]`}></div>
-            <div className={`${borderStyles} w-[1180px] h-[596px] border-[#1f326c]`}></div>
-            <div className={`${borderStyles} w-[1176px] h-[592px] border-[#182855]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[1174px] h-[589px] border-[#21387b]`}></div>
-            
-            <div className={`${borderStyles} w-[366px] h-[720px] border-[#172650]`}></div>
-            <div className={`${borderStyles} w-[364px] h-[716px] border-[#243c84]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[360px] h-[712px] border-[#203573]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[364px] h-[704px] border-[#233b81]`}></div>
-            <div className={`${borderStyles} w-[356px] h-[696px] border-[#1f326c]`}></div>
-            <div className={`${borderStyles} w-[352px] h-[692px] border-[#182855]`}></div>
-            <div className={`${borderStyles.replace('border-4', 'border-8')} w-[350px] h-[689px] border-[#21387b]`}></div>
-
-            474 -> 400 74차이
-     * 
-     */
-
-
-
     <>
     {/* 모바일 위치 잡기 */}
       <div className='relative top-0 '>
         {/* 가운데 로고 부분 */}
-        <div className='w-[150px] md:w-[277px] absolute z-[250] top-[20.5%] md:top-[10%] left-[50%] transform -translate-x-1/2'>
+        <div className='w-[150px] md:w-[277px] absolute z-[250] top-[20%] md:top-[7.5%] custom1200:top-[10%] left-[50%] transform -translate-x-1/2'>
           <img src={`${process.env.PUBLIC_URL}/titlelogo.png`} alt="titlelogo" />
         </div>
 
@@ -814,17 +790,14 @@ function PromotionSection02() {
       // 768px보다 작을 때
       if (widthSize < 768) {
         setDirection('horizontal');
-        // setSlideCount(2);
       }
       // 768px 이상 1200px 미만일 때
       else if (widthSize < 1200) {
         setDirection('horizontal');
-        // setSlideCount(3);
       }
       // 1200px 이상일 때
       else {
         setDirection('vertical');
-        // setSlideCount(3);
       }
     };
   
@@ -848,17 +821,17 @@ function PromotionSection02() {
 
           {/* 이미지 전체 섹션   */}
           <div className="flex gap-6 custom1200:gap-0 flex-col custom1200:flex-row mt-8 h-[486px] items-center custom1200:items-start  custom1200:justify-between">
-            {/* 왼쪽 큰 이미지 영역 left-[50%] translate-x-[-50%] */}
+            
             <div className="relative w-[80%] custom1200:w-[878px]  ">
               <img 
-                className="rounded-lg  w-auto h-auto md:h-[486px] object-cover" 
+                className="rounded-lg  w-full h-auto md:h-[486px] object-cover" 
                 src={images[currentIndex]} 
                 alt="Main Promotion" 
               />
             </div>
 
 
-            {/* 0826 21:48 오른쪽이미지 크기 맞추기ㅏ 미완 */}
+            
             {/* 오른쪽 서브 이미지 슬라이드 영역px-6  */}
             <div className="rounded-xl   w-[80%] custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between ">
               <Swiper
@@ -866,7 +839,7 @@ function PromotionSection02() {
                 loop={true}
                 slidesPerView={3}
                 slidesPerGroup={1}
-                spaceBetween={18}
+                spaceBetween={12}
                 className="h-full"
                 onSlideChange={handleSlideChange}
                 autoplay={isAutoplay ? {
@@ -882,7 +855,7 @@ function PromotionSection02() {
                       src={image} 
                       alt={`${index + 1}`} 
                       
-                      className="w-full h-[150px] object-cover rounded-xl " 
+                      className="w-full h-[70px] md:w-auto md:h-full object-cover rounded-xl " 
                     />
                   </SwiperSlide>
                 ))}
