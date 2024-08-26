@@ -1055,6 +1055,38 @@ function PromotionSection02() {
 
 
 function MenuSection03() {
+  const [slideCount, setSlideCount] = useState(4); // 슬라이드 초기 갯수
+
+  useEffect(() => {
+    const handleResize = () => {
+      let widthSize = window.innerWidth;
+      console.log(widthSize);
+  
+     
+      // 768px보다 작을 때
+      if (widthSize < 768) {
+        setSlideCount(2);
+      }
+      // 768px 이상 1200px 미만일 때
+      // else if (widthSize < 1200) {
+      //   setDirection('horizontal');
+      //   setSlideCount(3);
+      // }
+      // 1200px 이상일 때
+      else {
+        setSlideCount(4);
+      }
+    };
+  
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+
   // 스와이퍼 인스턴스를 참조할 ref
   const swiperRef2 = useRef(null);
 
@@ -1097,7 +1129,7 @@ function MenuSection03() {
                           disableOnInteraction: false,
                           
                           }}
-                          slidesPerView={4}  // 한 번에 4개의 슬라이드 표시
+                          slidesPerView={slideCount}  // 한 번에 4개의 슬라이드 표시
                           
 
                       >
@@ -1150,45 +1182,86 @@ function Section03MenuUl({ index }) {
   const menuItems = [
       {
           name: '허쉬 크리미 초콜릿',
-          image: 'menu01.png'
+          image: 'Choco.png'
       },
       {
-          name: '바닐라 라떼',
-          image: 'menu02.png'
+          name: '자두 플랫치노',
+          image: 'flatcino.png'
       },
       {
-          name: '카라멜 마끼아또',
-          image: 'menu03.png'
+          name: '생딸기 플랫치노',
+          image: 'Strawberrybanana.png'
       },
       {
-          name: '초코 바나나 스무디',
-          image: 'menu04.png'
+          name: '팥인절미 1인빙수',
+          image: 'Patbingsu.png'
       },
       {
           name: '허쉬 크리미 초콜릿',
-          image: 'menu01.png'
+          image: 'Choco.png'
       },
       {
-          name: '바닐라 라떼',
-          image: 'menu02.png'
+          name: '자두 플랫치노',
+          image: 'flatcino.png'
       },
       {
-          name: '카라멜 마끼아또',
-          image: 'menu03.png'
+          name: '생딸기 플랫치노',
+          image: 'Strawberrybanana.png'
       },
       {
-          name: '초코 바나나 스무디',
-          image: 'menu04.png'
-      }
+          name: '팥인절미 1인빙수',
+          image: 'Patbingsu.png'
+      },
+
+  ];
+  const menuMobileItems = [
+      {
+          name: '허쉬 크리미 초콜릿',
+          image: 'Choco.png'
+      },
+      {
+          name: '자두 플랫치노',
+          image: 'flatcino.png'
+      },
+      {
+          name: '생딸기 플랫치노',
+          image: 'Strawberrybanana.png'
+      },
+      {
+          name: '팥인절미 1인빙수',
+          image: 'Patbingsu.png'
+      },
+      {
+          name: '허쉬 크리미 초콜릿',
+          image: 'Choco.png'
+      },
+      {
+          name: '자두 플랫치노',
+          image: 'flatcino.png'
+      },
+      {
+          name: '생딸기 플랫치노',
+          image: 'Strawberrybanana.png'
+      },
+      {
+          name: '팥인절미 1인빙수',
+          image: 'Patbingsu.png'
+      },
+
   ];
 
   return (
     // 391 519
       <ul className='flex justify-center items-center '>
-          <li className='flex flex-col items-center  '>
+
+          <li className='hidden  md:flex flex-col items-center  '>
               {/* bg-[#dddddd] rounded-3xl w-[200px] h-[400px] */}
-              <div className='md:w-[230px]  md:h-[230px] flex justify-center items-center  '>
-                  <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
+              <div className='bg-[#f5f5f5] rounded-[40px] md:w-[230px]  md:h-[230px] flex justify-center items-center  '>
+                {/* 이미지 사진들 */}
+                <div>
+                  <img src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
+                </div>
+                  {/* <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} /> */}
               </div>
 
               {/* 텍스트 */}
@@ -1199,6 +1272,34 @@ function Section03MenuUl({ index }) {
                       <div className='w-[40px] bg-[#9c1515] rounded-2xl text-center text-xs text-white'>HOT</div>
                   </div>
               </div>
+          </li>
+
+
+          <li className='md:hidden flex flex-col items-center  '>
+              {/*   rounded-3xl w-[200px] h-[400px] */}
+              <div className='bg-[#f5f5f5] relative   rounded-[40px] w-[200px] h-[400px] flex justify-center items-center  '>
+                {/* 이미지 사진들   */}
+                <div className='bg-[#dddddd] rounded-t-[40px] absolute top-0 w-full h-2/3 flex justify-center items-center'>
+                  <img className='' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
+                </div>
+                  {/* <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} /> */}
+              
+
+                {/* 텍스트 */}
+                <div className=' absolute bottom-8 text-center mt-2  '>
+                    <p className='text-black font-semibold text-2xl'>{menuItems[index].name}</p>
+
+
+                    <div className='flex justify-center mt-1 space-x-1'>
+                        <div className='w-[40px] bg-[#243c84] rounded-2xl text-center text-xs text-white'>ICED</div>
+                        <div className='w-[40px] bg-[#9c1515] rounded-2xl text-center text-xs text-white'>HOT</div>
+                    </div>
+                </div>
+              
+              
+              </div>
+
+
           </li>
       </ul>
   );

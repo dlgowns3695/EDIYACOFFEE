@@ -229,8 +229,8 @@ function CoreValue() {
 
 function Management() {
   return (
-    // 1200px 이상은 2100px 모바일은 2600px + 70(푸터메뉴)
-    <div className="w-full h-[2600px] px-6 custom1200:h-[2100px]  flex justify-center ">
+    // 1200px 이상은 2100px   1199 ~ 768 : 2600px  
+    <div className="w-full h-[2300px] md:h-[2800px] px-6 custom1200:h-[2100px]  flex justify-center ">
       
       <div data-aos="fade-up"  className="w-full md:w-[1200px] h-full ">
         {/* 이디야의 경영철학 */}
