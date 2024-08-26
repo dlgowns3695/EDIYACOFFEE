@@ -27,12 +27,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Story = () => {
 
-  useEffect(() => {
-    // 페이지가 로드될 때 스크롤을 최상단으로 이동
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
-  }, []);
+  // useEffect(() => {
+  //   // 페이지가 로드될 때 스크롤을 최상단으로 이동
+  //   setTimeout(() => {
+  //     window.scrollTo(0, 0);
+  //   }, 0);
+  // }, []);
   
 
   useEffect(() => {
@@ -44,7 +44,21 @@ const Story = () => {
     });
   }, []);
 
-
+  // useEffect(() => {
+  //   const reloadPage = () => {
+  //     if (!window.location.hash) {
+  //       window.location.hash = 'reloaded';
+  
+  //       // 0.2초(200ms) 딜레이 후 새로고침
+  //       setTimeout(() => {
+  //         window.location.reload();
+  //       }, 200);
+  //     }
+  //   };
+  
+  //   reloadPage();
+  // }, []);
+  
 
   
 
@@ -88,8 +102,8 @@ function Ambition() {
             trigger : triggerRef.current, // 스크롤트리거 대상 : 어떤 요소를 만났을때 재생
             start : 'top center', // 시작점 'top 90%' : 트리거 대상.con02 ul의 top 부분과 브라우저의 90% 부터 애니메이션 시작 'center center'으로 바꾸기
             // end : '20% 0%', // 끝점 '20% 100%' : 트리거 대상.con02 ul의 20%와 브라우저의 100%가 만날때 애니메이션 종료 '20% 20%'으로 바꾸기
-            // scrub : 1, // 스크롤 이벤트는 스크롤 사용될때만 재생되도록 만들어주는 속성, 부드럽게 되감기 1 : 애니메이션 좀 빠름, 10 : 부드러움  // 잔상
-            markers:true,
+            scrub : 1, // 스크롤 이벤트는 스크롤 사용될때만 재생되도록 만들어주는 속성, 부드럽게 되감기 1 : 애니메이션 좀 빠름, 10 : 부드러움  // 잔상
+            // markers:true,
         }
     })
     .to(imgPcRef.current, {y:'400px', duration:1.5 ,ease:'ease-in-out'}) 
@@ -141,7 +155,7 @@ function Ambition() {
 
         {/* 인물사진 위에서 아래로 gsap */}
         {/* 인물사진 */}
-        <div ref={imgPcRef} className='hidden md:block absolute top-[540px] right-[0px] w-[405px] custom1200:w-[605px] h-[777px]'>
+        <div ref={imgPcRef} className='hidden md:block absolute top-[540px] right-[0px] w-[350px] custom1200:w-[605px] h-[777px]'>
           <img className="object-cover" src={`${process.env.PUBLIC_URL}/humanBn.png`} alt="Human"/> 
         </div>
 

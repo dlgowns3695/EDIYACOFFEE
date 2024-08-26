@@ -19,23 +19,23 @@ import Store from './store/Store';
 import Footer from './footer/Footer'
 import ScrollToTop from './scrollto/Scrollto'
 
+// react bulid, Prettier
+
 
 // Routes와 Route 컴포넌트는 Navbar, SwiperSection01, PromotionSection02, MenuSection03, MdItem, StoreEDway, Footer 
 // 컴포넌트와 같은 레벨에 있지 않으면 제대로 작동하지 않을 수 있습니다.
 
 function App() {
-
-  // function ScrollToTop() {
-  //   const { pathname } = useLocation();
+  // useEffect(() => {
+  //   const reloadPage = () => {
+  //     if (!window.location.hash) {
+  //       window.location.hash = 'reloaded';
+  //       window.location.reload();
+  //     }
+  //   };
   
-  //   useEffect(() => {
-  //     window.scrollTo(0, 0);
-  //   }, [pathname]); // pathname이 변경될 때마다 실행
-  
-  //   return null;
-  // }
-  
-  
+  //   reloadPage();
+  // }, []);
 
   useEffect(() => {
 
@@ -47,17 +47,11 @@ function App() {
     });
   }, []);
 
-
-
-
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
   const closeMenu = () => setMenuOpen(false);
   
-
-
-
   return (
     <>
       {/* 피씨네브바 */}
@@ -75,6 +69,7 @@ function App() {
       
       <main className='overflow-hidden'>
       <ScrollToTop />
+      
         <Routes>
           
           <Route path="/" element={<MainContent />} />
@@ -98,7 +93,6 @@ function MainContent() {
       <MenuSection03 />
       <MdItem />
       <StoreEDway /> 
-
       <Footer />
       
     </>
@@ -211,15 +205,19 @@ function MobileNavbar({ onMenuToggle }){
   return(
     <>
       {/* 모바일 nav바 452px = 모바일 탑 배너크기 */}
-      <div className=' fixed z-[99999999] block md:hidden w-full h-[452px]  '>
+      <div className=' fixed z-[99999999] block md:hidden  w-full md:w-auto '>
         <div className='flex justify-between items-center px-8 pt-8'>
 
-          <div className='w-[100px] h-[100px]'>
-            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
-          </div>
+
+          <Link to='/'>
+            <div className='w-[100px] h-[100px]'>
+              <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
+            </div>
+          </Link>
+
 
           {/* 여기 햄버거 바를 눌렀을 경우 100vw 만큼 오른쪽에서 왼쪽으로 나오게끔. */}
-          <div onClick={onMenuToggle}>
+          <div onClick={onMenuToggle} className=''>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-12">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
@@ -233,6 +231,7 @@ function MobileNavbar({ onMenuToggle }){
 
 function MobileMenu({ onClose }) {
   const [openMenu, setOpenMenu] = useState(null); // 현재 열려있는 메뉴를 추적
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = (menuName) => {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menuName ? null : menuName));
@@ -243,18 +242,25 @@ function MobileMenu({ onClose }) {
     onClose(); // 서브메뉴 클릭 시 메뉴 닫기
   };
 
+  useEffect(() => {
+    setMenuVisible(false);
+  }, []); // 컴포넌트가 마운트될 때 메뉴 초기화
+
   
   return (
     <>
-      <div className="absolute w-full h-full z-[10] bg-white ">
-        <div className="flex justify-between items-center px-4 ">
-          <div className="w-[100px] h-[100px]">
-            <img
-              className="w-full h-full object-cover"
-              src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
-              alt="Logo"
-            />
-          </div>
+      <div className={`absolute w-full h-full z-[10] bg-white ${menuVisible ? 'menu-visible' : 'menu-hidden'}`}>
+        <div className="flex justify-between items-center pt-8 px-8 ">
+          <Link to='/'>
+            <div onClick={handleMenuClick} className="w-[100px] h-[100px]">
+              <img
+                className="w-full h-full object-cover"
+                src={`${process.env.PUBLIC_URL}/ediyalogo.png`}
+                alt="Logo"
+              />
+            </div>
+          </Link>
+
 
           <div onClick={onClose} className="cursor-pointer">
             <svg
@@ -274,7 +280,7 @@ function MobileMenu({ onClose }) {
           </div>
         </div>
 
-        <div className="flex gap-4 pl-8">
+        <div className="flex gap-4 pt-8 pl-8">
           <div className="w-[80px] h-[34px] bg-[#243c84] flex justify-center items-center rounded-full">
             <p className="text-[#fff] text-md">로그인</p>
           </div>
@@ -755,7 +761,7 @@ function PromotionSection02() {
   const [isAutoplay, setIsAutoplay] = useState(true); // 자동 슬라이드 상태
   const swiperRef = useRef(null); // Swiper 인스턴스를 참조하기 위한 ref
   const [direction, setDirection] = useState('vertical'); // 스와이퍼 초기 디렉션
-  const [slideCount, setSlideCount] = useState(3); // 슬라이드 초기 갯수
+  // const [slideCount, setSlideCount] = useState(3); // 슬라이드 초기 갯수
 
   // 왼쪽 이미지 인덱스 업데이트
   const updateIndex = (realIndex) => {
@@ -808,17 +814,17 @@ function PromotionSection02() {
       // 768px보다 작을 때
       if (widthSize < 768) {
         setDirection('horizontal');
-        setSlideCount(2);
+        // setSlideCount(2);
       }
       // 768px 이상 1200px 미만일 때
       else if (widthSize < 1200) {
         setDirection('horizontal');
-        setSlideCount(3);
+        // setSlideCount(3);
       }
       // 1200px 이상일 때
       else {
         setDirection('vertical');
-        setSlideCount(3);
+        // setSlideCount(3);
       }
     };
   
@@ -830,7 +836,7 @@ function PromotionSection02() {
   }, []);
 
   return (
-    <div className=" h-[961px] mt-[30%] md:mt-0  w-full flex items-center justify-center">
+    <div className="h-[400px] md:h-[961px] mt-[50%] md:mt-0  w-full flex items-center justify-center">
 
       <div className="w-full custom1200:w-[1200px]">
 
@@ -843,22 +849,24 @@ function PromotionSection02() {
           {/* 이미지 전체 섹션   */}
           <div className="flex gap-6 custom1200:gap-0 flex-col custom1200:flex-row mt-8 h-[486px] items-center custom1200:items-start  custom1200:justify-between">
             {/* 왼쪽 큰 이미지 영역 left-[50%] translate-x-[-50%] */}
-            <div className="relative w-[80%] ">
+            <div className="relative w-[80%] custom1200:w-[878px]  ">
               <img 
-                className="rounded-lg  w-[878px] h-auto md:h-[486px] object-cover" 
+                className="rounded-lg  w-auto h-auto md:h-[486px] object-cover" 
                 src={images[currentIndex]} 
                 alt="Main Promotion" 
               />
             </div>
 
+
+            {/* 0826 21:48 오른쪽이미지 크기 맞추기ㅏ 미완 */}
             {/* 오른쪽 서브 이미지 슬라이드 영역px-6  */}
             <div className="rounded-xl   w-[80%] custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between ">
               <Swiper
                 direction={direction}
                 loop={true}
-                slidesPerView={slideCount}
+                slidesPerView={3}
                 slidesPerGroup={1}
-                spaceBetween={24}
+                spaceBetween={18}
                 className="h-full"
                 onSlideChange={handleSlideChange}
                 autoplay={isAutoplay ? {
@@ -873,8 +881,8 @@ function PromotionSection02() {
                     <img 
                       src={image} 
                       alt={`${index + 1}`} 
-                      // h-full 이미지 크기 다 균일하게 해야할거같음. 0825 15:34
-                      className="w-full h-full object-cover rounded-xl " 
+                      
+                      className="w-full h-[150px] object-cover rounded-xl " 
                     />
                   </SwiperSlide>
                 ))}
@@ -894,7 +902,7 @@ function PromotionSection02() {
                 {/* 위로 이동 버튼 */}
                 <div 
                   className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer" 
-                  onClick={handleMoveUp}
+                  onClick={handleMoveDown}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -904,7 +912,8 @@ function PromotionSection02() {
                 {/* 아래로 이동 버튼 */}
                 <div 
                   className="bg-gray-200 w-[25px] h-[25px] rounded-full flex justify-center items-center cursor-pointer" 
-                  onClick={handleMoveDown}
+                  onClick={handleMoveUp}
+                  
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-3.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -1010,22 +1019,24 @@ function MenuSection03() {
                           className="mySwiper w-full h-full "
                           modules={[Navigation, Autoplay]} // 네비게이션 모듈 사용
                           loop={true} // 무한 루프 모드
-                          autoplay = {{delay: 2500,
-                          disableOnInteraction: false,
+                          // autoplay = {{delay: 2500,
+                          // disableOnInteraction: false,
                           
-                          }}
+                          // }}
                           slidesPerView={slideCount}  // 한 번에 4개의 슬라이드 표시
+                          // slidesPerGroup={1}
+                          // spaceBetween={16}
                           
 
                       >
-                          <SwiperSlide><Section03MenuUl index={0} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={1} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={2} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={3} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={4} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={5} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={6} /></SwiperSlide>
-                          <SwiperSlide><Section03MenuUl index={7} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={0} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={1} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={2} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={3} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={4} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={5} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={6} /></SwiperSlide>
+                          <SwiperSlide ><Section03MenuUl  index={7} /></SwiperSlide>
 
                       </Swiper>
                   </div>
@@ -1033,7 +1044,7 @@ function MenuSection03() {
                   {/* 왼쪽방향버튼 */}
                   <div
                       className='absolute z-10 top-[290px] left-[-30px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slideNext2}
+                      onClick={slidePrev2}
                   >
                       <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100]'>
@@ -1046,7 +1057,7 @@ function MenuSection03() {
                   {/* 오른쪽방향버튼 */}
                   <div
                       className='absolute z-10 top-[290px] left-[1200px] w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center cursor-pointer'
-                      onClick={slidePrev2}
+                      onClick={slideNext2}
                   >
                       <div className='absolute w-[30px] h-[30px] bg-gray-400 rounded-full'></div>
                       <div className='absolute inset-0 flex items-center justify-center z-[100] '>
@@ -1137,7 +1148,9 @@ function Section03MenuUl({ index }) {
 
   return (
     // 391 519
-      <ul className='flex justify-center items-center '>
+      <ul className='flex justify-center items-center    '>
+
+          {/* 피씨  */}
 
           <li className='hidden  md:flex flex-col items-center  '>
               {/* bg-[#dddddd] rounded-3xl w-[200px] h-[400px] */}
@@ -1159,19 +1172,22 @@ function Section03MenuUl({ index }) {
               </div>
           </li>
 
+          {/* 모바일 */}
 
-          <li className='md:hidden flex flex-col items-center  '>
-              {/*   rounded-3xl w-[200px] h-[400px] */}
-              <div className='bg-[#f5f5f5] relative   rounded-[40px] w-[200px] h-[400px] flex justify-center items-center  '>
-                {/* 이미지 사진들   */}
-                <div className='bg-[#dddddd] rounded-t-[40px] absolute top-0 w-full h-2/3 flex justify-center items-center'>
+          <li className='md:hidden flex flex-col items-center '>
+              {/*   rounded-3xl w-[200px] h-[400px] 전체 flex justify-center items-center */}
+              <div className='bg-[#f5f5f5] relative rounded-[30px] w-[180px] h-[400px]   '>
+                
+                
+                {/* 이미지 사진들 (정렬)  */}
+                <div className='bg-[#dddddd] rounded-t-[30px] gap-4 w-full h-2/3 flex justify-center items-center'>
                   <img className='' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} />
                 </div>
                   {/* <img className='object-cover ' src={`${process.env.PUBLIC_URL}/${menuItems[index].image}`} alt={menuItems[index].name} /> */}
               
 
                 {/* 텍스트 */}
-                <div className=' absolute bottom-8 text-center mt-2  '>
+                <div className='w-full h-1/3  flex flex-col justify-center items-center '>
                     <p className='text-black font-semibold text-2xl'>{menuItems[index].name}</p>
 
 
