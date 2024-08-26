@@ -450,20 +450,20 @@ function MobileMenu({ onClose }) {
         <div className="flex absolute bottom-[2%]  items-center gap-8  pl-8">
           <div>
             <img
-              src={`${process.env.PUBLIC_URL}/facebookMobile.png`}
-              alt="Facebook"
+              src={`${process.env.PUBLIC_URL}/mobileFacebookIcon.png`}
+              alt="mobileFacebookIcon"
             />
           </div>
           <div>
             <img
-              src={`${process.env.PUBLIC_URL}/instarMobile.png`}
-              alt="Instagram"
+              src={`${process.env.PUBLIC_URL}/mobileInstarIcon.png`}
+              alt="mobileInstarIcon"
             />
           </div>
           <div>
             <img
-              src={`${process.env.PUBLIC_URL}/youtubeMobile.png`}
-              alt="YouTube"
+              src={`${process.env.PUBLIC_URL}/mobileYoutubeIcon.png`}
+              alt="mobileYoutubeIcon"
             />
           </div>
         </div>
@@ -737,133 +737,12 @@ function SwiperSection01() {
 }
 
 
-/**
- * 
-
-
-"use client";
-import React, { useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
-
-// Import Swiper styles
-import "swiper/css";
-
-import { Parallax, EffectFade, Pagination } from "swiper/modules";
-import Title from "../title";
-
-const BigSlideSection = () => {
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index: number, className: string) {
-            return `<img class='${className} !w-20 !h-20' style="background:none !important;" src="images/main/brand-list-logo${index + 1}.svg" alt="" />`;
-            // return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
-    };
-
-    return (
-        <>
-            <section>
-                <Title
-                    title="Our Brand"
-                    text={[
-                        "고객의 바른 건강을 생각하는 정관장의",
-                        "다양한 브랜드를 소개합니다.",
-                    ]}
-                    className="my-60 font-bold"
-                />
-                <Swiper
-                    pagination={pagination}
-                    modules={[Parallax, EffectFade, Pagination]}
-                    effect={"fade"}
-                    className="mySwiper"
-                    style={
-                        {
-                            "--swiper-pagination-bottom": "unset",
-                            "--swiper-pagination-top": "0",
-                            "--swiper-pagination-bullet-horizontal-gap": "2rem",
-                        } as React.CSSProperties
-                    }
-                    onSlideChangeTransitionStart={(swiper) => {
-                        // 모든 슬라이드의 이미지를 scale 1.1로 설정
-                        swiper.slides.forEach((slide) => {
-                            const img = slide.querySelector("img");
-                            if (img) {
-                                img.style.transform = "scale(1.05)";
-                            }
-                        });
-
-                        // 활성화된 슬라이드의 이미지만 scale 1로 설정
-                        const activeSlideImg =
-                            swiper.slides[swiper.activeIndex].querySelector(
-                                "img",
-                            );
-                        if (activeSlideImg) {
-                            activeSlideImg.style.transition =
-                                "transform 0.3s ease-in";
-                            activeSlideImg.style.transform = "scale(1)";
-                        }
-                    }}
-                    // onSlideChangeTransitionEnd={(swiper) => {
-                    //     swiper.slides.forEach((slide) => {
-                    //         const img = slide.querySelector("img");
-                    //         if (img) {
-                    //             img.style.transform = "scale(1.05)";
-                    //         }
-                    //     });
-                    //     const activeSlideImg =
-                    //         swiper.slides[swiper.activeIndex].querySelector("img");
-                    //     if (activeSlideImg) {
-                    //         activeSlideImg.style.transform = "scale(1)";
-                    //     }
-                    // }}
-                >
-                    <SwiperSlide>
-                        <img
-                            className="w-full scale-105"
-                            style={{ width: "100%" }}
-                            src="images/main/brand-bg1.jpg"
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img
-                            className="w-full scale-105"
-                            src="images/main/brand-bg2.jpg"
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img
-                            className="w-full scale-105"
-                            src="images/main/brand-bg3.jpg"
-                        />
-                    </SwiperSlide>
-                </Swiper>
-            </section>
-        </>
-    );
-};
-
-
-
-
-
-
-
-
- * 
- */
-
 function PromotionSection02() {
   const images = [
     `${process.env.PUBLIC_URL}/silder01.png`,
     `${process.env.PUBLIC_URL}/silder02.png`,
     `${process.env.PUBLIC_URL}/silder03.png`,
     `${process.env.PUBLIC_URL}/silder04.png`,
-    // `${process.env.PUBLIC_URL}/section02SubBn01.png`,
-    // `${process.env.PUBLIC_URL}/section02SubBn02.png`,
-    // `${process.env.PUBLIC_URL}/section02SubBn03.png`,
-    // `${process.env.PUBLIC_URL}/section02Bn01.png`,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0); // 왼쪽 이미지 인덱스
@@ -946,7 +825,8 @@ function PromotionSection02() {
   }, []);
 
   return (
-    <div className="h-[961px] mt-[30%] md:mt-0  w-full flex items-center justify-center">
+    <div className=" h-[961px] mt-[30%] md:mt-0  w-full flex items-center justify-center">
+
       <div className="w-full custom1200:w-[1200px]">
 
         <div className="text-center">
@@ -966,8 +846,8 @@ function PromotionSection02() {
               />
             </div>
 
-            {/* 오른쪽 서브 이미지 슬라이드 영역 */}
-            <div className="rounded-xl px-6 w-11/12 custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between ">
+            {/* 오른쪽 서브 이미지 슬라이드 영역px-6  */}
+            <div className="rounded-xl   w-[80%] custom1200:w-[20%] h-full flex flex-row custom1200:flex-col justify-between ">
               <Swiper
                 direction={direction}
                 loop={true}
