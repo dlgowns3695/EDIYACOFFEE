@@ -73,7 +73,7 @@ function App() {
         <Routes>
           
           <Route path="/" element={<MainContent />} />
-          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
           <Route path="/menus" element={<Menus />} />
           <Route path="/story" element={<Story />} />
           <Route path="/store" element={<Store />} />
@@ -159,16 +159,16 @@ function Navbar() {
             <div>
               <ul className="flex space-x-8 font-bold text-lg">
                 <li ref={(el) => (linkRefs.current[0] = el)}>
-                  <Link to="/">ABOUT</Link>
+                  <Link to="/story">ABOUT</Link>
                 </li>
                 <li ref={(el) => (linkRefs.current[1] = el)}>
-                  <Link to="/menus">MENU</Link>
+                  <Link to="/story">MENU</Link>
                 </li>
                 <li ref={(el) => (linkRefs.current[2] = el)}>
                   <Link to="/story">STORY</Link>
                 </li>
                 <li ref={(el) => (linkRefs.current[3] = el)}>
-                  <Link to="/store">STORE</Link>
+                  <Link to="/story">STORE</Link>
                 </li>
               </ul>
             </div>
@@ -321,7 +321,7 @@ function MobileMenu({ onClose }) {
               }`}
               onClick={() => handleMenuClick('about')}
             >
-              <Link to="/">
+              <Link to="/story">
                 <li className="text-[24px] py-2">About</li>
               </Link>
             </ul>
@@ -358,7 +358,9 @@ function MobileMenu({ onClose }) {
               onClick={() => handleMenuClick('menu')}
             >
               {["커피메뉴", "플랫치노", "베이커리", "빙수"].map((v, i) => (
-                <li key={v} className="text-xl py-1">{v}</li>
+                <Link to="/story">
+                  <li key={v} className="text-xl py-1">{v}</li>
+                </Link>
               ))}
             </ul>
           </li>
@@ -429,7 +431,10 @@ function MobileMenu({ onClose }) {
               }`}
               onClick={() => handleMenuClick('store')}
             >
-              <li className="text-[24px] py-2">가맹문의</li>
+              
+              <Link to="/story">
+                <li className="text-[24px] py-2">가맹문의</li>
+              </Link>
             </ul>
           </li>
         </ul>
@@ -1083,41 +1088,7 @@ function Section03MenuUl({ index }) {
       },
 
   ];
-  const menuMobileItems = [
-      {
-          name: '허쉬 크리미 초콜릿',
-          image: 'Choco.png'
-      },
-      {
-          name: '자두 플랫치노',
-          image: 'flatcino.png'
-      },
-      {
-          name: '생딸기 플랫치노',
-          image: 'Strawberrybanana.png'
-      },
-      {
-          name: '팥인절미 1인빙수',
-          image: 'Patbingsu.png'
-      },
-      {
-          name: '허쉬 크리미 초콜릿',
-          image: 'Choco.png'
-      },
-      {
-          name: '자두 플랫치노',
-          image: 'flatcino.png'
-      },
-      {
-          name: '생딸기 플랫치노',
-          image: 'Strawberrybanana.png'
-      },
-      {
-          name: '팥인절미 1인빙수',
-          image: 'Patbingsu.png'
-      },
 
-  ];
 
   return (
     // 391 519
