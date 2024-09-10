@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/EDIYACOFFEE/static/css/main.c23f31e7.css",
-    "main.js": "/EDIYACOFFEE/static/js/main.4a9172aa.js",
+    "main.css": "/EDIYACOFFEE/static/css/main.48ed9d81.css",
+    "main.js": "/EDIYACOFFEE/static/js/main.c9342b0c.js",
     "static/js/453.cc5ec80d.chunk.js": "/EDIYACOFFEE/static/js/453.cc5ec80d.chunk.js",
     "static/media/Scoop-Extrabold.ttf": "/EDIYACOFFEE/static/media/Scoop-Extrabold.1ce97beeabc49003fafb.ttf",
     "index.html": "/EDIYACOFFEE/index.html",
-    "main.c23f31e7.css.map": "/EDIYACOFFEE/static/css/main.c23f31e7.css.map",
-    "main.4a9172aa.js.map": "/EDIYACOFFEE/static/js/main.4a9172aa.js.map",
+    "main.48ed9d81.css.map": "/EDIYACOFFEE/static/css/main.48ed9d81.css.map",
+    "main.c9342b0c.js.map": "/EDIYACOFFEE/static/js/main.c9342b0c.js.map",
     "453.cc5ec80d.chunk.js.map": "/EDIYACOFFEE/static/js/453.cc5ec80d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c23f31e7.css",
-    "static/js/main.4a9172aa.js"
+    "static/css/main.48ed9d81.css",
+    "static/js/main.c9342b0c.js"
   ]
 }
