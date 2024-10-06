@@ -327,7 +327,7 @@ function MobileMenu({ onClose }) {
             </ul>
           </li>
 
-          <li className="w-full  py-4 px-8">
+          <li className="w-full py-4 px-8">
             <div
               className="flex items-center justify-between cursor-pointer"
               onClick={() => toggleMenu('menu')}
@@ -358,12 +358,13 @@ function MobileMenu({ onClose }) {
               onClick={() => handleMenuClick('menu')}
             >
               {["커피메뉴", "플랫치노", "베이커리", "빙수"].map((v, i) => (
-                <Link to="/story">
-                  <li key={v} className="text-xl py-1">{v}</li>
+                <Link to="/story" key={i}> {/* 여기에서 key를 Link 컴포넌트에 추가 */}
+                  <li className="text-xl py-1">{v}</li>
                 </Link>
               ))}
             </ul>
           </li>
+
 
           <li className="w-full  py-4 px-8">
             <div
@@ -493,106 +494,101 @@ function MobileMenu({ onClose }) {
 
 
 function SwiperSection01() {
-  
   const swiperRef = useRef(null);              // 스와이퍼 인스턴스를 참조할 ref
-  const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
-  const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
+const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
+const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
 
-  // 스와이퍼 슬라이드를 왼쪽으로 이동하는 함수
-  const slidePrev = () => {
-    swiperRef.current.swiper.slidePrev(); // 스와이퍼 인스턴스를 통해 이전 슬라이드로 이동
-  };
+// 스와이퍼 슬라이드를 왼쪽으로 이동하는 함수
+const slidePrev = () => {
+  swiperRef.current.swiper.slidePrev(); // 스와이퍼 인스턴스를 통해 이전 슬라이드로 이동
+};
 
-  // 스와이퍼 슬라이드를 오른쪽으로 이동하는 함수
-  const slideNext = () => {
-    swiperRef.current.swiper.slideNext(); // 스와이퍼 인스턴스를 통해 다음 슬라이드로 이동
-  };
+// 스와이퍼 슬라이드를 오른쪽으로 이동하는 함수
+const slideNext = () => {
+  swiperRef.current.swiper.slideNext(); // 스와이퍼 인스턴스를 통해 다음 슬라이드로 이동
+};
 
-  // 공통 스타일 클래스
-  const borderStyles = 'absolute rounded-[4.5rem] md:rounded-[150px] border-4 ';
+// 공통 스타일 클래스
+const borderStyles = 'absolute rounded-[4.5rem] md:rounded-[150px] border-4 ';
 
-  // 이미지 로드 완료 후 호출되는 함수
-  const handleImageLoad = () => {
-    setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
-  };
+// 이미지 로드 완료 후 호출되는 함수
+const handleImageLoad = () => {
+  setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
+};
 
+useEffect(() => {
+  if (loaded) {
+    const images = imageRefs.current;
+    const isMobile = window.innerWidth <= 768;
 
-  useEffect(() => {
-    if (loaded) {
-      // 이미지가 로드되면 애니메이션을 시작합니다
-      const images = imageRefs.current;
+    // 첫 번째 이미지: 왼쪽으로 이동
+    moveImage(images[0], 'left', isMobile ? 0.5 : 2, 600);  // 500ms 딜레이 추가
+    // 두 번째 이미지: 오른쪽으로 이동
+    moveImage(images[1], 'right', isMobile ? 1 : 3, 900); // 800ms 딜레이 추가
+    // 세 번째 이미지: 왼쪽으로 이동
+    moveImage(images[2], 'left', isMobile ? 1.5 : 4, 1200);  // 1000ms 딜레이 추가
+  }
+}, [loaded]);
 
-      // 첫 번째 이미지: 왼쪽으로 이동
-      moveImage(images[0], 'left', 2); // 속도 조절
+// 이미지 애니메이션 함수 (딜레이 추가)
+const moveImage = (image, direction, speed, delay) => {
+  const animate = () => {
+    const screenWidth = window.innerWidth;
+    const imageWidth = image.offsetWidth;
+    let currentPos = parseFloat(window.getComputedStyle(image).left);
 
-      // 두 번째 이미지: 오른쪽으로 이동
-      moveImage(images[1], 'right', 3); // 속도 조절
+    function updatePosition() {
+      if (direction === 'left') {
+        currentPos -= speed;
 
-      // 세 번째 이미지: 왼쪽으로 이동
-      moveImage(images[2], 'left', 4); // 속도 조절
-    }
-  }, [loaded]); // 'loaded'가 true일 때만 애니메이션 시작
-
-    // 이미지 애니메이션 함수
-    const moveImage = (image, direction, speed) => {
-      const animate = () => {
-        const screenWidth = window.innerWidth; // 화면의 너비를 
-        const imageWidth = image.offsetWidth;  // 이미지의 너비를 
-        // 이미지의 현재 위치를 가져옵니다
-        let currentPos = parseFloat(window.getComputedStyle(image).left);
-       
-  
-        // 애니메이션 함수
-        function updatePosition() {
-          // 방향에 따라 이미지 위치를 업데이트합니다
-          if (direction === 'left') {
-            currentPos -= speed; // 왼쪽으로 이동
-  
-            // 이미지가 화면 왼쪽 바깥으로 나가면 오른쪽에서 다시 시작
-            if (currentPos < -imageWidth) { // 위치가 -110px 이라면 (0번기준 완전히 감춰진)
-              currentPos = screenWidth; // 화면 오른쪽 끝으로 이동
-            }
-          } else if (direction === 'right') {
-            currentPos += speed; // 오른쪽으로 이동
-  
-            // 이미지가 화면 오른쪽 바깥으로 나가면 왼쪽에서 다시 시작
-            if (currentPos > screenWidth + imageWidth) {
-              currentPos = -imageWidth; // 화면 왼쪽 끝으로 이동
-            }
-          }
-  
-          // 이미지의 위치를 업데이트합니다
-          image.style.left = `${currentPos}px`;
-          // 다음 프레임을 요청합니다
-          requestAnimationFrame(updatePosition);
+        if (currentPos < -imageWidth) { // 왼쪽 끝으로 나가면
+          currentPos = screenWidth;    // 오른쪽 끝으로 이동
+          setTimeout(updatePosition, delay); // 딜레이 후 애니메이션 재시작
+          return;
         }
-  
-        updatePosition(); // 애니메이션 시작
-      };
-  
-      animate(); // 애니메이션 함수 호출
-    };
+      } else if (direction === 'right') {
+        currentPos += speed;
 
-  useEffect(() => {
-    // 윈도우 사이즈가 변경될 때 호출되는 함수
-    const handleResize = () => {
-      // 윈도우 사이즈가 변경될 때 애니메이션을 재설정합니다
-      if (loaded) {
-        const images = imageRefs.current;
-        images.forEach((image, index) => {
-          if (image) {
-            // 각 이미지의 애니메이션 재설정
-            const direction = index === 1 ? 'right' : 'left';
-            const speed = index === 1 ? 3 : (index === 2 ? 4 : 2);
-            moveImage(image, direction, speed);
-          }
-        });
+        if (currentPos > screenWidth + imageWidth) { // 오른쪽 끝으로 나가면
+          currentPos = -imageWidth;                 // 왼쪽 끝으로 이동
+          setTimeout(updatePosition, delay);        // 딜레이 후 애니메이션 재시작
+          return;
+        }
       }
-    };
 
-    window.addEventListener('resize', handleResize); // 윈도우 리사이즈 이벤트 리스너 등록
-    return () => window.removeEventListener('resize', handleResize); // 컴포넌트 언마운트 시 리스너 제거
-  }, [loaded]);
+      image.style.left = `${currentPos}px`;
+      requestAnimationFrame(updatePosition);
+    }
+
+    updatePosition(); // 애니메이션 시작
+  };
+
+  animate(); // 애니메이션 함수 호출
+};
+
+useEffect(() => {
+  const handleResize = () => {
+    if (loaded) {
+      const images = imageRefs.current;
+      const isMobile = window.innerWidth <= 768;
+
+      images.forEach((image, index) => {
+        if (image) {
+          const direction = index === 1 ? 'right' : 'left';
+          const speed = isMobile
+          ? (index === 1 ? 1 : (index === 2 ? 1.5 : 0.5)) // 모바일 환경 속도
+          : (index === 1 ? 3 : (index === 2 ? 4 : 2));    // 데스크탑 환경 속도
+          const delay = index === 1 ? 900 : (index === 2 ? 1200 : 600);  // 각각의 이미지에 대한 딜레이
+          moveImage(image, direction, speed, delay);
+        }
+      });
+    }
+  };
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, [loaded]);
+
 
   return (
 
@@ -714,7 +710,7 @@ function SwiperSection01() {
           />
           <img
             ref={el => imageRefs.current[2] = el}
-            className='absolute top-[700px] left-[1500px] z-[1000]'
+            className='absolute top-[700px] left-[1500px] z-2'
             src={`${process.env.PUBLIC_URL}/car.png`}
             alt="car"
             onLoad={handleImageLoad}
