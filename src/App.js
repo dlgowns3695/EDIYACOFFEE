@@ -523,16 +523,12 @@ useEffect(() => {
     const images = imageRefs.current;
     const isMobile = window.innerWidth <= 768;
 
-    // 각 이미지의 딜레이를 인덱스 * 3000으로 설정
-    images.forEach((image, index) => {
-      const direction = index === 1 ? 'right' : 'left';
-      const speed = isMobile
-        ? (index === 1 ? 1 : (index === 2 ? 1.5 : 0.5)) // 모바일 환경 속도
-        : (index === 1 ? 3 : (index === 2 ? 4 : 2));    // 데스크탑 환경 속도
-      
-      const delay = index * 3000; // 인덱스 * 3000으로 딜레이 설정
-      moveImage(image, direction, speed, delay);
-    });
+    // 첫 번째 이미지: 왼쪽으로 이동
+    moveImage(images[0], 'left', isMobile ? 0.5 : 2, 3000);  // 
+    // 두 번째 이미지: 오른쪽으로 이동
+    moveImage(images[1], 'right', isMobile ? 1 : 3, 6000); // 
+    // 세 번째 이미지: 왼쪽으로 이동
+    moveImage(images[2], 'left', isMobile ? 1.5 : 4, 9000);  //
   }
 }, [loaded]);
 
