@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import { Navigation, Autoplay, Pagination  } from 'swiper/modules';
 
 
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import About from './about/About';
 import Menus from './menus/Menus';
 import Story from './story/Story';
@@ -211,7 +211,7 @@ function MobileNavbar({ onMenuToggle }){
 
           <Link to='/'>
             <div className='w-[100px] h-[100px]'>
-              <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} />
+              <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/ediyalogo.png`} alt="ediyalogo" />
             </div>
           </Link>
 
@@ -1136,18 +1136,18 @@ function MdItem(){
         {/* <Link to="/"><div className='w-full h-[355px] bg-cover' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesia.png)` }}></div></Link>  */}
         <Link to="/">
           <div className='hidden md:block w-full h-[355px] bg-cover'>
-            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/indonesia.png`}/>
+            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/indonesia.png`} alt="indonesia"/>
           </div>
 
           <div className='block md:hidden w-full h-[auto] bg-cover'>
-            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/indonesiaMobile.png`}/>
+            <img className='w-full h-full object-cover' src={`${process.env.PUBLIC_URL}/indonesiaMobile.png`} alt="indonesiaMobile"/>
           </div>
 
 
         </Link> 
 
         {/* 갈색배경 */}
-        <div className='w-full h-[871px] bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }}>
+        <div className='w-full h-[871px] bg-cover ' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/indonesiaBG.png)` }} alt="indonesiaBG">
           
           <div>
             {/* 타이틀 */}
@@ -1163,8 +1163,8 @@ function MdItem(){
               <div data-aos="fade-up" className=' flex flex-col items-center '>
                 
                 <div className='relative '>
-                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Tumbler02.png`}/>
-                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[-10%] md:left-[15%]' src={`${process.env.PUBLIC_URL}/New.png`}/>
+                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Tumbler02.png`} alt="Tumbler02"/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[-10%] md:left-[15%]' src={`${process.env.PUBLIC_URL}/New.png`} alt="New"/>
                 </div>
 
                 <div className='text-center'>
@@ -1177,8 +1177,8 @@ function MdItem(){
               <div data-aos="fade-up" data-aos-delay="200" className=' relative  flex flex-col items-center'>
                 
                 <div className=' relative bottom-0 '>
-                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
-                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
+                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`} alt="Pouch"/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`} alt="Best"/>
                 </div>
 
                 <div className=' text-center'>
@@ -1233,7 +1233,7 @@ function StoreEDway() {
             <p className='text-xl md:text-[24px] mb-[20px]'>내 주변 가까운 이디야 매장을 찾아보세요</p>
             
             <div className='block md:hidden px-4'>
-              <img className='bg-cover' src={`${process.env.PUBLIC_URL}/StoreMobileMap.png`}/>
+              <img className='bg-cover' src={`${process.env.PUBLIC_URL}/StoreMobileMap.png`} alt="StoreMobileMap"/>
             </div>
 
             <div className='relative w-auto md:w-[580px] hidden md:block'>
