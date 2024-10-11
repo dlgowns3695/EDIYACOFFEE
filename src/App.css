@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 이디야 css */
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: Scoop;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Scoop Extrabold'), url('/font/Scoop-Extrabold.ttf') format('truetype');
+}
+
+body{
+  margin: 0; padding: 0;
+  font-family: 'Pretendard-Regular', sans-serif;
+  color: #243c84;
+  overflow-x: hidden;
+  font-size: 16px;
+  letter-spacing: -0.05rem;
+}
+
+.scoop-font {
+    font-family: 'Scoop';
+}
+
+
+.preten-font {
+    font-family: 'Pretendard-Regular', sans-serif;
+    
+    
+}
+.preten-font300 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  
+  
+}
+
+.background{
+  background-color: #243c84;
+}
+
+@keyframes cloud1Ani{
+  0%{
+    transform: translateX(0);
+    transform: translateX(10px);
+  }
+  /* 25%{
+    transform: translateX(200px);
+  } */
+  50%{
+    transform: translateX(300px);
+    transform: translateX(-20px);
+  }
+  /* 75%{
+    transform: translateX(200px);
+  } */
+  100%{
+    transform: translateX(0px);
+    transform: translateX(10px);
+  }
+}
+
+.cloud1Ani {
+  animation: cloud1Ani 40s ease-in-out infinite;
+  animation: cloud1Ani 10s ease-in-out infinite;
+}
+
+
+@keyframes cloud2Ani{
+  0%{
+    transform: translateX(0px);
+    transform: translateX(-10px);
+  }
+  /* 25%{
+    transform: translateX(200px);
+  } */
+  50%{
+    transform: translateX(-150px);
+    transform: translateX(30px);
+  }
+  /* 75%{
+    transform: translateX(200px);
+  } */
+  100%{
+    transform: translateX(0px);
+    transform: translateX(-10px);
+  }
+}
+
+.cloud2Ani {
+  animation: cloud2Ani 40s ease-in-out infinite;
+  animation: cloud2Ani 15s ease-in-out infinite;
+}
+
+
+@keyframes ping {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.8; /* 더 부드럽게 보이도록 투명도 조정 */
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.ping {
+  animation: ping 2s ease-in-out infinite;
+}
+
+
+.menu-content {
+  position: fixed; /* 위치를 항상 fixed로 유지 */
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%; /* 기본 너비 설정 */
+  background-color: #fff; /* 메뉴 배경 색상, 필요에 따라 조정 */
+  transform: translateX(100%); /* 기본적으로 오른쪽으로 이동 */
+  transition: transform 0.5s ease; /* 애니메이션 설정 */
+  z-index: 99999999;
+}
+
+.menu-content.menu-visible {
+  transform: translateX(0); /* 메뉴가 열릴 때 화면에 보이도록 */
+}

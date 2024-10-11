@@ -1,0 +1,28 @@
+.txt {color:red;
+}
+
+.bggradient{
+    background: -webkit-linear-gradient(15deg, #012f6c 28%, #276abf 78%);
+    position: absolute;
+    width: 242px;
+    height: 242px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.25); /* 얕은 검정색 그림자 추가 */
+
+    
+    /* absolute w-[230px] h-[230px] rounded-full */
+}
+.borderBox{
+    /* w-[591px] h-[210px] border-[#dcdddf] p-4 flex gap-4 items-center */
+
+   
+    width: 561px;           /* w-[591px] */
+    height: 200px;          /* h-[210px] */
+    border: 1px solid #dcdddf; /* border-[#dcdddf] */
+    /* padding: 1rem;          p-4 (4 * 0.25rem = 1rem) */
+    display: flex;          /* flex */
+    gap: 1rem;              /* gap-4 (4 * 0.25rem = 1rem) */
+    align-items: center;    /* items-center */
+       
+
+}

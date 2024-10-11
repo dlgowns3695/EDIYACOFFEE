@@ -1,0 +1,12 @@
+/* .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    width:71px !important;height:71px !important;
+    color: red !important;
+    
+    border-radius: 50%;
+    
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    font-size: 5rem!important; 
+} */
