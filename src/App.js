@@ -1181,8 +1181,8 @@ function MdItem(){
               <div data-aos="fade-up" data-aos-delay="200" className=' relative  flex flex-col items-center'>
                 
                 <div className=' relative bottom-0 '>
-                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/pouch.png`}/>
-                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/b.png`}/>
+                  <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`}/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`}/>
                 </div>
 
                 <div className=' text-center'>
