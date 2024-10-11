@@ -1178,7 +1178,7 @@ function MdItem(){
                 
                 <div className=' relative bottom-0 '>
                   <img className='w-[150px] h-[225px] md:w-auto md:h-auto' src={`${process.env.PUBLIC_URL}/Pouch.png`} alt="Pouch"/>
-                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/Best.png`} alt="Best"/>
+                  <img className='w-[70px] h-[70px] md:w-[auto] md:h-auto absolute top-[20%]  md:left-[10%]' src={`${process.env.PUBLIC_URL}/best.png`} alt="best"/>
                 </div>
 
                 <div className=' text-center'>
