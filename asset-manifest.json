@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/EDIYACOFFEE/static/css/main.732b1d91.css",
-    "main.js": "/EDIYACOFFEE/static/js/main.a639dd9f.js",
+    "main.js": "/EDIYACOFFEE/static/js/main.856bd21b.js",
     "static/js/453.cc5ec80d.chunk.js": "/EDIYACOFFEE/static/js/453.cc5ec80d.chunk.js",
     "static/media/Scoop-Extrabold.ttf": "/EDIYACOFFEE/static/media/Scoop-Extrabold.1ce97beeabc49003fafb.ttf",
     "index.html": "/EDIYACOFFEE/index.html",
     "main.732b1d91.css.map": "/EDIYACOFFEE/static/css/main.732b1d91.css.map",
-    "main.a639dd9f.js.map": "/EDIYACOFFEE/static/js/main.a639dd9f.js.map",
+    "main.856bd21b.js.map": "/EDIYACOFFEE/static/js/main.856bd21b.js.map",
     "453.cc5ec80d.chunk.js.map": "/EDIYACOFFEE/static/js/453.cc5ec80d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.732b1d91.css",
-    "static/js/main.a639dd9f.js"
+    "static/js/main.856bd21b.js"
   ]
 }
