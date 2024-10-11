@@ -494,6 +494,8 @@ function MobileMenu({ onClose }) {
 
 
 function SwiperSection01() {
+
+
   const swiperRef = useRef(null);              // 스와이퍼 인스턴스를 참조할 ref
 const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
 const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
@@ -521,12 +523,16 @@ useEffect(() => {
     const images = imageRefs.current;
     const isMobile = window.innerWidth <= 768;
 
-    // 첫 번째 이미지: 왼쪽으로 이동
-    moveImage(images[0], 'left', isMobile ? 0.5 : 2, 600);  // 500ms 딜레이 추가
-    // 두 번째 이미지: 오른쪽으로 이동
-    moveImage(images[1], 'right', isMobile ? 1 : 3, 900); // 800ms 딜레이 추가
-    // 세 번째 이미지: 왼쪽으로 이동
-    moveImage(images[2], 'left', isMobile ? 1.5 : 4, 1200);  // 1000ms 딜레이 추가
+    // 각 이미지의 딜레이를 인덱스 * 3000으로 설정
+    images.forEach((image, index) => {
+      const direction = index === 1 ? 'right' : 'left';
+      const speed = isMobile
+        ? (index === 1 ? 1 : (index === 2 ? 1.5 : 0.5)) // 모바일 환경 속도
+        : (index === 1 ? 3 : (index === 2 ? 4 : 2));    // 데스크탑 환경 속도
+      
+      const delay = index * 3000; // 인덱스 * 3000으로 딜레이 설정
+      moveImage(image, direction, speed, delay);
+    });
   }
 }, [loaded]);
 
@@ -566,28 +572,6 @@ const moveImage = (image, direction, speed, delay) => {
   animate(); // 애니메이션 함수 호출
 };
 
-useEffect(() => {
-  const handleResize = () => {
-    if (loaded) {
-      const images = imageRefs.current;
-      const isMobile = window.innerWidth <= 768;
-
-      images.forEach((image, index) => {
-        if (image) {
-          const direction = index === 1 ? 'right' : 'left';
-          const speed = isMobile
-          ? (index === 1 ? 1 : (index === 2 ? 1.5 : 0.5)) // 모바일 환경 속도
-          : (index === 1 ? 3 : (index === 2 ? 4 : 2));    // 데스크탑 환경 속도
-          const delay = index === 1 ? 900 : (index === 2 ? 1200 : 600);  // 각각의 이미지에 대한 딜레이
-          moveImage(image, direction, speed, delay);
-        }
-      });
-    }
-  };
-
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, [loaded]);
 
 
   return (
@@ -723,6 +707,7 @@ useEffect(() => {
     </>
   );
 }
+
 
 
 function PromotionSection02() {
