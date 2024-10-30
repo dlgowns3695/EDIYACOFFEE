@@ -498,6 +498,7 @@ function SwiperSection01() {
 
   const swiperRef = useRef(null);              // 스와이퍼 인스턴스를 참조할 ref
 const imageRefs = useRef([]);                // 이미지 배열을 참조할 ref
+const [imagesLoaded, setImagesLoaded] = useState(0); // 로드된 이미지 수
 const [loaded, setLoaded] = useState(false); // 이미지 로드 여부를 관리하는 상태
 
 // 스와이퍼 슬라이드를 왼쪽으로 이동하는 함수
@@ -513,13 +514,28 @@ const slideNext = () => {
 // 공통 스타일 클래스
 const borderStyles = 'absolute rounded-[4.5rem] md:rounded-[150px] border-4 ';
 
-// 이미지 로드 완료 후 호출되는 함수
+
+  
+
+ // 이미지 로드 완료 후 호출되는 함수
 const handleImageLoad = () => {
-  setLoaded(true); // 이미지를 로드한 후 상태를 true로 설정
+  setImagesLoaded((prev) => {
+    console.log(prev); // 이전 로드된 이미지 수 출력
+    return prev + 1; // 로드된 이미지 수 증가
+  });
 };
+
+
+  useEffect(() => {
+    if (imagesLoaded === imageRefs.current.length) {
+      // 모든 이미지가 로드되면 loaded를 true로 설정
+      setLoaded(true);
+    }
+  }, [imagesLoaded]);
 
 useEffect(() => {
   if (loaded) {
+    console.log(loaded)
     const images = imageRefs.current;
     const isMobile = window.innerWidth <= 768;
 
@@ -766,7 +782,7 @@ function PromotionSection02() {
   useEffect(() => {
     const handleResize = () => {
       let widthSize = window.innerWidth;
-      console.log(widthSize);
+      // console.log(widthSize);
   
      
       // 768px보다 작을 때
@@ -909,7 +925,7 @@ function MenuSection03() {
   useEffect(() => {
     const handleResize = () => {
       let widthSize = window.innerWidth;
-      console.log(widthSize);
+      // console.log(widthSize);
   
      
       // 768px보다 작을 때
